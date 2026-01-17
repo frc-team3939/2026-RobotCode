@@ -13,7 +13,6 @@ import frc.robot.Constants.OIConstants;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
 import frc.robot.commands.Elevator.ElevatorAbsolutePosition;
-import frc.robot.commands.Elevator.ElevatorShift;
 import frc.robot.commands.Elevator.ElevatorZero;
 import frc.robot.commands.Intake.IntelligentIntake;
 import frc.robot.commands.Intake.SpinIntake;
@@ -47,7 +46,7 @@ public class RobotContainer {
     private final SendableChooser<Command> autoChooser;
 
     private final PhotonCamera leftvisionCamera = new PhotonCamera("ArducamLeft");
-    private final PhotonCamera rightvisionCamera = new PhotonCamera("ArducamRight");
+    // private final PhotonCamera rightvisionCamera = new PhotonCamera("ArducamRight");
 
     /*
     Assigns raw inputs on whichever joystick you're using into buttons we use to control the robot.

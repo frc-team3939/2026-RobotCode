@@ -3,13 +3,13 @@ package frc.robot.subsystems;
 
  //import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkMax;
- import com.revrobotics.RelativeEncoder;
+import com.revrobotics.PersistMode;
+import com.revrobotics.RelativeEncoder;
 //import com.revrobotics.spark.SparkBase.ControlType;
-import com.revrobotics.spark.SparkBase.PersistMode;
- import com.revrobotics.spark.SparkBase.ResetMode;
- import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.ResetMode;
+import com.revrobotics.spark.FeedbackSensor;
+import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkMaxConfig;
-import com.revrobotics.spark.config.ClosedLoopConfig.FeedbackSensor;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -61,7 +61,7 @@ public class IntakeSubsystem extends SubsystemBase {
     .p(SmartDashboard.getNumber("IntakeP", 0.001))
     .i(SmartDashboard.getNumber("IntakeI", 0))
     .d(SmartDashboard.getNumber("IntakeD", 0))
-    .velocityFF(5.0/5767);
+    .feedForward.kV(5.0/5767);
 
     intakeMotor.configure(intakeConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     // A digital input is the slots 0-9 on the RoboRIO in the "DIO" area. You plug in limit switches into here normally. Essentially, this declaration points to the number 9 slot on the DIO. 
