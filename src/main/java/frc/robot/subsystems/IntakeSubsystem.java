@@ -7,7 +7,11 @@ import com.revrobotics.PersistMode;
 import com.revrobotics.RelativeEncoder;
 //import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.ResetMode;
+import com.revrobotics.spark.ClosedLoopSlot;
 import com.revrobotics.spark.FeedbackSensor;
+import com.revrobotics.spark.SparkBase.ControlType;
+import com.revrobotics.spark.SparkClosedLoopController;
+import com.revrobotics.spark.SparkClosedLoopController.ArbFFUnits;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
@@ -19,61 +23,84 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class IntakeSubsystem extends SubsystemBase {
   /** Creates a new IntakeSubsystem. */
 
-  private final SparkMax intakeMotor;
-  private final SparkMaxConfig intakeConfig;
+private final SparkClosedLoopController leftPivotController;
+  private final SparkMax spinMotor;
+  private final SparkMax leftPivotMotor;
+  private final SparkMax rightPivotMotor;
+
+  private final SparkMaxConfig spinConfig;
+  private final SparkMaxConfig leftPivotConfig;
+  private final SparkMaxConfig rightPivotConfig;
 
   //private final SparkClosedLoopController intakeController;
 
-  private final RelativeEncoder intakeCoder;
+  private final RelativeEncoder spinCoder;
+  private final RelativeEncoder leftPivotCoder;
+  private final RelativeEncoder rightPivotCoder;
 
-  private int i = 0;
-
-  private double PreviousP;
-  private double PreviousI;
-  private double PreviousD;
-
-  private final DigitalInput topbeamBreak;
-  private final DigitalInput bottombeamBreak;
+  private final DigitalInput intakeBeamBreak;
 
   public IntakeSubsystem() {
 
 
-    //Change ID once robot is wired
-    intakeMotor = new SparkMax(55, MotorType.kBrushless);
-    intakeConfig = new SparkMaxConfig();
+    //DEVICE ID WILL CHANGE WHEn ROBOT.
+    spinMotor = new SparkMax(55, MotorType.kBrushless);
+    leftPivotMotor = new SparkMax(55, MotorType.kBrushless);
+    rightPivotMotor = new SparkMax(55, MotorType.kBrushless);
 
-    //intakeController = intakeMotor.getClosedLoopController();
-    topbeamBreak = new DigitalInput(1);
-    bottombeamBreak = new DigitalInput(0);
+    spinConfig = new SparkMaxConfig();
+    leftPivotConfig = new SparkMaxConfig();
+    rightPivotConfig = new SparkMaxConfig();
+
+    //intakeController = spinMotor.getClosedLoopController();
+    intakeBeamBreak = new DigitalInput(1);
     
-    SmartDashboard.setDefaultNumber("IntakeP", 0.001);
-    SmartDashboard.setDefaultNumber("IntakeI", 0);
-    SmartDashboard.setDefaultNumber("IntakeD", 0);
-
+  
     // IdleMode is brake vs coast. Brake stops when it stops recieving power, coast will let it coast.
-    intakeConfig.idleMode(IdleMode.kBrake);
+    spinConfig.idleMode(IdleMode.kBrake);
+    leftPivotConfig.idleMode(IdleMode.kBrake);
+    rightPivotConfig.idleMode(IdleMode.kBrake);
+    rightPivotConfig.follow(leftPivotMotor);
 
     // This assignment gets the encoder from the motor object defined earlier. A RelativeEncoder is an object created with each CANSparkMax controller.
-    intakeCoder = intakeMotor.getEncoder();
-    intakeMotor.configure(intakeConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    spinCoder = spinMotor.getEncoder();
+    rightPivotCoder = rightPivotMotor.getEncoder();
+    leftPivotCoder = leftPivotMotor.getEncoder();
 
-    intakeConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder)
+    leftPivotController = leftPivotMotor.getClosedLoopController();
+
+
+    spinConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder)
     .p(SmartDashboard.getNumber("IntakeP", 0.001))
     .i(SmartDashboard.getNumber("IntakeI", 0))
     .d(SmartDashboard.getNumber("IntakeD", 0))
     .feedForward.kV(5.0/5767);
 
-    intakeMotor.configure(intakeConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    leftPivotConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder)
+    .p(SmartDashboard.getNumber("IntakeP", 0.001))
+    .i(SmartDashboard.getNumber("IntakeI", 0))
+    .d(SmartDashboard.getNumber("IntakeD", 0))
+    .feedForward.kV(5.0/5767);
+
+    rightPivotConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder)
+    .p(SmartDashboard.getNumber("IntakeP", 0.001))
+    .i(SmartDashboard.getNumber("IntakeI", 0))
+    .d(SmartDashboard.getNumber("IntakeD", 0))
+    .feedForward.kV(5.0/5767);
+    
+    //11111cchbbbbbbbbbbbbbbbbbbbbbbbbbbyyyb333333eeeeeeeeeeeeeeeeeeeee BUNNY CODE!! `
+
+    spinMotor.configure(spinConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    rightPivotMotor.configure(rightPivotConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    leftPivotMotor.configure(leftPivotConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     // A digital input is the slots 0-9 on the RoboRIO in the "DIO" area. You plug in limit switches into here normally. Essentially, this declaration points to the number 9 slot on the DIO. 
   }
 
-    public boolean istopbeambreaktripped() {
-        return topbeamBreak.get();
+    public boolean isIntakeBeamBreakTripped() {
+        return intakeBeamBreak.get();
     }
 
-    public boolean isbottombeambreaktripped() {
-      return bottombeamBreak.get();
-    }
+  
   /**
    * Simple function to spin the intake motor at the parameter speed. 
    * @param speed Speed between -1.0 and 1.0.
@@ -81,7 +108,7 @@ public class IntakeSubsystem extends SubsystemBase {
   public void spinIntake(double speed) {
     // set(speed) is the simple way to set speed for a SparkMAX. It differs slightly from a Talon - see another subsystem for that.
     // intakeController.setReference(speed, ControlType.kVelocity);
-    intakeMotor.set(speed);
+    spinMotor.set(speed);
   }
   
   /**
@@ -89,21 +116,15 @@ public class IntakeSubsystem extends SubsystemBase {
    */
   public void stopIntake() {
    //intakeController.setReference(0, ControlType.kVelocity);
-   intakeMotor.set(0);
+   spinMotor.set(0);
   }
 
-  /**
-   * Returns the intake encoder position. The spinning wheels do have a position - the encoder is located inside the NEO.
-   * @return The double encoder position.
-   */
-   public double getIntakeEncoder() {
-     return intakeCoder.getPosition();
-   }
-
-  public double getIntakeSpeed() {
-    // return 0;
-    return intakeCoder.getVelocity();
+  public void intakePivotPosition(double pivotPosition){
+  leftPivotController.setSetpoint(pivotPosition, ControlType.kPosition, ClosedLoopSlot.kSlot0, .08, ArbFFUnits.kPercentOut);
   }
+
+
+
 
   // public void Rumble() {
   //   driverJoystick.setRumble
@@ -129,12 +150,12 @@ public class IntakeSubsystem extends SubsystemBase {
 
      if (newP != PreviousP || newI != PreviousI || newD != PreviousD){
     
-      intakeConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder)
+      spinConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder)
       .p(SmartDashboard.getNumber("IntakeP", 0.001))
       .i(SmartDashboard.getNumber("IntakeI", 0))
       .d(SmartDashboard.getNumber("IntakeD", 0));  
 
-     intakeMotor.configure(intakeConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
+     spinMotor.configure(spinConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
      }
      PreviousP = newP;
      PreviousI = newI;
