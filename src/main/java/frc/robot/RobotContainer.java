@@ -136,14 +136,14 @@ public class RobotContainer {
         which is set with the Command Scheduler.
         */
 
-         X1.onTrue(new ResetHeading(swerveSubsystem));
-         O2.onTrue(new ResyncEncoders(swerveSubsystem)); 
+        //  X1.onTrue(new ResetHeading(swerveSubsystem));
+        //  O2.onTrue(new ResyncEncoders(swerveSubsystem)); 
          //Square3.whileTrue(new PathPlannerReefLineup(swerveSubsystem,false));
-         Triangle4.whileTrue(new BasicReefLineup(swerveSubsystem, () -> leftvisionCamera.getLatestResult(), "left", true));
+        //Triangle4.whileTrue(new BasicReefLineup(swerveSubsystem, () -> leftvisionCamera.getLatestResult(), "left", true));
          //leftShoulder5.onTrue(new ElevatorShift(elevatorSubsystem, -0.5));
          //rightShoulder6.onTrue(new ElevatorShift(elevatorSubsystem, 0.5));
-        leftTrigger7.whileTrue(new SpinIntake(intakeSubsystem, 0.5));
-        rightTrigger8.whileTrue(new SpinIntake(intakeSubsystem, -0.5));
+        // leftTrigger7.whileTrue(new SpinIntake(intakeSubsystem, 0.5));
+        // rightTrigger8.whileTrue(new SpinIntake(intakeSubsystem, -0.5));
         // leftStickPress9.onTrue(new);
         // rightStickPress10.onTrue(new);
         //dPadNorth.onTrue(new);
@@ -151,28 +151,28 @@ public class RobotContainer {
         // dPadSouth.onTrue(new);
         // dPadWest.onTrue(new);
 
-         buttonT1.onTrue(new ElevatorZero(elevatorSubsystem, 0)); // Brings elevator to 0
-         buttonT2.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 1)); // L1
-         buttonT3.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 6)); // L2
-         buttonT4.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 13.5)); // L3
-         buttonT5.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 25)); // L4
-         buttonT6.whileTrue(new IntelligentIntake(intakeSubsystem, -.50)); // Smart Intake
+        //  buttonT1.onTrue(new ElevatorZero(elevatorSubsystem, 0)); // Brings elevator to 0
+        //  buttonT2.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 1)); // L1
+        //  buttonT3.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 6)); // L2
+        //  buttonT4.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 13.5)); // L3
+        //  buttonT5.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 25)); // L4
+        //  buttonT6.whileTrue(new IntelligentIntake(intakeSubsystem, -.50)); // Smart Intake
          //buttonT7.whileTrue(new SpinIntake(intakeSubsystem, -.50));
-         buttonT8.whileTrue(new SpinIntake(intakeSubsystem, -.50));
-         buttonT9.whileTrue(new SpinIntake(intakeSubsystem, -.40));
-         buttonT10.whileTrue(new SpinIntake(intakeSubsystem, .50));
+        //  buttonT8.whileTrue(new SpinIntake(intakeSubsystem, -.50));
+        //  buttonT9.whileTrue(new SpinIntake(intakeSubsystem, -.40));
+        //  buttonT10.whileTrue(new SpinIntake(intakeSubsystem, .50));
 
-         buttonB1.whileTrue(new SpinIntake(intakeSubsystem, -.40));
+        //  buttonB1.whileTrue(new SpinIntake(intakeSubsystem, -.40));
         // buttonB2.onTrue(new);
         // buttonB3.onTrue(new);
         // buttonB4.onTrue(new);
         // buttonB5.onTrue(new);
-         buttonB6.onTrue(new ResetElevator(elevatorSubsystem));
-         buttonB7.onTrue(new ApplyOffsets(swerveSubsystem));
+        //  buttonB6.onTrue(new ResetElevator(elevatorSubsystem));
+        //  buttonB7.onTrue(new ApplyOffsets(swerveSubsystem));
         // buttonB8.onTrue(new);
         // buttonB8.onTrue(new);
-         buttonB9.onTrue(new ResetHeading(swerveSubsystem));
-         buttonB10.onTrue(new ResyncEncoders(swerveSubsystem));
+        //  buttonB9.onTrue(new ResetHeading(swerveSubsystem));
+        //  buttonB10.onTrue(new ResyncEncoders(swerveSubsystem));
 
         // // buttonD7.onTrue(new);
         // // buttonD8.onTrue(new);
