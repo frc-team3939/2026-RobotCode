@@ -44,9 +44,9 @@ private final SparkClosedLoopController leftPivotController;
 
 
     //DEVICE ID WILL CHANGE WHEn ROBOT.
-    spinMotor = new SparkMax(55, MotorType.kBrushless);
-    leftPivotMotor = new SparkMax(55, MotorType.kBrushless);
-    rightPivotMotor = new SparkMax(55, MotorType.kBrushless);
+    spinMotor = new SparkMax(7, MotorType.kBrushless);
+    leftPivotMotor = new SparkMax(8, MotorType.kBrushless);
+    rightPivotMotor = new SparkMax(9, MotorType.kBrushless);
 
     spinConfig = new SparkMaxConfig();
     leftPivotConfig = new SparkMaxConfig();
@@ -141,27 +141,27 @@ private final SparkClosedLoopController leftPivotController;
    */
   @Override
   public void periodic() {
-    i = i+1;
-    SmartDashboard.putNumber("Intake Speed", getIntakeSpeed());
-     SmartDashboard.putNumber("Intake Encoder", getIntakeEncoder());
+    // i = i+1;
+    // SmartDashboard.putNumber("Intake Speed", getIntakeSpeed());
+    //  SmartDashboard.putNumber("Intake Encoder", getIntakeEncoder());
       double newP = SmartDashboard.getNumber("IntakeP", 0.001);
       double newI = SmartDashboard.getNumber("IntakeI", 0);
       double newD = SmartDashboard.getNumber("IntakeD", 0);
 
-     if (newP != PreviousP || newI != PreviousI || newD != PreviousD){
-    
-      spinConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder)
-      .p(SmartDashboard.getNumber("IntakeP", 0.001))
-      .i(SmartDashboard.getNumber("IntakeI", 0))
-      .d(SmartDashboard.getNumber("IntakeD", 0));  
+    //  if (newP != PreviousP || newI != PreviousI || newD != PreviousD){
+      
+    //     spinConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder)
+    //     .p(SmartDashboard.getNumber("IntakeP", 0.001))
+    //     .i(SmartDashboard.getNumber("IntakeI", 0))
+    //     .d(SmartDashboard.getNumber("IntakeD", 0));  
 
-     spinMotor.configure(spinConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
-     }
-     PreviousP = newP;
-     PreviousI = newI;
-     PreviousD = newD; 
+    //   spinMotor.configure(spinConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
+    //  }
+    //  PreviousP = newP;
+    //  PreviousI = newI;
+    //  PreviousD = newD; 
 
-     SmartDashboard.putBoolean("Top Beam Break Tripped?", istopbeambreaktripped());
-     SmartDashboard.putBoolean("Bottom Beam Break Tripped?", isbottombeambreaktripped());
+    //  SmartDashboard.putBoolean("Top Beam Break Tripped?", istopbeambreaktripped());
+    //  SmartDashboard.putBoolean("Bottom Beam Break Tripped?", isbottombeambreaktripped());
    }
 }

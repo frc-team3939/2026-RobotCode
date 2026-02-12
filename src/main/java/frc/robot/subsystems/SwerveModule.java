@@ -31,7 +31,7 @@ public class SwerveModule {
 
     private final PIDController turningPidController;
 
-    private final AnalogInput absoluteEncoder;
+    // private final AnalogInput absoluteEncoder;
     private final boolean absoluteEncoderReversed;
 
     private final CANcoder CANCoder;
@@ -45,7 +45,7 @@ public class SwerveModule {
 
         this.absoluteEncoderKey = absoluteEncoderKey;
         this.absoluteEncoderReversed = absoluteEncoderReversed;
-        absoluteEncoder = new AnalogInput(absoluteEncoderId);
+        // absoluteEncoder = new AnalogInput(absoluteEncoderId);
         CANCoder = new CANcoder(absoluteEncoderId, "rio");
         var toApply = new CANcoderConfiguration();
 
@@ -124,7 +124,7 @@ public class SwerveModule {
         state.optimize(getState().angle);
         driveMotor.set(state.speedMetersPerSecond / DriveConstants.kPhysicalMaxSpeedMetersPerSecond);
         turningMotor.set(turningPidController.calculate(getTurningPosition(), state.angle.getRadians()));
-        SmartDashboard.putString("Swerve[" + absoluteEncoder.getChannel() + "] state", state.toString());
+        // SmartDashboard.putString("Swerve[" + absoluteEncoder.getChannel() + "] state", state.toString());
     }
 
     public SwerveModulePosition getPosition() {

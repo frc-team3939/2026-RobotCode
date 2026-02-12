@@ -21,7 +21,7 @@ public class ElevatorAbsolutePosition extends Command {
   @Override
   public void initialize() {
     double target = this.clockOut;
-    elevatorSubsystem.setPosition(target);
+    // elevatorSubsystem.setPosition(target);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

@@ -14,7 +14,7 @@ public final class Constants {
     public static final class ModuleConstants {
 
         public static final double kWheelDiameterMeters = Units.inchesToMeters(3.9);
-        public static final double kDriveMotorGearRatio = 1 / 6.75;
+        public static final double kDriveMotorGearRatio = 1 / 5.56;
         public static final double kTurningMotorGearRatio = 1 / 12.8;
         public static final double kDriveEncoderRot2Meter = kDriveMotorGearRatio * Math.PI * kWheelDiameterMeters;
         public static final double kTurningEncoderRot2Rad = kTurningMotorGearRatio * 2 * Math.PI;
@@ -37,15 +37,15 @@ public final class Constants {
                 new Translation2d(-kWheelBase / 2, -kTrackWidth / 2)); //BR
 
         //Plug into any SparkMax with a USB-C cable and use the utility on the desktop to check the port IDs of each motor. 
-        public static final int kFrontLeftDriveMotorPort = 57;   //FL
-        public static final int kBackLeftDriveMotorPort = 40;    //BL
-        public static final int kFrontRightDriveMotorPort = 42;  //FR
-        public static final int kBackRightDriveMotorPort = 54;   //BR
+        public static final int kFrontLeftDriveMotorPort = 2;   //FL
+        public static final int kBackLeftDriveMotorPort = 5;    //BL
+        public static final int kFrontRightDriveMotorPort = 16;  //FR
+        public static final int kBackRightDriveMotorPort = 12;   //BR
 
-        public static final int kFrontLeftTurningMotorPort = 52;     //FL
-        public static final int kBackLeftTurningMotorPort = 41;      //BL
-        public static final int kFrontRightTurningMotorPort = 27;    //FR
-        public static final int kBackRightTurningMotorPort = 43;     //BR
+        public static final int kFrontLeftTurningMotorPort = 1;     //FL
+        public static final int kBackLeftTurningMotorPort = 6;      //BL
+        public static final int kFrontRightTurningMotorPort = 15;    //FR
+        public static final int kBackRightTurningMotorPort = 11;     //BR
 
         public static final boolean kFrontLeftTurningEncoderReversed = false;
         public static final boolean kBackLeftTurningEncoderReversed = false;
@@ -58,10 +58,10 @@ public final class Constants {
         public static final boolean kBackRightDriveEncoderReversed = true;
         
         //Check Phoenix Tuner X for these values when connected to robot
-        public static final int kFrontLeftDriveAbsoluteEncoderPort = 3;
-        public static final int kBackLeftDriveAbsoluteEncoderPort = 5;
-        public static final int kFrontRightDriveAbsoluteEncoderPort = 2;
-        public static final int kBackRightDriveAbsoluteEncoderPort = 4;
+        public static final int kFrontLeftDriveAbsoluteEncoderPort = 30;
+        public static final int kBackLeftDriveAbsoluteEncoderPort = 31;
+        public static final int kFrontRightDriveAbsoluteEncoderPort = 33;
+        public static final int kBackRightDriveAbsoluteEncoderPort = 32;
 
         public static final boolean kFrontLeftDriveAbsoluteEncoderReversed = false;
         public static final boolean kBackLeftDriveAbsoluteEncoderReversed = false;

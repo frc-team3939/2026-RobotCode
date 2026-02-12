@@ -33,8 +33,8 @@ public class RobotContainer {
     private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
 
 
-    private final ElevatorSubsystem elevatorSubsystem = new ElevatorSubsystem();
-    private final LEDSubsystem ledSubsystem = new LEDSubsystem(elevatorSubsystem);
+    // private final ElevatorSubsystem elevatorSubsystem = new ElevatorSubsystem();
+    // private final LEDSubsystem ledSubsystem = new LEDSubsystem(elevatorSubsystem);
 
     // Sets the Joystick/Physical Driver Station ports, change port order in Driver Station to the numbers below.
     private final Joystick driverJoystick = new Joystick(OIConstants.kDriverControllerPort); // 0
@@ -111,16 +111,16 @@ public class RobotContainer {
         
         // Use this line to add commands to PathPlanner, make sure to get spelling correct.
         NamedCommands.registerCommand("ResetHeading", new ResetHeading(swerveSubsystem));
-        NamedCommands.registerCommand("ElevatorL0", new ElevatorZero(elevatorSubsystem,0));
-        NamedCommands.registerCommand("ElevatorL1", new AutoElevatorAbsolutePosition(elevatorSubsystem,1));
-        NamedCommands.registerCommand("ElevatorL2", new AutoElevatorAbsolutePosition(elevatorSubsystem,6));
-        NamedCommands.registerCommand("ElevatorL3", new AutoElevatorAbsolutePosition(elevatorSubsystem,13));
-        NamedCommands.registerCommand("ElevatorL4", new AutoElevatorAbsolutePosition(elevatorSubsystem,25));
+        // NamedCommands.registerCommand("ElevatorL0", new ElevatorZero(elevatorSubsystem,0));
+        // NamedCommands.registerCommand("ElevatorL1", new AutoElevatorAbsolutePosition(elevatorSubsystem,1));
+        // NamedCommands.registerCommand("ElevatorL2", new AutoElevatorAbsolutePosition(elevatorSubsystem,6));
+        // NamedCommands.registerCommand("ElevatorL3", new AutoElevatorAbsolutePosition(elevatorSubsystem,13));
+        // NamedCommands.registerCommand("ElevatorL4", new AutoElevatorAbsolutePosition(elevatorSubsystem,25));
         NamedCommands.registerCommand("Intake", new IntelligentIntake(intakeSubsystem,-.50));
         NamedCommands.registerCommand("Shoot", new SpinIntake(intakeSubsystem,-.50));
         NamedCommands.registerCommand("L4 Shoot", new SpinIntake(intakeSubsystem,-.40));
         NamedCommands.registerCommand("Eject", new SpinIntake(intakeSubsystem,.50));
-        NamedCommands.registerCommand("Auto Shoot", new AutoShoot(intakeSubsystem, ledSubsystem, -.50));
+        // NamedCommands.registerCommand("Auto Shoot", new AutoShoot(intakeSubsystem, ledSubsystem, -.50));
 
         // Build an auto chooser. This will use Commands.none() as the default option.
         autoChooser = AutoBuilder.buildAutoChooser();
@@ -184,4 +184,4 @@ public class RobotContainer {
   }
     
 }
-//₍ᐢ. .ᐢ₎
+//??. .??

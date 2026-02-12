@@ -23,7 +23,7 @@ public class AutoElevatorAbsolutePosition extends Command {
   @Override
   public void initialize() {
     target = this.clockOut;
-    elevatorSubsystem.setPosition(target);
+    // elevatorSubsystem.setPosition(target);
     timeOut = 0;
   }
 
@@ -40,9 +40,9 @@ public class AutoElevatorAbsolutePosition extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (Math.abs(elevatorSubsystem.getEncoder() - target) <= 0.75 || timeOut >= 150) {
+    // if (Math.abs(elevatorSubsystem.getEncoder() - target) <= 0.75 || timeOut >= 150) {
       return true;
-    } 
-    return false;
+    // } 
+    // return false;
   }
 }

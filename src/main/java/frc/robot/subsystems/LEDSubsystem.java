@@ -44,9 +44,9 @@ public class LEDSubsystem extends SubsystemBase {
         if (error < 5){
             targetColor = LEDPattern.solid(new Color(150, 0, 150));
         }
-        else if (elevatorSubsystem.getEncoder() < .25) {
-                targetColor = LEDPattern.solid(new Color(0,255,0));
-        }
+        // else if (elevatorSubsystem.getEncoder() < .25) {
+        //         targetColor = LEDPattern.solid(new Color(0,255,0));
+        // }
 
         else {
             targetColor = LEDPattern.solid(new Color(255,0,0));

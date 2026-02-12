@@ -41,9 +41,9 @@ public class ElevatorZero extends Command {
 
     switch (state) {
       case POWERED:
-      if (elevatorSubsystem.getPosition() <= 1) {
-        state = State.UNPOWERED;
-      }
+      // if (elevatorSubsystem.getPosition() <= 1) {
+      //   state = State.UNPOWERED;
+      // }
       break;
 
       case UNPOWERED:
@@ -57,11 +57,11 @@ public class ElevatorZero extends Command {
     }
     switch (state) {
       case POWERED:
-      elevatorSubsystem.setPosition(1);
+      // elevatorSubsystem.setPosition(1);
       break;
 
       case UNPOWERED:
-      elevatorSubsystem.setPosition(0);
+      // elevatorSubsystem.setPosition(0);
       break;
 
       case END:
@@ -73,7 +73,7 @@ public class ElevatorZero extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
- elevatorSubsystem.setPosition(0);
+    // elevatorSubsystem.setPosition(0);
     
   }
 

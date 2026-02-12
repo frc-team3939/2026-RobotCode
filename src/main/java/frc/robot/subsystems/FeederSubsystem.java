@@ -41,8 +41,8 @@ private final SparkClosedLoopController feederController;
 
 
     //DEVICE ID WILL CHANGE WHEn ROBOT.
-    beltMotor = new SparkMax(55, MotorType.kBrushless);
-    feederMotor = new SparkMax(55, MotorType.kBrushless);
+    beltMotor = new SparkMax(3, MotorType.kBrushless);
+    feederMotor = new SparkMax(4, MotorType.kBrushless);
     
 
     beltConfig = new SparkMaxConfig();

@@ -42,15 +42,15 @@ public class IntelligentIntake extends Command {
 
     switch (state) {
       case FULL_SPEED:
-      if (intakeSubsystem.istopbeambreaktripped() ==false) {
-        state = State.HALF_SPEED;
-      }
+      // if (intakeSubsystem.istopbeambreaktripped() ==false) {
+      //   state = State.HALF_SPEED;
+      // }
       break;
 
       case HALF_SPEED:
-      if (intakeSubsystem.isbottombeambreaktripped() ==false) {
-        state = State.END;
-      }
+      // if (intakeSubsystem.isbottombeambreaktripped() ==false) {
+      //   state = State.END;
+      // }
       break;
 
       case END:
