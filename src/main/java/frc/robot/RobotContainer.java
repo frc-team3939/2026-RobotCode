@@ -1,6 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -11,12 +12,15 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OIConstants;
 
 import frc.robot.subsystems.*;
+import swervelib.SwerveInputStream;
 import frc.robot.commands.*;
 import frc.robot.commands.Elevator.ElevatorAbsolutePosition;
 import frc.robot.commands.Elevator.ElevatorZero;
 import frc.robot.commands.Intake.IntelligentIntake;
 import frc.robot.commands.Intake.SpinIntake;
 import frc.robot.commands.AutoCommands.*;
+
+import java.io.File;
 
 import org.photonvision.PhotonCamera;
 
@@ -29,7 +33,8 @@ public class RobotContainer {
     "Imports" subsystems that you make in the subsystem folder to be used for controller actions.
     Make sure you actually import the subsystem in the same manner as we do with the SwerveSubsystem above.
     */
-    private final SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
+    private final SwerveSubsystem swerveSubsystem = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
+                                                                                "swerve"));
     private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
 
 
@@ -96,21 +101,40 @@ public class RobotContainer {
     // Trigger buttonD9 = new JoystickButton(debug_secondary, 9);
 
     public RobotContainer() {
-        swerveSubsystem.setDefaultCommand(new DriveSwerve(
-                swerveSubsystem,
-                /* 
-                In teleop, if the robot is moving opposite of the way the joystick is being moved, change one of these
-                negatives to a positive depending on how it's inverted.
-                */
-                () -> -driverJoystick.getRawAxis(OIConstants.kDriverYAxis),
-                () -> -driverJoystick.getRawAxis(OIConstants.kDriverXAxis),
-                () -> -driverJoystick.getRawAxis(OIConstants.kDriverRotAxis),
-                () -> !driverJoystick.getRawButton(OIConstants.kDriverFieldOrientedButtonIdx)));
+        /**
+         * Converts driver input into a field-relative ChassisSpeeds that is controlled by angular velocity.
+         */
+        SwerveInputStream driveAngularVelocity = SwerveInputStream.of(swerveSubsystem.getSwerveDrive(),
+                                                                        () -> driverJoystick.getY() * -1,
+                                                                        () -> driverJoystick.getX() * -1)
+                                                                    .withControllerRotationAxis(() -> driverJoystick.getRawAxis(2))
+                                                                    .deadband(0.05D)
+                                                                    .scaleTranslation(0.8)
+                                                                    .allianceRelativeControl(true);
+        /**
+         * Clone's the angular velocity input stream and converts it to a fieldRelative input stream.
+         */
+        SwerveInputStream driveDirectAngle = driveAngularVelocity.copy().withControllerHeadingAxis(driverJoystick::getX,
+                                                                                                    driverJoystick::getY)
+                                                                .headingWhile(true);
+
+        /**
+         * Clone's the angular velocity input stream and converts it to a robotRelative input stream.
+         */
+        SwerveInputStream driveRobotOriented = driveAngularVelocity.copy().robotRelative(true)
+                                                                    .allianceRelativeControl(false);
+        Command driveFieldOrientedDirectAngle      = swerveSubsystem.driveFieldOriented(driveDirectAngle);
+        Command driveFieldOrientedAngularVelocity = swerveSubsystem.driveFieldOriented(driveAngularVelocity);
+        Command driveRobotOrientedAngularVelocity  = swerveSubsystem.driveFieldOriented(driveRobotOriented);
+        Command driveSetpointGen = swerveSubsystem.driveWithSetpointGeneratorFieldRelative(
+            driveDirectAngle);
+        
+        swerveSubsystem.setDefaultCommand(driveFieldOrientedAngularVelocity);
 
         configureButtonBindings();
         
         // Use this line to add commands to PathPlanner, make sure to get spelling correct.
-        NamedCommands.registerCommand("ResetHeading", new ResetHeading(swerveSubsystem));
+        // NamedCommands.registerCommand("ResetHeading", new ResetHeading(swerveSubsystem));
         // NamedCommands.registerCommand("ElevatorL0", new ElevatorZero(elevatorSubsystem,0));
         // NamedCommands.registerCommand("ElevatorL1", new AutoElevatorAbsolutePosition(elevatorSubsystem,1));
         // NamedCommands.registerCommand("ElevatorL2", new AutoElevatorAbsolutePosition(elevatorSubsystem,6));
