@@ -5,12 +5,12 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.SwerveSubsystem;
+import frc.robot.subsystems.OldSwerveSubsystem;
 
 public class ApplyOffsets extends Command {
   /** Creates a new instance of ApplyOffsets. */
-  private final SwerveSubsystem swerveSubsystem;
-    public ApplyOffsets(SwerveSubsystem swerveSubsystem) {
+  private final OldSwerveSubsystem swerveSubsystem;
+    public ApplyOffsets(OldSwerveSubsystem swerveSubsystem) {
     this.swerveSubsystem = swerveSubsystem;
     addRequirements(swerveSubsystem);
   }

@@ -10,7 +10,7 @@ import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.DriveConstants;
-import frc.robot.subsystems.SwerveSubsystem;
+import frc.robot.subsystems.OldSwerveSubsystem;
 
 
 import java.util.Arrays;
@@ -33,9 +33,9 @@ public class FancyReeflLineup extends Command {
 
 
   /** Creates a new instance of CameraCoralLineup. */
-  private final SwerveSubsystem swerveSubsystem;
+  private final OldSwerveSubsystem swerveSubsystem;
     
-    public FancyReeflLineup(SwerveSubsystem swerveSubsystem, boolean rightside) {
+    public FancyReeflLineup(OldSwerveSubsystem swerveSubsystem, boolean rightside) {
       this.swerveSubsystem = swerveSubsystem;
       this.rightside = rightside;
       xSpdController = new PIDController(0.011, 0, 0);

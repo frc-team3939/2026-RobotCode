@@ -35,8 +35,8 @@ public class ShooterSubsystem extends SubsystemBase {
   public ShooterSubsystem() {
 
     // DEVICE ID WILL CHANGE WHEn ROBOT.
-    leftFlywheelMotor = new SparkMax(10, MotorType.kBrushless);
-    rightFlywheelMotor = new SparkMax(13, MotorType.kBrushless);
+    leftFlywheelMotor = new SparkMax(8, MotorType.kBrushless);
+    rightFlywheelMotor = new SparkMax(9, MotorType.kBrushless);
 
     leftFlywheelConfig = new SparkMaxConfig();
     rightFlywheelConfig = new SparkMaxConfig();

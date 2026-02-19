@@ -1,138 +1,131 @@
 package frc.robot.subsystems;
 
-import com.revrobotics.PersistMode;
-import com.revrobotics.RelativeEncoder;
-import com.revrobotics.ResetMode;
+import static edu.wpi.first.units.Units.Radians;
+
 import com.ctre.phoenix6.configs.CANcoderConfiguration;
+import com.ctre.phoenix6.configs.CANcoderConfigurator;
+import com.ctre.phoenix6.configs.MagnetSensorConfigs;
 import com.ctre.phoenix6.hardware.CANcoder;
-import com.revrobotics.spark.SparkMax;
+import com.ctre.phoenix6.signals.SensorDirectionValue;
+import com.revrobotics.RelativeEncoder;
+import com.revrobotics.spark.SparkBase.ControlType;
+import com.revrobotics.spark.SparkBase.PersistMode;
+import com.revrobotics.spark.SparkBase.ResetMode;
+import com.revrobotics.spark.FeedbackSensor;
+import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkMaxConfig;
+import com.revrobotics.spark.config.SparkBaseConfig;
+import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
+import com.revrobotics.spark.SparkMax;
 
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.Preferences;
-import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Constants;
-import frc.robot.Constants.DriveConstants;
+import edu.wpi.first.units.AngleUnit;
 import frc.robot.Constants.ModuleConstants;
 
 public class SwerveModule {
+
+    private SparkMax driveMotor;
+    private SparkMax steerMotor;
+    private CANcoder    absoluteEncoder;
+    private SparkClosedLoopController drivingPIDController;
+    private SparkClosedLoopController turningPIDController;
+    private RelativeEncoder driveEncoder;
+    private RelativeEncoder steerEncoder;
+    
+    public SwerveModule(int driveMotorCANID, int steerMotorCANID, int cancoderCANID)
+    {
+        driveMotor = new SparkMax(driveMotorCANID, MotorType.kBrushless);
+        steerMotor = new SparkMax(steerMotorCANID, MotorType.kBrushless);
+        absoluteEncoder = new CANcoder(cancoderCANID);
+        
+        // Get the PID Controllers
+        drivingPIDController = driveMotor.getClosedLoopController();
+        turningPIDController = steerMotor.getClosedLoopController();
+        
+        // Get the encoders
+        driveEncoder = driveMotor.getEncoder();
+        steerEncoder = steerMotor.getEncoder();
+        
+        // Reset everything to factory default
+        //driveMotor.();
+        //steerMotor.restoreFactoryDefaults();
+        absoluteEncoder.getConfigurator().apply(new CANcoderConfiguration());
+        
+        // Continue configuration here..
+        
+        // CANcoder Configuration
+        CANcoderConfigurator cfg = absoluteEncoder.getConfigurator();
+        cfg.apply(new CANcoderConfiguration());
+        MagnetSensorConfigs  magnetSensorConfiguration = new MagnetSensorConfigs();
+        cfg.refresh(magnetSensorConfiguration);
+        cfg.apply(magnetSensorConfiguration
+                  .withSensorDirection(SensorDirectionValue.CounterClockwise_Positive));
+
+        // Steering Motor Configuration
+        SparkMaxConfig driveConfig = new SparkMaxConfig();
+
+        driveConfig
+            .inverted(true)
+            .idleMode(IdleMode.kBrake);
+        driveConfig.encoder
+            .positionConversionFactor(ModuleConstants.kDriveEncoderRot2Meter)
+            .velocityConversionFactor(ModuleConstants.kDriveEncoderRPM2MeterPerSec);
+        driveConfig.closedLoop
+             .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
+             .pidf(1.0, 0.0, 0.0, 0.0);
+
+        driveMotor.configure(driveConfig,ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     
 
-    private final SparkMax driveMotor;
-    private final SparkMax turningMotor;
+        SparkMaxConfig steerConfig = new SparkMaxConfig();
 
-    private final RelativeEncoder driveEncoder;
-    private final RelativeEncoder turningEncoder;
+        steerConfig
+            .inverted(true)
+            .idleMode(IdleMode.kBrake);
+        steerConfig.encoder
+            .positionConversionFactor(ModuleConstants.kTurningEncoderRot2Rad)
+            .velocityConversionFactor(ModuleConstants.kTurningEncoderRPM2RadPerSec);
+        steerConfig.closedLoop
+             .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
+             .pidf(1.0, 0.0, 0.0,0.0)
+             .positionWrappingEnabled(true)
+             .positionWrappingMaxInput(90)
+             .positionWrappingMinInput(0);
 
-    private final PIDController turningPidController;
+        steerMotor.configure(steerConfig,ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-    // private final AnalogInput absoluteEncoder;
-    private final boolean absoluteEncoderReversed;
-
-    private final CANcoder CANCoder;
-    private final SparkMaxConfig driveConfig;
-    private final SparkMaxConfig turningConfig;
-
-    private final String absoluteEncoderKey;
-
-    public SwerveModule(int driveMotorId, int turningMotorId, boolean driveMotorReversed, boolean turningMotorReversed,
-            int absoluteEncoderId, String absoluteEncoderKey, boolean absoluteEncoderReversed) {
-
-        this.absoluteEncoderKey = absoluteEncoderKey;
-        this.absoluteEncoderReversed = absoluteEncoderReversed;
-        // absoluteEncoder = new AnalogInput(absoluteEncoderId);
-        CANCoder = new CANcoder(absoluteEncoderId, "rio");
-        var toApply = new CANcoderConfiguration();
-
-        Preferences.initDouble("FL-Offset", Constants.DriveConstants.kFrontLeftDriveAbsoluteEncoderOffsetRad);
-        Preferences.initDouble("FR-Offset", Constants.DriveConstants.kFrontRightDriveAbsoluteEncoderOffsetRad);
-        Preferences.initDouble("BL-Offset", Constants.DriveConstants.kBackLeftDriveAbsoluteEncoderOffsetRad);
-        Preferences.initDouble("BR-Offset", Constants.DriveConstants.kBackRightDriveAbsoluteEncoderOffsetRad);
-
-        /* User can change the configs if they want, or leave it empty for factory-default */
-        CANCoder.getConfigurator().apply(toApply);
-
-        driveMotor = new SparkMax(driveMotorId, MotorType.kBrushless);
-        turningMotor = new SparkMax(turningMotorId, MotorType.kBrushless);
-        
-        driveConfig = new SparkMaxConfig();
-        turningConfig = new SparkMaxConfig();
-
-        driveConfig.inverted(driveMotorReversed);
-        turningConfig.inverted(turningMotorReversed);
-        turningConfig.smartCurrentLimit(20);
-
-        driveEncoder = driveMotor.getEncoder();
-        turningEncoder = turningMotor.getEncoder();
-
-        driveConfig.encoder.positionConversionFactor(ModuleConstants.kDriveEncoderRot2Meter);
-        driveConfig.encoder.velocityConversionFactor(ModuleConstants.kDriveEncoderRPM2MeterPerSec);
-        turningConfig.encoder.positionConversionFactor(ModuleConstants.kTurningEncoderRot2Rad);
-        turningConfig.encoder.velocityConversionFactor(ModuleConstants.kTurningEncoderRPM2RadPerSec);
-
-        turningPidController = new PIDController(ModuleConstants.kPTurning, 0, 0);
-        turningPidController.enableContinuousInput(-Math.PI, Math.PI);
-
-        driveMotor.configure(driveConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-        turningMotor.configure(turningConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-
-        resetEncoders();
+          
+        driveEncoder.setPosition(0);
+        steerEncoder.setPosition(absoluteEncoder.getAbsolutePosition().refresh().getValue().in(Radians));
     }
-
-    public double getDrivePosition() {
+    
+    
+    /**
+    Get the distance in meters.
+    */
+    public double getDistance()
+    {
         return driveEncoder.getPosition();
     }
-
-    public double getTurningPosition() {
-        return turningEncoder.getPosition();
+    
+    /**
+    Get the angle.
+    */
+    public Rotation2d getAngle()
+    {
+          return Rotation2d.fromDegrees(steerEncoder.getPosition());
+    }
+    
+    /**
+    Set the swerve module state.
+    @param state The swerve module state to set.
+    */
+    public void setState(SwerveModuleState state)
+    {
+          turningPIDController.setReference(state.angle.getDegrees(), ControlType.kPosition);
+          drivingPIDController.setReference(state.speedMetersPerSecond, ControlType.kVelocity);
     }
 
-    public double getDriveVelocity() {
-        return driveEncoder.getVelocity();
-    }
-
-    public double getTurningVelocity() {
-        return turningEncoder.getVelocity();
-    }
-
-    public double getAbsoluteEncoderRad() {
-        double angle = CANCoder.getPosition().getValueAsDouble();
-        angle = angle * 2 * Math.PI;
-        angle *= (absoluteEncoderReversed ? -1.0 : 1.0);
-        return angle + Preferences.getDouble(absoluteEncoderKey, 0);
-    }
-
-    public void resetEncoders() {
-        driveEncoder.setPosition(0);
-        turningEncoder.setPosition(getAbsoluteEncoderRad());
-    }
-
-    public SwerveModuleState getState() {
-        return new SwerveModuleState(getDriveVelocity(), new Rotation2d(getTurningPosition()));
-    }
-
-    public void setDesiredState(SwerveModuleState state) {
-        if (Math.abs(state.speedMetersPerSecond) < 0.001) {
-            stop();
-            return;
-        }
-        state.optimize(getState().angle);
-        driveMotor.set(state.speedMetersPerSecond / DriveConstants.kPhysicalMaxSpeedMetersPerSecond);
-        turningMotor.set(turningPidController.calculate(getTurningPosition(), state.angle.getRadians()));
-        // SmartDashboard.putString("Swerve[" + absoluteEncoder.getChannel() + "] state", state.toString());
-    }
-
-    public SwerveModulePosition getPosition() {
-        return new SwerveModulePosition(getDrivePosition(), new Rotation2d(getTurningPosition()));
-    }
-
-    public void stop() {
-        driveMotor.set(0);
-        turningMotor.set(0);
-    }
 }

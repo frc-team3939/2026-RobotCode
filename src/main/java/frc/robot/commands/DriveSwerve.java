@@ -12,16 +12,16 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
-import frc.robot.subsystems.SwerveSubsystem;
+import frc.robot.subsystems.OldSwerveSubsystem;
 
 public class DriveSwerve extends Command {
 
-    private final SwerveSubsystem swerveSubsystem;
+    private final OldSwerveSubsystem swerveSubsystem;
     private final Supplier<Double> xSpdFunction, ySpdFunction, turningSpdFunction;
     private final Supplier<Boolean> fieldOrientedFunction;
     private final SlewRateLimiter xLimiter, yLimiter, turningLimiter;
 
-    public DriveSwerve(SwerveSubsystem swerveSubsystem,
+    public DriveSwerve(OldSwerveSubsystem swerveSubsystem,
             Supplier<Double> xSpdFunction, Supplier<Double> ySpdFunction, Supplier<Double> turningSpdFunction,
             Supplier<Boolean> fieldOrientedFunction) {
         this.swerveSubsystem = swerveSubsystem;

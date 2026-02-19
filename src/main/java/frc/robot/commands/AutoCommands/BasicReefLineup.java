@@ -15,11 +15,11 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.DriveConstants;
-import frc.robot.subsystems.SwerveSubsystem;
+import frc.robot.subsystems.OldSwerveSubsystem;
 
 public class BasicReefLineup extends Command {
 
-    private final SwerveSubsystem swerveSubsystem;
+    private final OldSwerveSubsystem swerveSubsystem;
     private final Supplier<PhotonPipelineResult> visionInfo;
     private final PIDController xSpdController, ySpdController, turningSpdController;
     private final SlewRateLimiter xLimiter, yLimiter, turningLimiter;
@@ -36,7 +36,7 @@ public class BasicReefLineup extends Command {
          * @param finishOnTargetLoss IF true, command stops on target loss if LOST and NOT regained 
          * for 20 scheduler cycles. (400 ms) For every cycle there is a target, the counter loses 1.
          */
-        public BasicReefLineup(SwerveSubsystem swerveSubsystem, Supplier<PhotonPipelineResult> visionInfo, String side, boolean finishOnTargetLoss) {
+        public BasicReefLineup(OldSwerveSubsystem swerveSubsystem, Supplier<PhotonPipelineResult> visionInfo, String side, boolean finishOnTargetLoss) {
             this.side = side;
             this.swerveSubsystem = swerveSubsystem;
             this.visionInfo = visionInfo;

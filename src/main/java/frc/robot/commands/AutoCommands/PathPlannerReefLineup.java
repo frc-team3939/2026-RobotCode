@@ -34,7 +34,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.ScheduleCommand;
-import frc.robot.subsystems.SwerveSubsystem;
+import frc.robot.subsystems.OldSwerveSubsystem;
 
 public class PathPlannerReefLineup extends Command {
 
@@ -48,9 +48,9 @@ public class PathPlannerReefLineup extends Command {
   private Command pathCommand;
 
   /** Creates a new instance of CameraCoralLineup. */
-  private final SwerveSubsystem swerveSubsystem;
+  private final OldSwerveSubsystem swerveSubsystem;
     
-    public PathPlannerReefLineup(SwerveSubsystem swerveSubsystem, boolean rightside) {
+    public PathPlannerReefLineup(OldSwerveSubsystem swerveSubsystem, boolean rightside) {
       aprilTagFieldLayout = AprilTagFieldLayout.loadField(AprilTagFields.k2025ReefscapeAndyMark);
       robotToCam = new Transform3d(new Translation3d(-0.24, 0.23, 0.27), new Rotation3d(0.0, 0.0, 45/180*Math.PI));
       photonPoseEstimator = new PhotonPoseEstimator(aprilTagFieldLayout, PoseStrategy.MULTI_TAG_PNP_ON_COPROCESSOR, robotToCam);
