@@ -4,37 +4,42 @@
     {
       "anchor": {
         "x": 4.0,
-        "y": 0.691120481927711
+        "y": 7.411662650602409
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.663626506024096,
-        "y": 0.38514457831325216
+        "x": 5.756626506024096,
+        "y": 7.520939759036144
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 7.592481927710843,
-        "y": 3.936650602409639
+        "x": 7.647120481927709,
+        "y": 6.165903614457831
       },
       "prevControl": {
-        "x": 7.1444457831325305,
-        "y": 1.5216265060240959
+        "x": 6.754353006892047,
+        "y": 7.395076225014178
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Right out Blue"
+      "linkedName": "Left outBall"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.5,
+      "rotationDegrees": -20.5148131368931
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
     {
       "name": "SpinIntake",
-      "waypointRelativePos": 0.6322580645161253,
+      "waypointRelativePos": 0.7,
       "endWaypointRelativePos": 1.0,
       "command": null
     }
@@ -48,11 +53,11 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 0,
-    "rotation": 54.605204155012814
+    "velocity": 0.0,
+    "rotation": -43.921030199059025
   },
   "reversed": false,
-  "folder": "Blue Al, Left auto",
+  "folder": "Blue Al, Right auto",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 0.0

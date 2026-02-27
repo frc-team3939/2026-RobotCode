@@ -42,7 +42,7 @@ private final SparkClosedLoopController feederController;
 
     //DEVICE ID WILL CHANGE WHEn ROBOT.
     beltMotor = new SparkMax(3, MotorType.kBrushless);
-    feederMotor = new SparkMax(4, MotorType.kBrushless);
+    feederMotor = new SparkMax(7, MotorType.kBrushless);
     
 
     beltConfig = new SparkMaxConfig();
@@ -52,7 +52,12 @@ private final SparkClosedLoopController feederController;
     // IdleMode is brake vs coast. Brake stops when it stops recieving power, coast will let it coast.
     beltConfig.idleMode(IdleMode.kBrake);
     feederConfig.idleMode(IdleMode.kBrake);
+
+    feederConfig.inverted(true);
   
+    feederConfig.smartCurrentLimit(40);
+    beltConfig.smartCurrentLimit(40);
+
 
     // This assignment gets the encoder from the motor object defined earlier. A RelativeEncoder is an object created with each CANSparkMax controller.
     beltCoder = beltMotor.getEncoder();
@@ -103,6 +108,10 @@ private final SparkClosedLoopController feederController;
 
   public void feederPosition(double rotatePosition){
   feederController.setSetpoint(rotatePosition, ControlType.kPosition, ClosedLoopSlot.kSlot0, .08, ArbFFUnits.kPercentOut);
+  }
+
+  public void feederSpin(double speed){
+    feederMotor.set(speed);
   }
   
   @Override

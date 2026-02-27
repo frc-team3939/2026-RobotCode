@@ -37,6 +37,10 @@ public class RobotContainer {
                                                                                 "swerve"));
     private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
 
+    private final ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
+
+    private final FeederSubsystem feederSubsystem = new FeederSubsystem();
+
 
     // private final ElevatorSubsystem elevatorSubsystem = new ElevatorSubsystem();
     // private final LEDSubsystem ledSubsystem = new LEDSubsystem(elevatorSubsystem);
@@ -160,14 +164,14 @@ public class RobotContainer {
         which is set with the Command Scheduler.
         */
 
-        //  X1.onTrue(new ResetHeading(swerveSubsystem));
+        X1.onTrue(new ResetHeading(swerveSubsystem));
         //  O2.onTrue(new ResyncEncoders(swerveSubsystem)); 
-         //Square3.whileTrue(new PathPlannerReefLineup(swerveSubsystem,false));
-        //Triangle4.whileTrue(new BasicReefLineup(swerveSubsystem, () -> leftvisionCamera.getLatestResult(), "left", true));
-         //leftShoulder5.onTrue(new ElevatorShift(elevatorSubsystem, -0.5));
-         //rightShoulder6.onTrue(new ElevatorShift(elevatorSubsystem, 0.5));
-        // leftTrigger7.whileTrue(new SpinIntake(intakeSubsystem, 0.5));
-        // rightTrigger8.whileTrue(new SpinIntake(intakeSubsystem, -0.5));
+        Square3.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, 5767, 0.375));
+        Triangle4.whileTrue(new SpinIntake(intakeSubsystem, 1));
+        leftShoulder5.whileTrue(new SpinIntake(intakeSubsystem, 0.375));
+        rightShoulder6.whileTrue(new SimpleShooter(shooterSubsystem, feederSubsystem, 3500, 0.8));
+        leftTrigger7.whileTrue(new SpinIntake(intakeSubsystem, -0.1));
+        rightTrigger8.whileTrue(new SimpleShooter(shooterSubsystem, feederSubsystem, -300, -0.75));
         // leftStickPress9.onTrue(new);
         // rightStickPress10.onTrue(new);
         //dPadNorth.onTrue(new);
@@ -195,7 +199,7 @@ public class RobotContainer {
         //  buttonB7.onTrue(new ApplyOffsets(swerveSubsystem));
         // buttonB8.onTrue(new);
         // buttonB8.onTrue(new);
-        //  buttonB9.onTrue(new ResetHeading(swerveSubsystem));
+        // buttonB9.onTrue(new ResetHeading(swerveSubsystem));
         //  buttonB10.onTrue(new ResyncEncoders(swerveSubsystem));
 
         // // buttonD7.onTrue(new);

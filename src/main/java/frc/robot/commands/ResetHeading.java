@@ -5,12 +5,12 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.OldSwerveSubsystem;
+import frc.robot.subsystems.SwerveSubsystem;
 
 public class ResetHeading extends Command {
   /** Creates a new ZeroHeading. */
-  private final OldSwerveSubsystem swerveSubsystem;
-  public ResetHeading(OldSwerveSubsystem swerveSubsystem) {
+  private final SwerveSubsystem swerveSubsystem;
+  public ResetHeading(SwerveSubsystem swerveSubsystem) {
     this.swerveSubsystem = swerveSubsystem;
     addRequirements(swerveSubsystem);
   }
@@ -18,7 +18,7 @@ public class ResetHeading extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    swerveSubsystem.resetHeading();
+    swerveSubsystem.zeroGyro();
   }
 
   // Called every time the scheduler runs while the command is scheduled.

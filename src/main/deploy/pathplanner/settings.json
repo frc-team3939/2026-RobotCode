@@ -3,15 +3,8 @@
   "robotLength": 0.838,
   "holonomicMode": true,
   "pathFolders": [
-    "Leave Starting Line Left and Right Side",
-    "Left 1 L4",
-    "Left 2 L4",
-    "Left 3 L4",
-    "New Folder",
-    "Mid Auto TEST",
-    "Right 1 L4",
-    "Right 2 L4",
-    "Right 3 L4"
+    "Blue Al, Right auto",
+    "Blue Al, Left auto"
   ],
   "autoFolders": [],
   "defaultMaxVel": 3.0,

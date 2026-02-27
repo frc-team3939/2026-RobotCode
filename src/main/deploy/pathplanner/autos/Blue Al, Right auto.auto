@@ -11,7 +11,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "Left out blue"
+                  "pathName": "Right out blue"
                 }
               },
               {
@@ -26,7 +26,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "back to shoot left"
+            "pathName": "Right path, shoot"
           }
         },
         {

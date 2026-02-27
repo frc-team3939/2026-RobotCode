@@ -26,17 +26,17 @@ public class IntakeSubsystem extends SubsystemBase {
 private final SparkClosedLoopController leftPivotController;
   private final SparkMax spinMotor;
   private final SparkMax leftPivotMotor;
-  private final SparkMax rightPivotMotor;
+  // private final SparkMax rightPivotMotor;
 
   private final SparkMaxConfig spinConfig;
   private final SparkMaxConfig leftPivotConfig;
-  private final SparkMaxConfig rightPivotConfig;
+  // private final SparkMaxConfig rightPivotConfig;
 
   //private final SparkClosedLoopController intakeController;
 
   private final RelativeEncoder spinCoder;
   private final RelativeEncoder leftPivotCoder;
-  private final RelativeEncoder rightPivotCoder;
+  // private final RelativeEncoder rightPivotCoder;
 
   private final DigitalInput intakeBeamBreak;
 
@@ -44,13 +44,13 @@ private final SparkClosedLoopController leftPivotController;
 
 
     //DEVICE ID WILL CHANGE WHEn ROBOT.
-    spinMotor = new SparkMax(7, MotorType.kBrushless);
-    leftPivotMotor = new SparkMax(8, MotorType.kBrushless);
-    rightPivotMotor = new SparkMax(9, MotorType.kBrushless);
+    spinMotor = new SparkMax(14, MotorType.kBrushless);
+    leftPivotMotor = new SparkMax(50, MotorType.kBrushless);
+    // rightPivotMotor = new SparkMax(9, MotorType.kBrushless);
 
     spinConfig = new SparkMaxConfig();
     leftPivotConfig = new SparkMaxConfig();
-    rightPivotConfig = new SparkMaxConfig();
+    // rightPivotConfig = new SparkMaxConfig();
 
     //intakeController = spinMotor.getClosedLoopController();
     intakeBeamBreak = new DigitalInput(1);
@@ -59,12 +59,12 @@ private final SparkClosedLoopController leftPivotController;
     // IdleMode is brake vs coast. Brake stops when it stops recieving power, coast will let it coast.
     spinConfig.idleMode(IdleMode.kBrake);
     leftPivotConfig.idleMode(IdleMode.kBrake);
-    rightPivotConfig.idleMode(IdleMode.kBrake);
-    rightPivotConfig.follow(leftPivotMotor);
+    // rightPivotConfig.idleMode(IdleMode.kBrake);
+    // rightPivotConfig.follow(leftPivotMotor);
 
     // This assignment gets the encoder from the motor object defined earlier. A RelativeEncoder is an object created with each CANSparkMax controller.
     spinCoder = spinMotor.getEncoder();
-    rightPivotCoder = rightPivotMotor.getEncoder();
+    // rightPivotCoder = rightPivotMotor.getEncoder();
     leftPivotCoder = leftPivotMotor.getEncoder();
 
     leftPivotController = leftPivotMotor.getClosedLoopController();
@@ -82,16 +82,16 @@ private final SparkClosedLoopController leftPivotController;
     .d(SmartDashboard.getNumber("IntakeD", 0))
     .feedForward.kV(5.0/5767);
 
-    rightPivotConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder)
-    .p(SmartDashboard.getNumber("IntakeP", 0.001))
-    .i(SmartDashboard.getNumber("IntakeI", 0))
-    .d(SmartDashboard.getNumber("IntakeD", 0))
-    .feedForward.kV(5.0/5767);
+    // rightPivotConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder)
+    // .p(SmartDashboard.getNumber("IntakeP", 0.001))
+    // .i(SmartDashboard.getNumber("IntakeI", 0))
+    // .d(SmartDashboard.getNumber("IntakeD", 0))
+    // .feedForward.kV(5.0/5767);
     
     //11111cchbbbbbbbbbbbbbbbbbbbbbbbbbbyyyb333333eeeeeeeeeeeeeeeeeeeee BUNNY CODE!! `
 
     spinMotor.configure(spinConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-    rightPivotMotor.configure(rightPivotConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    // rightPivotMotor.configure(rightPivotConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     leftPivotMotor.configure(leftPivotConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     // A digital input is the slots 0-9 on the RoboRIO in the "DIO" area. You plug in limit switches into here normally. Essentially, this declaration points to the number 9 slot on the DIO. 
   }

@@ -2,11 +2,13 @@ package frc.robot.subsystems;
 
 //import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.PersistMode;
 import com.revrobotics.RelativeEncoder;
 //import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.ResetMode;
 import com.revrobotics.spark.FeedbackSensor;
+import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
@@ -26,6 +28,7 @@ public class ShooterSubsystem extends SubsystemBase {
   private final SparkMaxConfig rightFlywheelConfig;
 
   // private final SparkClosedLoopController intakeController;
+  private final SparkClosedLoopController flywheelController;
 
   private final RelativeEncoder leftFlywheelCoder;
   private final RelativeEncoder rightFlywheelCoder;
@@ -42,13 +45,18 @@ public class ShooterSubsystem extends SubsystemBase {
     rightFlywheelConfig = new SparkMaxConfig();
 
     // intakeController = spinMotor.getClosedLoopController();
-    shooterBeamBreak = new DigitalInput(1);
+    shooterBeamBreak = new DigitalInput(2);
 
     // IdleMode is brake vs coast. Brake stops when it stops recieving power, coast
     // will let it coast.
     leftFlywheelConfig.idleMode(IdleMode.kBrake);
     rightFlywheelConfig.idleMode(IdleMode.kBrake);
-    rightFlywheelConfig.follow(leftFlywheelMotor);
+    rightFlywheelConfig.follow(leftFlywheelMotor, true);
+
+    // leftFlywheelConfig.inverted(true);
+
+    leftFlywheelConfig.smartCurrentLimit(40);
+    rightFlywheelConfig.smartCurrentLimit(40);
 
     // This assignment gets the encoder from the motor object defined earlier. A
     // RelativeEncoder is an object created with each CANSparkMax controller.
@@ -57,14 +65,18 @@ public class ShooterSubsystem extends SubsystemBase {
     leftFlywheelCoder = leftFlywheelMotor.getEncoder();
 
     leftFlywheelConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder)
-        .p(SmartDashboard.getNumber("IntakeP", 0.001))
+        .p(SmartDashboard.getNumber("IntakeP", 0.0004))
         .i(SmartDashboard.getNumber("IntakeI", 0))
-        .d(SmartDashboard.getNumber("IntakeD", 0)).feedForward.kV(5.0 / 5767);
+        .d(SmartDashboard.getNumber("IntakeD", 0))
+        .feedForward.kV(5.0 / 5767);
 
-    rightFlywheelConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder)
-        .p(SmartDashboard.getNumber("IntakeP", 0.001))
-        .i(SmartDashboard.getNumber("IntakeI", 0))
-        .d(SmartDashboard.getNumber("IntakeD", 0)).feedForward.kV(5.0 / 5767);
+    // rightFlywheelConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder)
+    //     .p(SmartDashboard.getNumber("IntakeP", 0.001))
+    //     .i(SmartDashboard.getNumber("IntakeI", 0))
+    //     .d(SmartDashboard.getNumber("IntakeD", 0)).feedForward.kV(5.0 / 5767);
+
+
+    flywheelController = leftFlywheelMotor.getClosedLoopController();
 
     rightFlywheelMotor.configure(rightFlywheelConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     leftFlywheelMotor.configure(leftFlywheelConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
@@ -84,6 +96,14 @@ public class ShooterSubsystem extends SubsystemBase {
     leftFlywheelMotor.set(speed);
   }
 
+  public void spinShooterSpeed(double rpm){
+    flywheelController.setSetpoint(rpm, ControlType.kVelocity);
+  }
+
+  public double getShooterSpeed() {
+    return leftFlywheelCoder.getVelocity();
+  }
+
   /**
    * Simple function to stop the intake. It is good to have this as opposed to
    * running spinIntake(0), because it ensures there is no error.
@@ -94,10 +114,9 @@ public class ShooterSubsystem extends SubsystemBase {
 
   }
   // ynmtocc4 MOrE BUNNY CODE!!!!!
-}
 
-/**
- * Simple function to spin the intake motor at the parameter speed.
- * 
- * @param speed Speed between -1.0 and 1.0.
- */
+  @Override
+  public void periodic() {
+    SmartDashboard.putNumber("ShooterRPM", getShooterSpeed());
+  }
+}
