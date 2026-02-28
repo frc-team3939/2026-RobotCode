@@ -7,13 +7,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Left out Blue"
+            "pathName": "Right out Red"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Left path, Shoot"
+            "pathName": "Right path, shoot Red"
           }
         }
       ]

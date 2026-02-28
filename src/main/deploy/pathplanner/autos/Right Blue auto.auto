@@ -1,0 +1,37 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Right out BLue"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Right Shoot Blue"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Right 2nd back Blue"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Right 2nd shoot Blue"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}

@@ -1,0 +1,92 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 5.746961483594864,
+        "y": 3.368659058487874
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 6.096305278174036,
+        "y": 0.5739087018544939
+      },
+      "isLocked": false,
+      "linkedName": "2nd intake right blue"
+    },
+    {
+      "anchor": {
+        "x": 4.647175463623395,
+        "y": 0.5739087018544944
+      },
+      "prevControl": {
+        "x": 5.7611818601612885,
+        "y": 0.6126567504297259
+      },
+      "nextControl": {
+        "x": 3.1592296718972896,
+        "y": 0.5221540656205426
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.9522111269614832,
+        "y": 2.644094151212554
+      },
+      "prevControl": {
+        "x": 3.2756776034236803,
+        "y": 1.182025677603425
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "2nd shoot right blue"
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.3752665245202557,
+      "rotationDegrees": -121.27870721187475
+    },
+    {
+      "waypointRelativePos": 1.1044776119402882,
+      "rotationDegrees": 175.92576038385184
+    }
+  ],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [
+    {
+      "name": "SpinIntake",
+      "waypointRelativePos": 0.0,
+      "endWaypointRelativePos": 0.3950372208436543,
+      "command": null
+    },
+    {
+      "name": "Shoot",
+      "waypointRelativePos": 2.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 35.36246188706907
+  },
+  "reversed": false,
+  "folder": "Right Blue auto",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -90.0
+  },
+  "useDefaultConstraints": true
+}
