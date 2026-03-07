@@ -33,7 +33,7 @@ public class SimpleShooter extends Command{
         this.shooterSubsystem.spinShooter(speed / 5767.0);
         // double speedRatio = this.shooterSubsystem.getShooterSpeed() / speed;
         counter = counter + 1;
-        if (counter > 12){
+        if (counter > 80){
             this.feederSubsystem.feederSpin(this.speed_feeder);
             this.feederSubsystem.spinBelt(this.speed_feeder);
         } else {

@@ -5,22 +5,9 @@
     "data": {
       "commands": [
         {
-          "type": "parallel",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "Left out blue"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "uh"
-                }
-              }
-            ]
+            "pathName": "Left out blue"
           }
         },
         {
@@ -30,9 +17,15 @@
           }
         },
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "bruh"
+            "pathName": "Left 2nd back Blue"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Left 2nd shoot Blue"
           }
         }
       ]

@@ -166,10 +166,10 @@ public class RobotContainer {
 
         X1.onTrue(new ResetHeading(swerveSubsystem));
         //  O2.onTrue(new ResyncEncoders(swerveSubsystem)); 
-        Square3.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, 5767, 0.375));
+        Square3.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, 5000, 0.375));
         Triangle4.whileTrue(new SpinIntake(intakeSubsystem, 1));
-        leftShoulder5.whileTrue(new SpinIntake(intakeSubsystem, 0.375));
-        rightShoulder6.whileTrue(new SimpleShooter(shooterSubsystem, feederSubsystem, 3500, 0.8));
+        leftShoulder5.whileTrue(new SpinIntake(intakeSubsystem, 0.5));
+        rightShoulder6.whileTrue(new SimpleShooter(shooterSubsystem, feederSubsystem, 3000, 1));
         leftTrigger7.whileTrue(new SpinIntake(intakeSubsystem, -0.1));
         rightTrigger8.whileTrue(new SimpleShooter(shooterSubsystem, feederSubsystem, -300, -0.75));
         // leftStickPress9.onTrue(new);

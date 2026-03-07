@@ -49,8 +49,8 @@ public class ShooterSubsystem extends SubsystemBase {
 
     // IdleMode is brake vs coast. Brake stops when it stops recieving power, coast
     // will let it coast.
-    leftFlywheelConfig.idleMode(IdleMode.kBrake);
-    rightFlywheelConfig.idleMode(IdleMode.kBrake);
+    leftFlywheelConfig.idleMode(IdleMode.kCoast);
+    rightFlywheelConfig.idleMode(IdleMode.kCoast);
     rightFlywheelConfig.follow(leftFlywheelMotor, true);
 
     // leftFlywheelConfig.inverted(true);

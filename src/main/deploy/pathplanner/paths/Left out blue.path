@@ -3,35 +3,39 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.0,
-        "y": 7.411662650602409
+        "x": 4.248602409638554,
+        "y": 7.597433734939759
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.7345421686746985,
-        "y": 7.389807228915663
+        "x": 7.046096385542168,
+        "y": 7.335168674698796
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 7.712686746987952,
-        "y": 4.483036144578314
+        "x": 7.7345421686746985,
+        "y": 5.018493975903613
       },
       "prevControl": {
-        "x": 7.614337349397591,
-        "y": 6.559301204819277
+        "x": 7.625265060240963,
+        "y": 7.247746987951807
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Left out bLUE"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.3726141078838166,
-      "rotationDegrees": -29.7287458084157
+      "waypointRelativePos": 0.16348547717842585,
+      "rotationDegrees": -162.26720528684143
+    },
+    {
+      "waypointRelativePos": 0.5650319829424298,
+      "rotationDegrees": -71.75324527677965
     }
   ],
   "constraintZones": [],
@@ -39,7 +43,7 @@
   "eventMarkers": [
     {
       "name": "SpinIntake",
-      "waypointRelativePos": 0.35,
+      "waypointRelativePos": 0.2,
       "endWaypointRelativePos": 1.0,
       "command": null
     }
@@ -60,7 +64,7 @@
   "folder": "Left Blue auto",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 179.0589852087806
   },
   "useDefaultConstraints": true
 }

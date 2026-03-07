@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.746961483594864,
-        "y": 3.368659058487874
+        "x": 5.920542168674699,
+        "y": 3.4339759036144573
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.096305278174036,
-        "y": 0.5739087018544939
+        "x": 6.2265180722891555,
+        "y": 0.9752409638554216
       },
       "isLocked": false,
       "linkedName": "2nd intake right blue"
     },
     {
       "anchor": {
-        "x": 4.647175463623395,
-        "y": 0.5739087018544944
+        "x": 4.674783132530121,
+        "y": 0.6364819277108438
       },
       "prevControl": {
-        "x": 5.7611818601612885,
-        "y": 0.6126567504297259
+        "x": 6.062602409638554,
+        "y": 0.6364819277108438
       },
       "nextControl": {
-        "x": 3.1592296718972896,
-        "y": 0.5221540656205426
+        "x": 2.9700252166094105,
+        "y": 0.636481927710844
       },
       "isLocked": false,
       "linkedName": null
@@ -46,12 +46,12 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.3752665245202557,
-      "rotationDegrees": -121.27870721187475
+      "waypointRelativePos": 0.5427385892116094,
+      "rotationDegrees": -139.36164663060413
     },
     {
       "waypointRelativePos": 1.1044776119402882,
-      "rotationDegrees": 175.92576038385184
+      "rotationDegrees": 179.3244250303295
     }
   ],
   "constraintZones": [],
@@ -86,7 +86,7 @@
   "folder": "Right Blue auto",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -90.0
+    "rotation": -134.20201130985464
   },
   "useDefaultConstraints": true
 }

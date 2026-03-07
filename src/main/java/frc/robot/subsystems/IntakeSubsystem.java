@@ -57,8 +57,8 @@ private final SparkClosedLoopController leftPivotController;
     
   
     // IdleMode is brake vs coast. Brake stops when it stops recieving power, coast will let it coast.
-    spinConfig.idleMode(IdleMode.kBrake);
-    leftPivotConfig.idleMode(IdleMode.kBrake);
+    spinConfig.idleMode(IdleMode.kCoast);
+    leftPivotConfig.idleMode(IdleMode.kCoast);
     // rightPivotConfig.idleMode(IdleMode.kBrake);
     // rightPivotConfig.follow(leftPivotMotor);
 

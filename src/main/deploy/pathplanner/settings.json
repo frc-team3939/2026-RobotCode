@@ -3,10 +3,8 @@
   "robotLength": 0.838,
   "holonomicMode": true,
   "pathFolders": [
-    "Right Blue auto",
-    "Left Red auto",
     "Left Blue auto",
-    "Right Red auto"
+    "Right Blue auto"
   ],
   "autoFolders": [],
   "defaultMaxVel": 3.0,
@@ -33,5 +31,7 @@
   "brModuleY": -0.241,
   "bumperOffsetX": 0.0,
   "bumperOffsetY": 0.0,
-  "robotFeatures": []
+  "robotFeatures": [
+    "{\"name\":\"Rectangle\",\"type\":\"rounded_rect\",\"data\":{\"center\":{\"x\":0.54,\"y\":0.0},\"size\":{\"width\":0.64135,\"length\":0.2159},\"borderRadius\":0.05,\"strokeWidth\":0.02,\"filled\":false}}"
+  ]
 }
