@@ -45,7 +45,7 @@ import swervelib.telemetry.SwerveDriveTelemetry;
  * Example PhotonVision class to aid in the pursuit of accurate odometry. Taken from
  * https://gitlab.com/ironclad_code/ironclad-2024/-/blob/master/src/main/java/frc/robot/vision/Vision.java?ref_type=heads
  */
-public class Vision
+public class VisionSubsystem
 {
 
   /**
@@ -54,7 +54,7 @@ public class Vision
   public static final AprilTagFieldLayout fieldLayout                     = AprilTagFieldLayout.loadField(
       AprilTagFields.k2026RebuiltWelded);
   /**
-   * Ambiguity defined as a value between (0,1). Used in {@link Vision#filterPose}.
+   * Ambiguity defined as a value between (0,1). Used in {@link VisionSubsystem#filterPose}.
    */
   private final       double              maximumAmbiguity                = 0.25;
   /**
@@ -81,7 +81,7 @@ public class Vision
    * @param currentPose Current pose supplier, should reference {@link SwerveDrive#getPose()}
    * @param field       Current field, should be {@link SwerveDrive#field}
    */
-  public Vision(Supplier<Pose2d> currentPose, Field2d field)
+  public VisionSubsystem(Supplier<Pose2d> currentPose, Field2d field)
   {
     this.currentPose = currentPose;
     this.field2d = field;
@@ -418,7 +418,7 @@ public class Vision
       // https://docs.wpilib.org/en/stable/docs/software/basic-programming/coordinate-system.html
       robotToCamTransform = new Transform3d(robotToCamTranslation, robotToCamRotation);
 
-      poseEstimator = new PhotonPoseEstimator(Vision.fieldLayout,
+      poseEstimator = new PhotonPoseEstimator(VisionSubsystem.fieldLayout,
                                               PoseStrategy.MULTI_TAG_PNP_ON_COPROCESSOR,
                                               robotToCamTransform);
       poseEstimator.setMultiTagFallbackStrategy(PoseStrategy.LOWEST_AMBIGUITY);

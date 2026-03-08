@@ -7,82 +7,76 @@ import com.revrobotics.PersistMode;
 import com.revrobotics.RelativeEncoder;
 //import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.ResetMode;
-import com.revrobotics.spark.FeedbackSensor;
 import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
-import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class IntakeSubsystem extends SubsystemBase {
+public class ClimberSubsystem extends SubsystemBase {
   /** Creates a new IntakeSubsystem. */
-  private final SparkMax intakeMotor;
+  private final SparkMax climberMotor;
 
-  private final SparkMaxConfig intakeConfig;
+  private final SparkMaxConfig climberConfig;
 
-  private final SparkClosedLoopController intakeController;
+  private final SparkClosedLoopController climberController;
 
-  private final RelativeEncoder intakeCoder;
+  private final RelativeEncoder climberCoder;
   
   
   
-    public IntakeSubsystem() {
+    public ClimberSubsystem() {
   
   
-      //DEVICE ID WILL CHANGE WHEn ROBOT.
-      intakeMotor = new SparkMax(14, MotorType.kBrushless);
-      intakeConfig = new SparkMaxConfig();    
+      //CHANGE CLIMB MOTOR ID!!!!!!!
+      climberMotor = new SparkMax(99, MotorType.kBrushless);
+      climberConfig = new SparkMaxConfig();    
     
       // IdleMode is brake vs coast. Brake stops when it stops recieving power, coast will let it coast.
-      intakeConfig.idleMode(IdleMode.kCoast);
+      climberConfig.idleMode(IdleMode.kBrake);
       
       // This assignment gets the encoder from the motor object defined earlier. A RelativeEncoder is an object created with each CANSparkMax controller.
-      intakeCoder = intakeMotor.getEncoder();
-      intakeController = intakeMotor.getClosedLoopController();
+      climberCoder = climberMotor.getEncoder();
+      climberController = climberMotor.getClosedLoopController();
   
-      Preferences.initDouble("IntakeP", 0.0006);
-      Preferences.initDouble("IntakeI", 0);
-      Preferences.initDouble("IntakeD", 0);
+      // Preferences.initDouble("ClimberP", 0.0006);
+      // Preferences.initDouble("ClimberI", 0);
+      // Preferences.initDouble("ClimberD", 0);
   
-      intakeConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder)
-      .p(Preferences.getDouble("IntakeP", 0.0006))
-      .i(Preferences.getDouble("IntakeI", 0))
-      .d(Preferences.getDouble("IntakeD", 0))
-      .feedForward.kV(0.00018);
+      // climberConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder)
+      // .p(Preferences.getDouble("ClimberP", 0.0006))
+      // .i(Preferences.getDouble("ClimberI", 0))
+      // .d(Preferences.getDouble("ClimberD", 0))
+      // .feedForward.kV(0.00018);
       
       //11111cchbbbbbbbbbbbbbbbbbbbbbbbbbbyyyb333333eeeeeeeeeeeeeeeeeeeee BUNNY CODE!! `
   
-      intakeMotor.configure(intakeConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+      climberMotor.configure(climberConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
   }
   
   /**
    * Simple function to spin the intake motor at the parameter speed. 
    * @param speed Speed between -1.0 and 1.0.
    */
-  public void spinIntake(double speed) {
+  public void positionClimber(double position) {
     // set(speed) is the simple way to set speed for a SparkMAX. It differs slightly from a Talon - see another subsystem for that.
     // intakeController.setReference(speed, ControlType.kVelocity);
-    intakeMotor.set(speed);
+    climberController.setSetpoint(position, ControlType.kPosition);
   }
 
-  public void spinIntakeRPM(double rpm) {
-    intakeController.setSetpoint(rpm, ControlType.kVelocity);
-  }
-
-  public double getIntakeVelocity(){
-    return intakeCoder.getVelocity();
+  public double getClimberPosition(){
+    return climberCoder.getPosition();
   }
   
   /**
    * Simple function to stop the intake. It is good to have this as opposed to running spinIntake(0), because it ensures there is no error.
    */
-  public void stopIntake() {
+  public void stopClimber() {
    //intakeController.setReference(0, ControlType.kVelocity);
-   intakeMotor.set(0);
+   climberMotor.set(0);
   }
   
   /**
@@ -90,6 +84,6 @@ public class IntakeSubsystem extends SubsystemBase {
    */
   @Override
   public void periodic() {
-    SmartDashboard.putNumber("Intake RPM", getIntakeVelocity());
+    SmartDashboard.putNumber("Climber Position", getClimberPosition());
   }
 }

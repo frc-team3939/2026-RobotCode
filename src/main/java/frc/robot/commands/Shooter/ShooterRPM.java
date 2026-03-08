@@ -1,51 +1,54 @@
-package frc.robot.commands;
+package frc.robot.commands.Shooter;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.FeederSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 
-public class SimpleShooter extends Command{
+public class ShooterRPM extends Command{
 
     private final ShooterSubsystem shooterSubsystem;
     private final FeederSubsystem feederSubsystem;
     private final double speed;
     private final double speed_feeder;
-    private int counter;
 
-    public SimpleShooter(ShooterSubsystem shooterSubsystem, FeederSubsystem feederSubsystem, double speed, double speed_feeder){
+    private int i;
+
+    public ShooterRPM(ShooterSubsystem shooterSubsystem, FeederSubsystem feederSubsystem, double speed, double speed_feeder_rpm){
         this.shooterSubsystem = shooterSubsystem;
         this.feederSubsystem = feederSubsystem;
         this.speed = speed;
-        this.speed_feeder = speed_feeder;
-        counter = 0;
+        this.speed_feeder = speed_feeder_rpm;
+        this.i = 0;
     }
 
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
         //swerveSubsystem.resetHeading();
-        counter = 0;
+        this.i = 0;
     }
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        this.shooterSubsystem.spinShooter(speed / 5767.0);
-        // double speedRatio = this.shooterSubsystem.getShooterSpeed() / speed;
-        counter = counter + 1;
-        if (counter > 80){
-            this.feederSubsystem.feederSpin(this.speed_feeder);
-            this.feederSubsystem.spinBelt(this.speed_feeder);
+        this.shooterSubsystem.spinShooterSpeed();
+        // this.feederSubsystem.feederSpin(this.speed_feeder);
+        // this.feederSubsystem.spinBelt(this.speed_feeder);
+        // double shooter_speed_error = this.shooterSubsystem.getShooterSpeed() - Preferences.getDouble("Shooter RPM",0.0);
+        if (this.i > 100) {
+            this.feederSubsystem.spinFeederSpeed(this.speed_feeder);
+            this.feederSubsystem.spinBeltSpeed(this.speed_feeder);
         } else {
-            this.feederSubsystem.feederSpin(0);
-            this.feederSubsystem.stopBelt();
+            // this.feederSubsystem.spinFeederSpeed(0);
+            // this.feederSubsystem.spinBeltSpeed(0);
         }
+        this.i += 1;
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        this.shooterSubsystem.spinShooter(0);
+        this.shooterSubsystem.stopShooter();
         this.feederSubsystem.feederSpin(0);
         this.feederSubsystem.stopBelt();
     }

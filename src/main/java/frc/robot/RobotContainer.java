@@ -14,11 +14,10 @@ import frc.robot.Constants.OIConstants;
 import frc.robot.subsystems.*;
 import swervelib.SwerveInputStream;
 import frc.robot.commands.*;
-import frc.robot.commands.Elevator.ElevatorAbsolutePosition;
-import frc.robot.commands.Elevator.ElevatorZero;
 import frc.robot.commands.Intake.IntelligentIntake;
 import frc.robot.commands.Intake.SpinIntake;
-import frc.robot.commands.AutoCommands.*;
+import frc.robot.commands.Intake.SpinIntakeRPM;
+import frc.robot.commands.Shooter.ShooterRPM;
 
 import java.io.File;
 
@@ -55,7 +54,7 @@ public class RobotContainer {
     private final SendableChooser<Command> autoChooser;
 
     private final PhotonCamera leftvisionCamera = new PhotonCamera("ArducamLeft");
-    // private final PhotonCamera rightvisionCamera = new PhotonCamera("ArducamRight");
+    private final PhotonCamera rightvisionCamera = new PhotonCamera("ArducamRight");
 
     /*
     Assigns raw inputs on whichever joystick you're using into buttons we use to control the robot.
@@ -166,12 +165,12 @@ public class RobotContainer {
 
         X1.onTrue(new ResetHeading(swerveSubsystem));
         //  O2.onTrue(new ResyncEncoders(swerveSubsystem)); 
-        Square3.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, 5000, 0.375));
-        Triangle4.whileTrue(new SpinIntake(intakeSubsystem, 1));
-        leftShoulder5.whileTrue(new SpinIntake(intakeSubsystem, 0.5));
-        rightShoulder6.whileTrue(new SimpleShooter(shooterSubsystem, feederSubsystem, 3000, 1));
-        leftTrigger7.whileTrue(new SpinIntake(intakeSubsystem, -0.1));
-        rightTrigger8.whileTrue(new SimpleShooter(shooterSubsystem, feederSubsystem, -300, -0.75));
+        //Square3.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, 5000, 0.375));
+        Triangle4.whileTrue(new DistanceTest(swerveSubsystem, shooterSubsystem));
+        leftShoulder5.whileTrue(new SpinIntakeRPM(intakeSubsystem, 1000));
+        rightShoulder6.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, 1000, 2000));
+        leftTrigger7.whileTrue(new SpinIntakeRPM(intakeSubsystem, -1000));
+        rightTrigger8.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -1000, -2000));
         // leftStickPress9.onTrue(new);
         // rightStickPress10.onTrue(new);
         //dPadNorth.onTrue(new);

@@ -14,8 +14,12 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.math.interpolation.InterpolatingTreeMap;
+import edu.wpi.first.math.interpolation.Interpolator;
+import edu.wpi.first.math.interpolation.InverseInterpolator;
 
 public class ShooterSubsystem extends SubsystemBase {
   /** Creates a new IntakeSubsystem. */
@@ -31,9 +35,11 @@ public class ShooterSubsystem extends SubsystemBase {
   private final SparkClosedLoopController flywheelController;
 
   private final RelativeEncoder leftFlywheelCoder;
-  private final RelativeEncoder rightFlywheelCoder;
 
   private final DigitalInput shooterBeamBreak;
+  private final InterpolatingTreeMap<Double, Double> RPMmap;
+
+  private double distance;
 
   public ShooterSubsystem() {
 
@@ -46,7 +52,8 @@ public class ShooterSubsystem extends SubsystemBase {
 
     // intakeController = spinMotor.getClosedLoopController();
     shooterBeamBreak = new DigitalInput(2);
-
+    
+    RPMmap = new InterpolatingTreeMap<>(InverseInterpolator.forDouble(), Interpolator.forDouble());
     // IdleMode is brake vs coast. Brake stops when it stops recieving power, coast
     // will let it coast.
     leftFlywheelConfig.idleMode(IdleMode.kCoast);
@@ -61,20 +68,13 @@ public class ShooterSubsystem extends SubsystemBase {
     // This assignment gets the encoder from the motor object defined earlier. A
     // RelativeEncoder is an object created with each CANSparkMax controller.
 
-    rightFlywheelCoder = rightFlywheelMotor.getEncoder();
     leftFlywheelCoder = leftFlywheelMotor.getEncoder();
 
     leftFlywheelConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder)
-        .p(SmartDashboard.getNumber("IntakeP", 0.0004))
-        .i(SmartDashboard.getNumber("IntakeI", 0))
-        .d(SmartDashboard.getNumber("IntakeD", 0))
-        .feedForward.kV(5.0 / 5767);
-
-    // rightFlywheelConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder)
-    //     .p(SmartDashboard.getNumber("IntakeP", 0.001))
-    //     .i(SmartDashboard.getNumber("IntakeI", 0))
-    //     .d(SmartDashboard.getNumber("IntakeD", 0)).feedForward.kV(5.0 / 5767);
-
+        .p(SmartDashboard.getNumber("ShooterP", 0.0004))
+        .i(SmartDashboard.getNumber("ShooterI", 0))
+        .d(SmartDashboard.getNumber("ShooterD", 0))
+        .feedForward.kV(0.00018);
 
     flywheelController = leftFlywheelMotor.getClosedLoopController();
 
@@ -83,21 +83,33 @@ public class ShooterSubsystem extends SubsystemBase {
     // A digital input is the slots 0-9 on the RoboRIO in the "DIO" area. You plug
     // in limit switches into here normally. Essentially, this declaration points to
     // the number 9 slot on the DIO.
+
+    RPMmap.put(1.0, 0.0);
+    RPMmap.put(2.0, 0.0);
+    RPMmap.put(3.0, 0.0);
+    RPMmap.put(4.0, 0.0);
+    RPMmap.put(5.0, 0.0);
+    RPMmap.put(6.0, 0.0);
+    Preferences.initDouble("Shooter RPM", 0.000);
+    //Preferences.getDouble("Shooter RPM", 0.0);
   }
 
   public boolean isIntakeBeamBreakTripped() {
     return shooterBeamBreak.get();
   }
 
-  public void spinShooter(double speed) {
-    // set(speed) is the simple way to set speed for a SparkMAX. It differs slightly
-    // from a Talon - see another subsystem for that.
-    // intakeController.setReference(speed, ControlType.kVelocity);
-    leftFlywheelMotor.set(speed);
+  public double getRPMFromDistance(double distance){
+    return RPMmap.get(distance);
   }
+
 
   public void spinShooterSpeed(double rpm){
     flywheelController.setSetpoint(rpm, ControlType.kVelocity);
+  }
+  
+  public void spinShooterSpeed(){
+    // leftFlywheelMotor.set(Preferences.getDouble("Shooter RPM", 0.0));
+    spinShooterSpeed(Preferences.getDouble("Shooter RPM", 0.0));
   }
 
   public double getShooterSpeed() {
@@ -113,10 +125,18 @@ public class ShooterSubsystem extends SubsystemBase {
     leftFlywheelMotor.set(0);
 
   }
+  public void logDistance(double distance) {
+    this.distance = distance;
+  }
+
+  public double getRecentDistance() {
+    return this.distance;
+  }
   // ynmtocc4 MOrE BUNNY CODE!!!!!
 
   @Override
   public void periodic() {
     SmartDashboard.putNumber("ShooterRPM", getShooterSpeed());
+    SmartDashboard.putNumber("Recent Calculated Distance", getRecentDistance());
   }
 }
