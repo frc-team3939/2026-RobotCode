@@ -84,12 +84,10 @@ public class ShooterSubsystem extends SubsystemBase {
     // in limit switches into here normally. Essentially, this declaration points to
     // the number 9 slot on the DIO.
 
-    RPMmap.put(1.0, 0.0);
-    RPMmap.put(2.0, 0.0);
-    RPMmap.put(3.0, 0.0);
-    RPMmap.put(4.0, 0.0);
-    RPMmap.put(5.0, 0.0);
-    RPMmap.put(6.0, 0.0);
+    RPMmap.put(1.4002, 3083.0);
+    RPMmap.put(2.3654, 3477.0);
+    RPMmap.put(3.6099, 4477.0);
+    RPMmap.put(3.78, 4700.00);
     Preferences.initDouble("Shooter RPM", 0.000);
     //Preferences.getDouble("Shooter RPM", 0.0);
   }
@@ -137,6 +135,6 @@ public class ShooterSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     SmartDashboard.putNumber("ShooterRPM", getShooterSpeed());
-    SmartDashboard.putNumber("Recent Calculated Distance", getRecentDistance());
+    SmartDashboard.putNumber("Recent Calculated Distance", getRecentDistance()*39.3);
   }
 }

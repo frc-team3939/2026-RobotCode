@@ -8,24 +8,24 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.027888730385163,
-        "y": 5.956390870185448
+        "x": 7.756397590361445,
+        "y": 6.373530120481928
       },
       "isLocked": false,
       "linkedName": "Left out bLUE"
     },
     {
       "anchor": {
-        "x": 4.543666191155491,
-        "y": 7.521968616262482
+        "x": 3.560156626506024,
+        "y": 7.51001204819277
       },
       "prevControl": {
-        "x": 5.759900142653351,
-        "y": 7.509029957203994
+        "x": 8.532265060240963,
+        "y": 7.553722891566265
       },
       "nextControl": {
-        "x": 2.7448755380733383,
-        "y": 7.541104687039952
+        "x": 1.7613336986816945,
+        "y": 7.494198220255853
       },
       "isLocked": false,
       "linkedName": null
@@ -46,11 +46,15 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.5294605809128773,
+      "waypointRelativePos": 0.38672199170123694,
       "rotationDegrees": -40.31573726513526
     },
     {
-      "waypointRelativePos": 1.1982942430703452,
+      "waypointRelativePos": 0.7684647302904549,
+      "rotationDegrees": 0.0
+    },
+    {
+      "waypointRelativePos": 1.1402489626555794,
       "rotationDegrees": 0.0
     }
   ],
@@ -65,7 +69,7 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 3.0,
+    "maxVelocity": 1.0,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
@@ -82,5 +86,5 @@
     "velocity": 0,
     "rotation": -90.0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.0169044222539223,
-        "y": 7.235540999948439
+        "x": 1.7230385164051354,
+        "y": 7.819557774607704
       },
       "isLocked": false,
       "linkedName": "Left shoot blue"
@@ -48,12 +48,12 @@
     },
     {
       "anchor": {
-        "x": 5.9423975903614465,
-        "y": 4.668807228915662
+        "x": 6.554349397590361,
+        "y": 4.570457831325301
       },
       "prevControl": {
-        "x": 7.264650602409638,
-        "y": 4.69066265060241
+        "x": 7.876602409638554,
+        "y": 4.592313253012049
       },
       "nextControl": null,
       "isLocked": false,
@@ -78,7 +78,7 @@
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
+    "maxVelocity": 1.0,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
@@ -95,5 +95,5 @@
     "velocity": 0,
     "rotation": -45.9391909457356
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

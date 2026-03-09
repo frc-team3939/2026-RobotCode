@@ -3,6 +3,23 @@ package frc.robot.subsystems;
 import static edu.wpi.first.units.Units.Microseconds;
 import static edu.wpi.first.units.Units.Seconds;
 
+import java.awt.Desktop;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
+
+import org.photonvision.EstimatedRobotPose;
+import org.photonvision.PhotonCamera;
+import org.photonvision.PhotonPoseEstimator;
+import org.photonvision.PhotonPoseEstimator.PoseStrategy;
+import org.photonvision.PhotonUtils;
+import org.photonvision.simulation.PhotonCameraSim;
+import org.photonvision.simulation.SimCameraProperties;
+import org.photonvision.simulation.VisionSystemSim;
+import org.photonvision.targeting.PhotonPipelineResult;
+import org.photonvision.targeting.PhotonTrackedTarget;
+
 import edu.wpi.first.apriltag.AprilTagFieldLayout;
 import edu.wpi.first.apriltag.AprilTagFields;
 import edu.wpi.first.math.Matrix;
@@ -21,22 +38,8 @@ import edu.wpi.first.networktables.NetworkTablesJNI;
 import edu.wpi.first.wpilibj.Alert;
 import edu.wpi.first.wpilibj.Alert.AlertType;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
-import java.awt.Desktop;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
-import org.photonvision.EstimatedRobotPose;
-import org.photonvision.PhotonCamera;
-import org.photonvision.PhotonPoseEstimator;
-import org.photonvision.PhotonPoseEstimator.PoseStrategy;
-import org.photonvision.PhotonUtils;
-import org.photonvision.simulation.PhotonCameraSim;
-import org.photonvision.simulation.SimCameraProperties;
-import org.photonvision.simulation.VisionSystemSim;
-import org.photonvision.targeting.PhotonPipelineResult;
-import org.photonvision.targeting.PhotonTrackedTarget;
 import swervelib.SwerveDrive;
 import swervelib.telemetry.SwerveDriveTelemetry;
 
@@ -139,6 +142,7 @@ public class VisionSubsystem
        */
       visionSim.update(swerveDrive.getSimulationDriveTrainPose().get());
     }
+    int camera_count = -100;
     for (Cameras camera : Cameras.values())
     {
       Optional<EstimatedRobotPose> poseEst = getEstimatedGlobalPose(camera);
@@ -148,9 +152,11 @@ public class VisionSubsystem
         swerveDrive.addVisionMeasurement(pose.estimatedPose.toPose2d(),
                                          pose.timestampSeconds,
                                          camera.curStdDevs);
+        camera_count += 1;
       }
     }
-
+    SmartDashboard.putNumber("Vision Camera Num", camera_count);
+    updateVisionField();
   }
 
   /**
@@ -338,18 +344,18 @@ public class VisionSubsystem
      * Left Camera
      */
     LEFT_CAM("LeftCamera",
-             new Rotation3d(0, Math.toRadians(-15), Math.toRadians(7.13)),
+             new Rotation3d(0, Math.toRadians(-15), Math.toRadians(15)),
              new Translation3d(Units.inchesToMeters(2.28515766),
-                               Units.inchesToMeters(-10.375),
+                               Units.inchesToMeters(10.375),
                                Units.inchesToMeters(19.03114713)),
              VecBuilder.fill(4, 4, 8), VecBuilder.fill(0.5, 0.5, 1)),
     /**
      * Right Camera
      */
     RIGHT_CAM("RightCamera",
-              new Rotation3d(0, Math.toRadians(-15), Math.toRadians(-7.13)),
+              new Rotation3d(0, Math.toRadians(-15), Math.toRadians(-15)),
               new Translation3d(Units.inchesToMeters(2.28515766),
-                                Units.inchesToMeters(10.375),
+                                Units.inchesToMeters(-10.375),
                                 Units.inchesToMeters(19.03114713)),
               VecBuilder.fill(4, 4, 8), VecBuilder.fill(0.5, 0.5, 1));
     /**
@@ -523,8 +529,10 @@ public class VisionSubsystem
         resultsList.sort((PhotonPipelineResult a, PhotonPipelineResult b) -> {
           return a.getTimestampSeconds() >= b.getTimestampSeconds() ? 1 : -1;
         });
+        // System.out.println("HERE!!!");
         if (!resultsList.isEmpty())
         {
+          // System.out.println("HERE!!!");
           updateEstimatedGlobalPose();
         }
 
@@ -545,6 +553,7 @@ public class VisionSubsystem
       Optional<EstimatedRobotPose> visionEst = Optional.empty();
       for (var change : resultsList)
       {
+        // System.out.println(change.toString());
         visionEst = poseEstimator.update(change);
         updateEstimationStdDevs(visionEst, change.getTargets());
       }

@@ -18,6 +18,7 @@ import frc.robot.commands.Intake.IntelligentIntake;
 import frc.robot.commands.Intake.SpinIntake;
 import frc.robot.commands.Intake.SpinIntakeRPM;
 import frc.robot.commands.Shooter.ShooterRPM;
+import frc.robot.commands.Shooter.ShooterRPMDistance;
 
 import java.io.File;
 
@@ -143,10 +144,10 @@ public class RobotContainer {
         // NamedCommands.registerCommand("ElevatorL2", new AutoElevatorAbsolutePosition(elevatorSubsystem,6));
         // NamedCommands.registerCommand("ElevatorL3", new AutoElevatorAbsolutePosition(elevatorSubsystem,13));
         // NamedCommands.registerCommand("ElevatorL4", new AutoElevatorAbsolutePosition(elevatorSubsystem,25));
-        NamedCommands.registerCommand("Intake", new IntelligentIntake(intakeSubsystem,-.50));
-        NamedCommands.registerCommand("Shoot", new SpinIntake(intakeSubsystem,-.50));
-        NamedCommands.registerCommand("L4 Shoot", new SpinIntake(intakeSubsystem,-.40));
-        NamedCommands.registerCommand("Eject", new SpinIntake(intakeSubsystem,.50));
+        //NamedCommands.registerCommand("Intake", new IntelligentIntake(intakeSubsystem,-.50));
+        ///NamedCommands.registerCommand("Shoot", new SpinIntake(intakeSubsystem,-.50));
+    //NamedCommands.registerCommand("L4 Shoot", new SpinIntake(intakeSubsystem,-.40));
+        //NamedCommands.registerCommand("Eject", new SpinIntake(intakeSubsystem,.50));
         // NamedCommands.registerCommand("Auto Shoot", new AutoShoot(intakeSubsystem, ledSubsystem, -.50));
 
         // Build an auto chooser. This will use Commands.none() as the default option.
@@ -165,10 +166,10 @@ public class RobotContainer {
 
         X1.onTrue(new ResetHeading(swerveSubsystem));
         //  O2.onTrue(new ResyncEncoders(swerveSubsystem)); 
-        //Square3.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, 5000, 0.375));
+        Square3.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0));
         Triangle4.whileTrue(new DistanceTest(swerveSubsystem, shooterSubsystem));
-        leftShoulder5.whileTrue(new SpinIntakeRPM(intakeSubsystem, 1000));
-        rightShoulder6.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, 1000, 2000));
+        leftShoulder5.whileTrue(new SpinIntakeRPM(intakeSubsystem, 2000));
+        rightShoulder6.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0));
         leftTrigger7.whileTrue(new SpinIntakeRPM(intakeSubsystem, -1000));
         rightTrigger8.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -1000, -2000));
         // leftStickPress9.onTrue(new);
