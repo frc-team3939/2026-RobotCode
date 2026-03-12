@@ -3,47 +3,44 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.9522111269614832,
-        "y": 2.644094151212554
+        "x": 4.248602409638554,
+        "y": 0.45071084337349476
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.4901426533523534,
-        "y": 2.6182168330955777
+        "x": 7.172739356856815,
+        "y": 0.6706680473677897
       },
       "isLocked": false,
-      "linkedName": "2nd shoot right blue"
+      "linkedName": "Start Right"
     },
     {
       "anchor": {
-        "x": 1.0904939759036145,
-        "y": 2.6253253012048186
+        "x": 7.7653922967189715,
+        "y": 2.8769900142653353
       },
       "prevControl": {
-        "x": 2.3581084337349387,
-        "y": 2.669036144578314
+        "x": 7.439493975903615,
+        "y": 1.2702891566265067
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Right out Blue"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.6652452025586351,
-      "rotationDegrees": -90.45058527877846
+      "waypointRelativePos": 0.2771855010660961,
+      "rotationDegrees": 153.0820175524047
+    },
+    {
+      "waypointRelativePos": 0.6417910447761193,
+      "rotationDegrees": 47.22702919026432
     }
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "Climb!!",
-      "waypointRelativePos": 0,
-      "endWaypointRelativePos": null,
-      "command": null
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -54,13 +51,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 179.30436747632663
+    "rotation": 86.42366562500266
   },
   "reversed": false,
-  "folder": "Right Blue auto",
+  "folder": "Right Curve",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 35.36246188706907
+    "rotation": 180.0
   },
   "useDefaultConstraints": true
 }

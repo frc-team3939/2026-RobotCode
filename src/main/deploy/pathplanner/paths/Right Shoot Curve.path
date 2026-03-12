@@ -3,66 +3,60 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.920542168674699,
-        "y": 3.4339759036144573
+        "x": 7.7653922967189715,
+        "y": 2.8769900142653353
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.2265180722891555,
-        "y": 0.9752409638554216
+        "x": 6.521566265060241,
+        "y": 0.31957831325301145
       },
       "isLocked": false,
-      "linkedName": "2nd intake right blue"
+      "linkedName": "Right out Blue"
     },
     {
       "anchor": {
-        "x": 4.674783132530121,
-        "y": 0.6364819277108438
+        "x": 4.587361445783132,
+        "y": 0.5927710843373495
       },
       "prevControl": {
-        "x": 6.062602409638554,
-        "y": 0.6364819277108438
+        "x": 5.991946678375645,
+        "y": 0.5726095738216671
       },
       "nextControl": {
-        "x": 2.9700252166094105,
-        "y": 0.636481927710844
+        "x": 2.303469879518073,
+        "y": 0.6255542168674706
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.9522111269614832,
-        "y": 2.644094151212554
+        "x": 2.9919156626506025,
+        "y": 2.734602409638553
       },
       "prevControl": {
-        "x": 3.2756776034236803,
-        "y": 1.182025677603425
+        "x": 2.8717108433734935,
+        "y": 1.2702891566265064
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "2nd shoot right blue"
+      "linkedName": "2nd cycle left blue"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.5427385892116094,
-      "rotationDegrees": -139.36164663060413
+      "waypointRelativePos": 0.0016597510373433603,
+      "rotationDegrees": 97.74081483962425
     },
     {
-      "waypointRelativePos": 1.1044776119402882,
-      "rotationDegrees": 179.32442503032954
+      "waypointRelativePos": 0.9936034115138438,
+      "rotationDegrees": 0.0
     }
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
-    {
-      "name": "SpinIntake",
-      "waypointRelativePos": 0.0,
-      "endWaypointRelativePos": 0.3950372208436543,
-      "command": null
-    },
     {
       "name": "Shoot",
       "waypointRelativePos": 2.0,
@@ -80,13 +74,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 35.36246188706907
+    "rotation": 39.80557109226518
   },
   "reversed": false,
-  "folder": "Right Blue auto",
+  "folder": "Right Curve",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -134.20201130985464
+    "rotation": 86.42366562500266
   },
   "useDefaultConstraints": true
 }

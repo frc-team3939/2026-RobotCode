@@ -1,5 +1,12 @@
 package frc.robot.commands.Shooter;
 
+import static edu.wpi.first.units.Units.Rotation;
+
+import com.pathplanner.lib.commands.PathPlannerAuto;
+import com.pathplanner.lib.path.PathPlannerPath;
+import com.pathplanner.lib.trajectory.PathPlannerTrajectory;
+import com.pathplanner.lib.trajectory.PathPlannerTrajectoryState;
+
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Transform2d;
@@ -56,27 +63,29 @@ public class ShooterRPMDistance extends Command{
             hubLocation = new Pose2d(11.920,4.021,Rotation2d.kZero);
         }
         Transform2d offset = this.swerveSubsystem.getPose().minus(hubLocation);
+        Rotation2d facing_angle = new Rotation2d(offset.getX(),offset.getY());
         double distance = Math.sqrt(offset.getX()*offset.getX()+offset.getY()*offset.getY());
         this.shooterSubsystem.logDistance(distance);
         switch (this.state){
             case START:
             this.state = State.ROTATE;
-            Pose2d targetPose = new Pose2d(this.swerveSubsystem.getPose().getTranslation(),offset.getRotation());
-            this.driveToPose = this.swerveSubsystem.driveToPose(targetPose);
-            CommandScheduler.getInstance().schedule(this.driveToPose);
+            Pose2d targetPose = new Pose2d(this.swerveSubsystem.getPose().getTranslation(),facing_angle);
+            // this.driveToPose = this.swerveSubsystem.driveToPose(targetPose);
+            // CommandScheduler.getInstance().schedule(this.driveToPose);
             break;
             case ROTATE:
-            if (this.driveToPose.isFinished()){
-                this.state = State.SPIN_SHOOTER;
-                counter = 0;
-            }
+            // if (this.driveToPose.isFinished()){
+            //     this.state = State.SPIN_SHOOTER;
+            //     counter = 0;
+            // }
+            this.state = State.SPIN_SHOOTER;
             break;
             case SPIN_SHOOTER:
             counter = counter + 1;
            // Transform2d offset = this.swerveSubsystem.getPose().minus(new Pose2d(4.612,4.021,Rotation2d.kZero));
            //double distance = Math.sqrt(offset.getX()*offset.getX()+offset.getY()*offset.getY());
             //if (Math.abs(shooterSubsystem.getShooterSpeed()-shooterSubsystem.getRPMFromDistance(distance))<= 100){
-            if (counter >= 100){
+            if (counter >= 75){
                 this.state = State.SHOOT;
             }
             break;

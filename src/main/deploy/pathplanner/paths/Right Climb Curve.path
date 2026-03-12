@@ -3,35 +3,47 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.5,
-        "y": 4.0
+        "x": 2.9522111269614832,
+        "y": 2.644094151212554
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.5,
-        "y": 4.0
+        "x": 1.4901426533523534,
+        "y": 2.6182168330955777
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "2nd shoot right blue"
     },
     {
       "anchor": {
-        "x": 4.0,
-        "y": 6.0
+        "x": 1.0904939759036145,
+        "y": 2.6253253012048186
       },
       "prevControl": {
-        "x": 3.0,
-        "y": 6.0
+        "x": 2.3581084337349387,
+        "y": 2.669036144578314
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.6652452025586351,
+      "rotationDegrees": -90.45058527877846
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "Climb!!",
+      "waypointRelativePos": 0,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -42,13 +54,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 179.30436747632663
   },
   "reversed": false,
-  "folder": "Middle auto",
+  "folder": "Right Curve",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 35.36246188706907
   },
   "useDefaultConstraints": true
 }

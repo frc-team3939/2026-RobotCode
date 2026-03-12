@@ -7,25 +7,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Right out BLue"
+            "pathName": "Out to H.P."
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Right Shoot Blue"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Right 2nd back Blue"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Right 2nd shoot Blue"
+            "pathName": null
           }
         }
       ]

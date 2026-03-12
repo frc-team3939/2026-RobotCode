@@ -3,35 +3,47 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.5164457831325304,
-        "y": 3.9912891566265065
+        "x": 2.685939759036144,
+        "y": 2.756457831325301
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.667993223374866,
-        "y": 3.000243501018674
+        "x": 2.532951807228916,
+        "y": 4.395614457831325
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Shoot H.P and The Pit."
     },
     {
       "anchor": {
-        "x": 0.6861686746987952,
-        "y": 0.6255542168674697
+        "x": 0.7845180722891567,
+        "y": 5.980132530120482
       },
       "prevControl": {
-        "x": 0.9483109752348757,
-        "y": 0.9076424583984095
+        "x": 2.664084337349397,
+        "y": 6.1003373493975905
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Out to H.P"
+      "linkedName": "The Pit Intake"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.8738589211618203,
+      "rotationDegrees": 179.01239252270716
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "SpinIntake",
+      "waypointRelativePos": 0.8426799007444201,
+      "endWaypointRelativePos": 1.0,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -48,7 +60,7 @@
   "folder": "H.P and The Pit",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -179.23610153907003
+    "rotation": 35.83765295427826
   },
   "useDefaultConstraints": true
 }

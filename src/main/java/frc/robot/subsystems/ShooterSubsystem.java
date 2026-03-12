@@ -77,6 +77,9 @@ public class ShooterSubsystem extends SubsystemBase {
         .feedForward.kV(0.00018);
 
     flywheelController = leftFlywheelMotor.getClosedLoopController();
+    
+    leftFlywheelConfig.encoder.uvwAverageDepth(16);
+    leftFlywheelConfig.encoder.uvwMeasurementPeriod(20);
 
     rightFlywheelMotor.configure(rightFlywheelConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     leftFlywheelMotor.configure(leftFlywheelConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);

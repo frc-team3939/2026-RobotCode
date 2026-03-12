@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.248602409638554,
+        "x": 4.106542168674698,
         "y": 7.597433734939759
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.046096385542168,
+        "x": 6.9040361445783125,
         "y": 7.335168674698796
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Start Left"
     },
     {
       "anchor": {
@@ -30,8 +30,8 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.16348547717842585,
-      "rotationDegrees": -162.26720528684143
+      "waypointRelativePos": 0.3726141078838194,
+      "rotationDegrees": 180.0
     },
     {
       "waypointRelativePos": 0.5650319829424298,
@@ -43,9 +43,14 @@
   "eventMarkers": [
     {
       "name": "SpinIntake",
-      "waypointRelativePos": 0.2,
+      "waypointRelativePos": 0.45359801488832874,
       "endWaypointRelativePos": 1.0,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "SpinIntake"
+        }
+      }
     }
   ],
   "globalConstraints": {
@@ -61,7 +66,7 @@
     "rotation": -90.0
   },
   "reversed": false,
-  "folder": "Left Blue auto",
+  "folder": "Left Curve",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 179.0589852087806

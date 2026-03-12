@@ -46,28 +46,17 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.38672199170123694,
-      "rotationDegrees": -40.31573726513526
+      "waypointRelativePos": 0.592531120331952,
+      "rotationDegrees": 180.0
     },
     {
-      "waypointRelativePos": 0.7684647302904549,
-      "rotationDegrees": 0.0
-    },
-    {
-      "waypointRelativePos": 1.1402489626555794,
-      "rotationDegrees": 0.0
+      "waypointRelativePos": 1.0572614107883722,
+      "rotationDegrees": 180.0
     }
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "Shoot",
-      "waypointRelativePos": 2.0,
-      "endWaypointRelativePos": null,
-      "command": null
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 1.0,
     "maxAcceleration": 3.0,
@@ -81,7 +70,7 @@
     "rotation": -45.9391909457356
   },
   "reversed": false,
-  "folder": "Left Blue auto",
+  "folder": "Left Curve",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -90.0

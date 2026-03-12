@@ -7,25 +7,25 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Left out blue"
+            "pathName": "Right out Curve"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Left shoot Blue"
+            "pathName": "Right Shoot Curve"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Left 2nd back Blue"
+            "pathName": "Right 2nd back Curve"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Left 2nd shoot Blue"
+            "pathName": "Right 2nd shoot Curve"
           }
         }
       ]

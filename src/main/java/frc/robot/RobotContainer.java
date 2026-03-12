@@ -1,6 +1,10 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -15,6 +19,7 @@ import frc.robot.subsystems.*;
 import swervelib.SwerveInputStream;
 import frc.robot.commands.*;
 import frc.robot.commands.Intake.IntelligentIntake;
+import frc.robot.commands.Intake.OscillateIntakeRPM;
 import frc.robot.commands.Intake.SpinIntake;
 import frc.robot.commands.Intake.SpinIntakeRPM;
 import frc.robot.commands.Shooter.ShooterRPM;
@@ -40,6 +45,7 @@ public class RobotContainer {
     private final ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
 
     private final FeederSubsystem feederSubsystem = new FeederSubsystem();
+    private Command driveAim;
 
 
     // private final ElevatorSubsystem elevatorSubsystem = new ElevatorSubsystem();
@@ -105,6 +111,10 @@ public class RobotContainer {
     // Trigger buttonD9 = new JoystickButton(debug_secondary, 9);
 
     public RobotContainer() {
+
+        NamedCommands.registerCommand("SpinIntake", new SpinIntakeRPM(intakeSubsystem, 2000));
+        NamedCommands.registerCommand("Shoot", new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0));
+        NamedCommands.registerCommand("OscillateIntake", new OscillateIntakeRPM(intakeSubsystem, 2500));
         /**
          * Converts driver input into a field-relative ChassisSpeeds that is controlled by angular velocity.
          */
@@ -121,17 +131,28 @@ public class RobotContainer {
         SwerveInputStream driveDirectAngle = driveAngularVelocity.copy().withControllerHeadingAxis(driverJoystick::getX,
                                                                                                     driverJoystick::getY)
                                                                 .headingWhile(true);
+        Pose2d hubLocation;
+        if (DriverStation.getAlliance().orElse(Alliance.Blue)==Alliance.Blue){
+            hubLocation = new Pose2d(4.612,4.021,Rotation2d.kZero);
+        }
+        else {
+            hubLocation = new Pose2d(11.920,4.021,Rotation2d.kZero);
+        }
 
         /**
          * Clone's the angular velocity input stream and converts it to a robotRelative input stream.
          */
+        
         SwerveInputStream driveRobotOriented = driveAngularVelocity.copy().robotRelative(true)
                                                                     .allianceRelativeControl(false);
+        SwerveInputStream hubAim = driveAngularVelocity.copy().aim(hubLocation).aimWhile(true);
         Command driveFieldOrientedDirectAngle      = swerveSubsystem.driveFieldOriented(driveDirectAngle);
         Command driveFieldOrientedAngularVelocity = swerveSubsystem.driveFieldOriented(driveAngularVelocity);
         Command driveRobotOrientedAngularVelocity  = swerveSubsystem.driveFieldOriented(driveRobotOriented);
         Command driveSetpointGen = swerveSubsystem.driveWithSetpointGeneratorFieldRelative(
             driveDirectAngle);
+        driveAim = swerveSubsystem.driveFieldOriented(hubAim);
+    
         
         swerveSubsystem.setDefaultCommand(driveFieldOrientedAngularVelocity);
 
@@ -144,10 +165,14 @@ public class RobotContainer {
         // NamedCommands.registerCommand("ElevatorL2", new AutoElevatorAbsolutePosition(elevatorSubsystem,6));
         // NamedCommands.registerCommand("ElevatorL3", new AutoElevatorAbsolutePosition(elevatorSubsystem,13));
         // NamedCommands.registerCommand("ElevatorL4", new AutoElevatorAbsolutePosition(elevatorSubsystem,25));
+        // NamedCommands.registerCommand("L4 Shoot", new SpinIntake(intakeSubsystem,-.40));
+        // NamedCommands.registerCommand("Eject", new SpinIntake(intakeSubsystem,.50));
+        // NamedCommands.registerCommand("SpinIntake", new SpinIntakeRPM(intakeSubsystem, 2000));
+        // NamedCommands.registerCommand("Shoot", new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0));
+        // NamedCommands.registerCommand("OscillateIntake", new OscillateIntakeRPM(intakeSubsystem, 2500));
+
         //NamedCommands.registerCommand("Intake", new IntelligentIntake(intakeSubsystem,-.50));
         ///NamedCommands.registerCommand("Shoot", new SpinIntake(intakeSubsystem,-.50));
-    //NamedCommands.registerCommand("L4 Shoot", new SpinIntake(intakeSubsystem,-.40));
-        //NamedCommands.registerCommand("Eject", new SpinIntake(intakeSubsystem,.50));
         // NamedCommands.registerCommand("Auto Shoot", new AutoShoot(intakeSubsystem, ledSubsystem, -.50));
 
         // Build an auto chooser. This will use Commands.none() as the default option.
@@ -165,11 +190,11 @@ public class RobotContainer {
         */
 
         X1.onTrue(new ResetHeading(swerveSubsystem));
-        //  O2.onTrue(new ResyncEncoders(swerveSubsystem)); 
-        Square3.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0));
+        O2.whileTrue(driveAim); 
+        Square3.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2000)));
         Triangle4.whileTrue(new DistanceTest(swerveSubsystem, shooterSubsystem));
         leftShoulder5.whileTrue(new SpinIntakeRPM(intakeSubsystem, 2000));
-        rightShoulder6.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0));
+        rightShoulder6.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2500)));
         leftTrigger7.whileTrue(new SpinIntakeRPM(intakeSubsystem, -1000));
         rightTrigger8.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -1000, -2000));
         // leftStickPress9.onTrue(new);

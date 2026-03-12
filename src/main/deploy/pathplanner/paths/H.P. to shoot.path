@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.516674698795181,
-        "y": 1.1500843373493967
+        "x": 1.4729638554216864,
+        "y": 1.4014216867469884
       },
       "isLocked": false,
       "linkedName": "Out to H.P"
@@ -20,12 +20,12 @@
         "y": 2.756457831325301
       },
       "prevControl": {
-        "x": 1.685939759036144,
-        "y": 2.756457831325301
+        "x": 1.7898674698795183,
+        "y": 1.7511084337349392
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Shoot H.P and The Pit."
     }
   ],
   "rotationTargets": [],
@@ -42,10 +42,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 35.83765295427826
   },
   "reversed": false,
-  "folder": "Middle auto",
+  "folder": "H.P and The Pit",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 180.0
