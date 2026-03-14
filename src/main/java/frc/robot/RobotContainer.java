@@ -45,6 +45,7 @@ public class RobotContainer {
     private final ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
 
     private final FeederSubsystem feederSubsystem = new FeederSubsystem();
+    private final LEDSubsystem ledSubsystem = new LEDSubsystem();
     private Command driveAim;
 
 
@@ -112,7 +113,7 @@ public class RobotContainer {
 
     public RobotContainer() {
 
-        NamedCommands.registerCommand("SpinIntake", new SpinIntakeRPM(intakeSubsystem, 2000));
+        NamedCommands.registerCommand("SpinIntake", new SpinIntakeRPM(intakeSubsystem, 2500));
         NamedCommands.registerCommand("Shoot", new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0));
         NamedCommands.registerCommand("OscillateIntake", new OscillateIntakeRPM(intakeSubsystem, 2500));
         /**
@@ -193,10 +194,10 @@ public class RobotContainer {
         O2.whileTrue(driveAim); 
         Square3.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2000)));
         Triangle4.whileTrue(new DistanceTest(swerveSubsystem, shooterSubsystem));
-        leftShoulder5.whileTrue(new SpinIntakeRPM(intakeSubsystem, 2000));
+        leftShoulder5.toggleOnTrue(new SpinIntakeRPM(intakeSubsystem, 2500));
         rightShoulder6.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2500)));
         leftTrigger7.whileTrue(new SpinIntakeRPM(intakeSubsystem, -1000));
-        rightTrigger8.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -1000, -2000));
+        rightTrigger8.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, 2800, 2000));
         // leftStickPress9.onTrue(new);
         // rightStickPress10.onTrue(new);
         //dPadNorth.onTrue(new);

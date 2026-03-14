@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.0169044222539223,
-        "y": 5.749372325249644
+        "x": 2.7952168674698794,
+        "y": 6.450024096385542
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.7230385164051354,
-        "y": 7.819557774607704
+        "x": 2.2925421686746983,
+        "y": 7.466301204819277
       },
       "isLocked": false,
       "linkedName": "Left shoot blue"
@@ -52,8 +52,8 @@
         "y": 4.570457831325301
       },
       "prevControl": {
-        "x": 7.876602409638554,
-        "y": 4.592313253012049
+        "x": 7.078879518072289,
+        "y": 4.559530120481927
       },
       "nextControl": null,
       "isLocked": false,
@@ -66,19 +66,33 @@
       "rotationDegrees": 0.0
     },
     {
-      "waypointRelativePos": 1.341908713692935,
-      "rotationDegrees": -29.80689654384664
+      "waypointRelativePos": 1.2024896265560234,
+      "rotationDegrees": 0.6544589553966828
     },
     {
       "waypointRelativePos": 2.0688796680497896,
       "rotationDegrees": -96.4587208553825
     }
   ],
-  "constraintZones": [],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 1.6228287841191034,
+      "maxWaypointRelativePos": 2.5875930521091592,
+      "constraints": {
+        "maxVelocity": 1.0,
+        "maxAcceleration": 3.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 1.0,
+    "maxVelocity": 2.0,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
@@ -90,10 +104,10 @@
     "rotation": 134.29268063145577
   },
   "reversed": false,
-  "folder": "Left Curve",
+  "folder": "Left Curve....",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -45.9391909457356
+    "rotation": -60.068488159492254
   },
   "useDefaultConstraints": false
 }

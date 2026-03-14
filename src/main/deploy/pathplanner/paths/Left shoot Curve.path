@@ -16,28 +16,28 @@
     },
     {
       "anchor": {
-        "x": 3.560156626506024,
-        "y": 7.51001204819277
+        "x": 3.6038674698795177,
+        "y": 7.4553734939759035
       },
       "prevControl": {
-        "x": 8.532265060240963,
-        "y": 7.553722891566265
+        "x": 8.576168035477554,
+        "y": 7.4553734939759035
       },
       "nextControl": {
-        "x": 1.7613336986816945,
-        "y": 7.494198220255853
+        "x": 3.2323253012048188,
+        "y": 7.4553734939759035
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.0169044222539223,
-        "y": 5.749372325249644
+        "x": 2.7952168674698794,
+        "y": 6.450024096385542
       },
       "prevControl": {
-        "x": 3.107475035663337,
-        "y": 6.590385164051355
+        "x": 2.8857874808792943,
+        "y": 7.291036935187253
       },
       "nextControl": null,
       "isLocked": false,
@@ -58,7 +58,7 @@
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 1.0,
+    "maxVelocity": 2.0,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
@@ -67,10 +67,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -45.9391909457356
+    "rotation": -60.068488159492254
   },
   "reversed": false,
-  "folder": "Left Curve",
+  "folder": "Left Curve....",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -90.0

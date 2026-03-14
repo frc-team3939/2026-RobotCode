@@ -9,12 +9,6 @@
           "data": {
             "pathName": "Out to H.P."
           }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": null
-          }
         }
       ]
     }

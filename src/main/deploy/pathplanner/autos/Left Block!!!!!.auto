@@ -7,13 +7,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Right out Curve"
+            "pathName": "Out to intake Block"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Right Shoot Curve"
+            "pathName": "To shoot Block"
           }
         },
         {
@@ -51,13 +51,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Right 2nd back Curve"
+            "pathName": "2nd Intake Block"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Right 2nd shoot Curve"
+            "pathName": "2nd Scoop block"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "2nd Shoot Block"
           }
         },
         {

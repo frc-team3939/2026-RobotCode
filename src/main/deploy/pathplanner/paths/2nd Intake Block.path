@@ -3,55 +3,55 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 6.554349397590361,
-        "y": 4.570457831325301
+        "x": 2.7952168674698794,
+        "y": 7.00733734939759
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.52156626506024,
-        "y": 6.952698795180723
+        "x": 2.9482048192771084,
+        "y": 7.520939759036144
       },
       "isLocked": false,
-      "linkedName": "Left 2nd back blue"
+      "linkedName": "To shoot Block"
     },
     {
       "anchor": {
-        "x": 4.587361445783132,
-        "y": 7.4553734939759035
+        "x": 4.620144578313253,
+        "y": 7.422590361445783
       },
       "prevControl": {
-        "x": 6.52151650754509,
-        "y": 7.490971439897903
+        "x": 3.3962409638554214,
+        "y": 7.400734939759036
       },
       "nextControl": {
-        "x": 2.806144578313253,
-        "y": 7.422590361445783
+        "x": 5.9750087848533315,
+        "y": 7.446784365133999
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.685939759036144,
-        "y": 6.242397590361446
+        "x": 6.794759036144578,
+        "y": 4.789012048192771
       },
       "prevControl": {
-        "x": 2.8389277108433726,
-        "y": 6.985481927710844
+        "x": 7.8219638554216875,
+        "y": 7.378879518072289
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "Block Scoop"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.7651452282157627,
-      "rotationDegrees": 178.83588009548745
+      "waypointRelativePos": 0.5,
+      "rotationDegrees": 0.0
     },
     {
-      "waypointRelativePos": 1.15,
-      "rotationDegrees": -179.85885890383074
+      "waypointRelativePos": 1.452282157676313,
+      "rotationDegrees": 0.0
     }
   ],
   "constraintZones": [],
@@ -66,14 +66,14 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 0,
-    "rotation": -51.3401917459099
+    "velocity": 2.0,
+    "rotation": -143.4269690214806
   },
   "reversed": false,
-  "folder": "Left Curve....",
+  "folder": "Left Block!!!!!",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 134.29268063145577
+    "rotation": -60.94539590092277
   },
   "useDefaultConstraints": false
 }

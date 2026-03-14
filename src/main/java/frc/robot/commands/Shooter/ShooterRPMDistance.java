@@ -76,7 +76,7 @@ public class ShooterRPMDistance extends Command{
             case ROTATE:
             // if (this.driveToPose.isFinished()){
             //     this.state = State.SPIN_SHOOTER;
-            //     counter = 0;
+                 counter = 0;
             // }
             this.state = State.SPIN_SHOOTER;
             break;

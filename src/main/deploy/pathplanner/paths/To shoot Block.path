@@ -3,66 +3,60 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 6.073530120481928,
-        "y": 3.2919156626506028
+        "x": 7.778253012048193,
+        "y": 4.9638554216867465
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.499710843373493,
-        "y": 0.7239036144578312
+        "x": 6.106313253012047,
+        "y": 7.663
       },
       "isLocked": false,
-      "linkedName": "2nd intake right blue"
+      "linkedName": "Out to Intake Block"
     },
     {
       "anchor": {
-        "x": 4.674783132530121,
-        "y": 0.6364819277108438
+        "x": 4.631072289156626,
+        "y": 7.411662650602409
       },
       "prevControl": {
-        "x": 6.062516749713337,
-        "y": 0.6210626652976977
+        "x": 6.018688462024982,
+        "y": 7.3793925070473305
       },
       "nextControl": {
-        "x": 3.6912891566265067,
-        "y": 0.6474096385542166
+        "x": 3.2213975903614456,
+        "y": 7.44444578313253
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.959132530120482,
-        "y": 0.9970963855421688
+        "x": 2.7952168674698794,
+        "y": 7.00733734939759
       },
       "prevControl": {
-        "x": 2.9685975372699174,
-        "y": 0.7472756225146311
+        "x": 3.29789156626506,
+        "y": 7.4553734939759035
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "2nd shoot right blue"
+      "linkedName": "To shoot Block"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.5427385892116094,
-      "rotationDegrees": -153.11032814035045
+      "waypointRelativePos": 1.0373443983402435,
+      "rotationDegrees": 0.0
     },
     {
-      "waypointRelativePos": 1.2232365145228226,
-      "rotationDegrees": 179.32442503032954
+      "waypointRelativePos": 1.631535269709526,
+      "rotationDegrees": 0.0
     }
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
-    {
-      "name": "SpinIntake",
-      "waypointRelativePos": 0.0,
-      "endWaypointRelativePos": 0.3950372208436543,
-      "command": null
-    },
     {
       "name": "Shoot",
       "waypointRelativePos": 2.0,
@@ -80,13 +74,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 49.84400037508076
+    "rotation": -60.94539590092277
   },
   "reversed": false,
-  "folder": "Right Curve",
+  "folder": "Left Block!!!!!",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -134.20201130985464
+    "rotation": -90.86805144974552
   },
   "useDefaultConstraints": false
 }

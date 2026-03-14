@@ -3,42 +3,37 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.9522111269614832,
-        "y": 2.644094151212554
+        "x": 0.7408072289156629,
+        "y": 0.6474096385542167
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.4901426533523534,
-        "y": 2.6182168330955777
+        "x": 1.114921540656205,
+        "y": 2.048915834522112
       },
       "isLocked": false,
-      "linkedName": "2nd shoot right blue"
+      "linkedName": "Intake H.P."
     },
     {
       "anchor": {
-        "x": 1.0904939759036145,
-        "y": 2.6253253012048186
+        "x": 2.5511126961483592,
+        "y": 2.6182168330955777
       },
       "prevControl": {
-        "x": 2.3581084337349387,
-        "y": 2.669036144578314
+        "x": 2.0982596291012836,
+        "y": 2.152425106990014
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.6652452025586351,
-      "rotationDegrees": -90.45058527877846
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "Climb!!",
+      "name": "Shoot",
       "waypointRelativePos": 0,
       "endWaypointRelativePos": null,
       "command": null
@@ -54,13 +49,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 179.30436747632663
+    "rotation": 32.380677706569266
   },
   "reversed": false,
-  "folder": "Right Curve",
+  "folder": "H.P",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 35.36246188706907
+    "rotation": -179.30304656818188
   },
   "useDefaultConstraints": true
 }
