@@ -1,0 +1,95 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 3.3853132530120478,
+        "y": 2.647180722891566
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 3.0465542168674697,
+        "y": 1.4014216867469886
+      },
+      "isLocked": false,
+      "linkedName": "2nd out S"
+    },
+    {
+      "anchor": {
+        "x": 4.554578313253012,
+        "y": 0.6583373493975899
+      },
+      "prevControl": {
+        "x": 2.54387951807229,
+        "y": 0.6474096385542163
+      },
+      "nextControl": {
+        "x": 7.374415460232818,
+        "y": 0.6736625512833493
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 7.647120481927709,
+        "y": 2.887590361445783
+      },
+      "prevControl": {
+        "x": 7.647120481927709,
+        "y": 2.3193493975903605
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "2nd Intake S"
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.4265560165975148,
+      "rotationDegrees": -64.28640056171288
+    },
+    {
+      "waypointRelativePos": 0.9344398340249044,
+      "rotationDegrees": -0.29643105368274836
+    },
+    {
+      "waypointRelativePos": 1.4,
+      "rotationDegrees": 38.8758953041234
+    }
+  ],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [
+    {
+      "name": "SpinIntake",
+      "waypointRelativePos": 1.25,
+      "endWaypointRelativePos": 3.0,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "SpinIntake"
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 2.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 2.0,
+    "rotation": 104.62087398863163
+  },
+  "reversed": false,
+  "folder": "Right S Shoot....",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -134.02897806892076
+  },
+  "useDefaultConstraints": false
+}

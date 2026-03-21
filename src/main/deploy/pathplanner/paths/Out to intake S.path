@@ -16,42 +16,42 @@
     },
     {
       "anchor": {
-        "x": 6.67455421686747,
-        "y": 7.22589156626506
+        "x": 6.7510481927710835,
+        "y": 7.214963855421687
       },
       "prevControl": {
-        "x": 6.571044944399567,
-        "y": 7.510542065551792
+        "x": 6.550652100790989,
+        "y": 7.44207942633246
       },
       "nextControl": {
-        "x": 6.759989982639147,
-        "y": 6.990943210392951
+        "x": 6.916453602042795,
+        "y": 7.027504391580415
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 7.1335180722891565,
-        "y": 5.12777108433735
+        "x": 7.428566265060241,
+        "y": 5.7943614457831325
       },
       "prevControl": {
-        "x": 7.100734939759036,
-        "y": 7.4772289156626535
+        "x": 7.199084337349399,
+        "y": 6.876204819277108
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Out to Intake Block"
+      "linkedName": "Out to Intake S"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.39668049792531085,
+      "waypointRelativePos": 0.5460580912863,
       "rotationDegrees": -179.91469143213465
     },
     {
       "waypointRelativePos": 1.5883817427385902,
-      "rotationDegrees": -52.43
+      "rotationDegrees": -69.57790744982515
     }
   ],
   "constraintZones": [
@@ -106,10 +106,10 @@
   },
   "goalEndState": {
     "velocity": 0.0,
-    "rotation": -52.43140797117251
+    "rotation": -72.03086025984312
   },
   "reversed": false,
-  "folder": "Left Block!!!!!",
+  "folder": "Left S Shoot...",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 180.0

@@ -3,41 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 6.554349397590361,
-        "y": 4.570457831325301
+        "x": 3.2213975903614456,
+        "y": 5.400963855421687
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.52156626506024,
-        "y": 6.952698795180723
+        "x": 2.9700602409638552,
+        "y": 7.2368192771084345
       },
       "isLocked": false,
-      "linkedName": "Left 2nd back blue"
+      "linkedName": "Scoop end S"
     },
     {
       "anchor": {
-        "x": 4.587361445783132,
-        "y": 7.4553734939759035
+        "x": 4.237674698795181,
+        "y": 7.411662650602409
       },
       "prevControl": {
-        "x": 6.52151650754509,
-        "y": 7.490971439897903
+        "x": 2.871710843373494,
+        "y": 7.389807228915663
       },
       "nextControl": {
-        "x": 2.806144578313253,
-        "y": 7.422590361445783
+        "x": 4.851863821681993,
+        "y": 7.421489676568598
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.685939759036144,
-        "y": 6.242397590361446
+        "x": 6.3795060240963855,
+        "y": 7.22589156626506
       },
       "prevControl": {
-        "x": 2.8389277108433726,
-        "y": 6.985481927710844
+        "x": 6.14909718031187,
+        "y": 7.322905816279593
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,17 +46,20 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.7651452282157627,
-      "rotationDegrees": 178.83588009548745
-    },
-    {
-      "waypointRelativePos": 1.15,
-      "rotationDegrees": -179.85885890383074
+      "waypointRelativePos": 0.7850622406638897,
+      "rotationDegrees": 0.0
     }
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "Shoot",
+      "waypointRelativePos": 2.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 2.0,
     "maxAcceleration": 3.0,
@@ -66,14 +69,14 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 0,
-    "rotation": -51.3401917459099
+    "velocity": 0.0,
+    "rotation": -11.07020257793927
   },
   "reversed": false,
-  "folder": "Left Curve",
+  "folder": "Left S Shoot...",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 134.29268063145577
+    "rotation": 135.00000000000006
   },
   "useDefaultConstraints": false
 }

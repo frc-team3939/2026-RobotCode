@@ -69,11 +69,13 @@ public class ShooterSubsystem extends SubsystemBase {
     // RelativeEncoder is an object created with each CANSparkMax controller.
 
     leftFlywheelCoder = leftFlywheelMotor.getEncoder();
-
+    Preferences.initDouble("ShooterP", 0.0004);
+    Preferences.initDouble("ShooterI", 0.000001);
+    Preferences.initDouble("ShooterD", 0);
     leftFlywheelConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder)
-        .p(SmartDashboard.getNumber("ShooterP", 0.0004))
-        .i(SmartDashboard.getNumber("ShooterI", 0))
-        .d(SmartDashboard.getNumber("ShooterD", 0))
+        .p(Preferences.getDouble("ShooterP", 0.0004))
+        .i(Preferences.getDouble("ShooterI", 0))
+        .d(Preferences.getDouble("ShooterD", 0))
         .feedForward.kV(0.00018);
 
     flywheelController = leftFlywheelMotor.getClosedLoopController();
@@ -87,10 +89,10 @@ public class ShooterSubsystem extends SubsystemBase {
     // in limit switches into here normally. Essentially, this declaration points to
     // the number 9 slot on the DIO.
 
-    RPMmap.put(1.4002, 3083.0);
-    RPMmap.put(2.3654, 3477.0);
-    RPMmap.put(3.6099, 4477.0);
-    RPMmap.put(3.78, 4700.00);
+    RPMmap.put(1.4002, -3083.0);
+    RPMmap.put(2.3654, -3477.0);
+    RPMmap.put(3.6099, -4477.0);
+    RPMmap.put(3.78, -4700.00);
     Preferences.initDouble("Shooter RPM", 0.000);
     //Preferences.getDouble("Shooter RPM", 0.0);
   }

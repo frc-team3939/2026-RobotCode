@@ -7,13 +7,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Out to intake Block"
+            "pathName": "Out to intake S"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "To shoot Block"
+            "pathName": "To shoot S"
           }
         },
         {
@@ -51,19 +51,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "2nd Intake Block"
+            "pathName": " 2nd Intake S"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "2nd Scoop block"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "2nd Shoot Block"
+            "pathName": " 2nd Shoot S"
           }
         },
         {

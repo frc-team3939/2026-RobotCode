@@ -86,7 +86,10 @@ public class FeederSubsystem extends SubsystemBase {
     .d(Preferences.getDouble("FeederD", 0))
     .feedForward.kV(0.00018);
 
-    
+    feederConfig.encoder.uvwAverageDepth(16);
+    feederConfig.encoder.uvwMeasurementPeriod(20);
+    beltConfig.encoder.uvwAverageDepth(16);
+    beltConfig.encoder.uvwMeasurementPeriod(20);
 
 
     beltMotor.configure(beltConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);

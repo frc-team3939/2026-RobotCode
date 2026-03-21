@@ -3,77 +3,64 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.5732667617689007,
-        "y": 7.444336661911555
+        "x": 3.26510843373494,
+        "y": 5.564879518072289
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.6113992918893825,
-        "y": 7.422481240224809
+        "x": 3.175348435109913,
+        "y": 7.306469793582319
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "To shoot S"
     },
     {
       "anchor": {
-        "x": 6.67455421686747,
-        "y": 7.22589156626506
+        "x": 4.620144578313253,
+        "y": 7.422590361445783
       },
       "prevControl": {
-        "x": 6.571044944399567,
-        "y": 7.510542065551792
+        "x": 3.101192771084338,
+        "y": 7.433518072289157
       },
       "nextControl": {
-        "x": 6.759989982639147,
-        "y": 6.990943210392951
+        "x": 5.975189719338072,
+        "y": 7.412841835251359
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 7.1335180722891565,
-        "y": 5.12777108433735
+        "x": 7.756397590361445,
+        "y": 4.952927710843373
       },
       "prevControl": {
-        "x": 7.100734939759036,
-        "y": 7.4772289156626535
+        "x": 6.980530120481928,
+        "y": 6.908987951807229
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Out to Intake Block"
+      "linkedName": "S Scoop"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.39668049792531085,
-      "rotationDegrees": -179.91469143213465
+      "waypointRelativePos": 0.5626556016597485,
+      "rotationDegrees": 20.639754241256107
     },
     {
-      "waypointRelativePos": 1.5883817427385902,
-      "rotationDegrees": -52.43
+      "waypointRelativePos": 1.3095435684647359,
+      "rotationDegrees": -17.56503924961454
     }
   ],
   "constraintZones": [
     {
       "name": "Constraints Zone",
-      "minWaypointRelativePos": 1.3280397022332513,
+      "minWaypointRelativePos": 1.3558312655086735,
       "maxWaypointRelativePos": 2.0,
       "constraints": {
-        "maxVelocity": 1.5,
-        "maxAcceleration": 3.0,
-        "maxAngularVelocity": 540.0,
-        "maxAngularAcceleration": 720.0,
-        "nominalVoltage": 12.0,
-        "unlimited": false
-      }
-    },
-    {
-      "name": "Constraints Zone",
-      "minWaypointRelativePos": 0,
-      "maxWaypointRelativePos": 0,
-      "constraints": {
-        "maxVelocity": 4.0,
+        "maxVelocity": 2.5,
         "maxAcceleration": 3.0,
         "maxAngularVelocity": 540.0,
         "maxAngularAcceleration": 720.0,
@@ -86,7 +73,7 @@
   "eventMarkers": [
     {
       "name": "SpinIntake",
-      "waypointRelativePos": 0.6689826302729588,
+      "waypointRelativePos": 1.2478055367994632,
       "endWaypointRelativePos": 2.0,
       "command": {
         "type": "named",
@@ -97,7 +84,7 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 4.0,
+    "maxVelocity": 2.0,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
@@ -106,13 +93,13 @@
   },
   "goalEndState": {
     "velocity": 0.0,
-    "rotation": -52.43140797117251
+    "rotation": -88.4518423010217
   },
   "reversed": false,
-  "folder": "Left Block!!!!!",
+  "folder": "Left S Shoot...",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 133.09084756700364
   },
   "useDefaultConstraints": false
 }

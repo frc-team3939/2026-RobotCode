@@ -1,0 +1,72 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 7.647120481927709,
+        "y": 2.887590361445783
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 6.3795060240963855,
+        "y": 2.4832650602409636
+      },
+      "isLocked": false,
+      "linkedName": "2nd Intake S"
+    },
+    {
+      "anchor": {
+        "x": 3.3525301204819278,
+        "y": 2.690891566265061
+      },
+      "prevControl": {
+        "x": 4.172108433734943,
+        "y": 2.614397590361447
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.43568464730290135,
+      "rotationDegrees": -146.54243889585038
+    }
+  ],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [
+    {
+      "name": "SpinIntake",
+      "waypointRelativePos": 0.0,
+      "endWaypointRelativePos": 0.3950372208436543,
+      "command": null
+    },
+    {
+      "name": "Shoot",
+      "waypointRelativePos": 1.0,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 2.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -137.29061004263846
+  },
+  "reversed": false,
+  "folder": "Right S Shoot....",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 104.62087398863163
+  },
+  "useDefaultConstraints": false
+}

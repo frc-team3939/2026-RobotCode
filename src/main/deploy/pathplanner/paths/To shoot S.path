@@ -3,37 +3,42 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.5820120481927713,
-        "y": 0.5381325301204822
+        "x": 7.428566265060241,
+        "y": 5.7943614457831325
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.8760756403727772,
-        "y": 0.6277843329377505
+        "x": 6.608987951807228,
+        "y": 5.532096385542169
       },
       "isLocked": false,
-      "linkedName": "Start Right"
+      "linkedName": "Out to Intake S"
     },
     {
       "anchor": {
-        "x": 0.7408072289156629,
-        "y": 0.6474096385542167
+        "x": 3.26510843373494,
+        "y": 5.564879518072289
       },
       "prevControl": {
-        "x": 1.6280631521639495,
-        "y": 0.5956995535256504
+        "x": 3.6585060240963854,
+        "y": 5.510240963855422
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Intake H.P."
+      "linkedName": "To shoot S"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.49211618257261264,
+      "rotationDegrees": 132.6816638421276
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
+    "maxVelocity": 2.0,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
@@ -42,13 +47,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -179.30304656818188
+    "rotation": 133.09084756700364
   },
   "reversed": false,
-  "folder": "H.P",
+  "folder": "Left S Shoot...",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -72.03086025984312
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }
