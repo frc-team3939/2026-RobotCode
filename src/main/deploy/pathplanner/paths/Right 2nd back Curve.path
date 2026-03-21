@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.79,
-        "y": 1.117
+        "x": 2.4892409638554214,
+        "y": 2.330277108433736
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.1449036144578315,
-        "y": 0.41792771084337454
+        "x": 1.9974939759036145,
+        "y": 0.38514457831325233
       },
       "isLocked": false,
       "linkedName": "2nd cycle left blue"
     },
     {
       "anchor": {
-        "x": 4.696638554216866,
+        "x": 4.598289156626506,
         "y": 0.6364819277108438
       },
       "prevControl": {
-        "x": 4.106542168674698,
-        "y": 0.6474096385542168
+        "x": 2.631051209761241,
+        "y": 0.6269322289396533
       },
       "nextControl": {
-        "x": 6.160863852391783,
-        "y": 0.6093666444113096
+        "x": 6.849397590361446,
+        "y": 0.6474096385542167
       },
       "isLocked": false,
       "linkedName": null
@@ -48,12 +48,12 @@
     },
     {
       "anchor": {
-        "x": 6.073530120481928,
-        "y": 3.2919156626506028
+        "x": 6.204662650602408,
+        "y": 3.2809879518072296
       },
       "prevControl": {
-        "x": 7.160377481394909,
-        "y": 3.3307316398260673
+        "x": 7.291510011515389,
+        "y": 3.319803928982694
       },
       "nextControl": null,
       "isLocked": false,
@@ -67,7 +67,7 @@
     },
     {
       "waypointRelativePos": 1.0879668049792595,
-      "rotationDegrees": -0.24287667574194088
+      "rotationDegrees": -0.29643105368274836
     },
     {
       "waypointRelativePos": 1.7950207468879693,
@@ -81,7 +81,12 @@
       "name": "SpinIntake",
       "waypointRelativePos": 1.5,
       "endWaypointRelativePos": 3.0,
-      "command": null
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "SpinIntake"
+        }
+      }
     }
   ],
   "globalConstraints": {
@@ -97,10 +102,10 @@
     "rotation": -134.20201130985464
   },
   "reversed": false,
-  "folder": "Right Curve",
+  "folder": "Right Curve!!!!!!",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 55.56101069119628
+    "rotation": 42.76882539196856
   },
   "useDefaultConstraints": false
 }

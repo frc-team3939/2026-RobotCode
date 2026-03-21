@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.7952168674698794,
-        "y": 7.00733734939759
+        "x": 2.589928673323822,
+        "y": 5.309457917261056
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.9482048192771084,
-        "y": 7.520939759036144
+        "x": 2.500168674698795,
+        "y": 7.051048192771084
       },
       "isLocked": false,
       "linkedName": "To shoot Block"
@@ -20,24 +20,24 @@
         "y": 7.422590361445783
       },
       "prevControl": {
-        "x": 3.3962409638554214,
-        "y": 7.400734939759036
+        "x": 2.6028673323823104,
+        "y": 7.4572753209700435
       },
       "nextControl": {
-        "x": 5.9750087848533315,
-        "y": 7.446784365133999
+        "x": 5.9750245274997,
+        "y": 7.399294626418505
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 6.794759036144578,
-        "y": 4.789012048192771
+        "x": 7.28666191155492,
+        "y": 4.766034236804566
       },
       "prevControl": {
-        "x": 7.8219638554216875,
-        "y": 7.378879518072289
+        "x": 8.280927710843374,
+        "y": 7.1493975903614455
       },
       "nextControl": null,
       "isLocked": false,
@@ -50,13 +50,25 @@
       "rotationDegrees": 0.0
     },
     {
-      "waypointRelativePos": 1.452282157676313,
-      "rotationDegrees": 0.0
+      "waypointRelativePos": 1.296265560165986,
+      "rotationDegrees": -0.321566105059727
     }
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "SpinIntake",
+      "waypointRelativePos": 1.2478055367994632,
+      "endWaypointRelativePos": 2.0,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "SpinIntake"
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 2.0,
     "maxAcceleration": 3.0,
@@ -73,7 +85,7 @@
   "folder": "Left Block!!!!!",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -60.94539590092277
+    "rotation": -29.693
   },
   "useDefaultConstraints": false
 }

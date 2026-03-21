@@ -26,6 +26,7 @@ import frc.robot.commands.Shooter.ShooterRPM;
 import frc.robot.commands.Shooter.ShooterRPMDistance;
 
 import java.io.File;
+import java.util.function.Supplier;
 
 import org.photonvision.PhotonCamera;
 
@@ -113,7 +114,7 @@ public class RobotContainer {
 
     public RobotContainer() {
 
-        NamedCommands.registerCommand("SpinIntake", new SpinIntakeRPM(intakeSubsystem, 2500));
+        NamedCommands.registerCommand("SpinIntake", new SpinIntakeRPM(intakeSubsystem, 4000));
         NamedCommands.registerCommand("Shoot", new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0));
         NamedCommands.registerCommand("OscillateIntake", new OscillateIntakeRPM(intakeSubsystem, 2500));
         /**
@@ -133,12 +134,18 @@ public class RobotContainer {
                                                                                                     driverJoystick::getY)
                                                                 .headingWhile(true);
         Pose2d hubLocation;
-        if (DriverStation.getAlliance().orElse(Alliance.Blue)==Alliance.Blue){
-            hubLocation = new Pose2d(4.612,4.021,Rotation2d.kZero);
-        }
-        else {
-            hubLocation = new Pose2d(11.920,4.021,Rotation2d.kZero);
-        }
+
+        Pose2d redHubLocation = new Pose2d(11.920,4.021,Rotation2d.kZero);
+        Pose2d blueHubLocation = new Pose2d(4.612,4.021,Rotation2d.kZero);
+    
+
+    //     if (DriverStation.getAlliance().orElse(Alliance.Red)==Alliance.Blue){
+    //         hubLocation = new Pose2d(4.612,4.021,Rotation2d.kZero);
+            
+    //     }
+    //     else {
+    //       hubLocation = new Pose2d(11.920,4.021,Rotation2d.kZero);
+    //     }
 
         /**
          * Clone's the angular velocity input stream and converts it to a robotRelative input stream.
@@ -146,7 +153,8 @@ public class RobotContainer {
         
         SwerveInputStream driveRobotOriented = driveAngularVelocity.copy().robotRelative(true)
                                                                     .allianceRelativeControl(false);
-        SwerveInputStream hubAim = driveAngularVelocity.copy().aim(hubLocation).aimWhile(true);
+        Supplier<Pose2d> hubSupplier = () -> { return (DriverStation.getAlliance().orElse(Alliance.Red)==Alliance.Blue)?blueHubLocation:redHubLocation;};
+        SwerveInputStream hubAim = driveAngularVelocity.copy().aim(hubSupplier).aimWhile(true);
         Command driveFieldOrientedDirectAngle      = swerveSubsystem.driveFieldOriented(driveDirectAngle);
         Command driveFieldOrientedAngularVelocity = swerveSubsystem.driveFieldOriented(driveAngularVelocity);
         Command driveRobotOrientedAngularVelocity  = swerveSubsystem.driveFieldOriented(driveRobotOriented);
@@ -191,10 +199,10 @@ public class RobotContainer {
         */
 
         X1.onTrue(new ResetHeading(swerveSubsystem));
-        O2.whileTrue(driveAim); 
+        O2.toggleOnTrue(new SpinIntakeRPM(intakeSubsystem, 3000));
         Square3.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2000)));
         Triangle4.whileTrue(new DistanceTest(swerveSubsystem, shooterSubsystem));
-        leftShoulder5.toggleOnTrue(new SpinIntakeRPM(intakeSubsystem, 2500));
+        leftShoulder5.whileTrue(driveAim);
         rightShoulder6.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2500)));
         leftTrigger7.whileTrue(new SpinIntakeRPM(intakeSubsystem, -1000));
         rightTrigger8.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, 2800, 2000));
@@ -212,7 +220,7 @@ public class RobotContainer {
         //  buttonT5.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 25)); // L4
         //  buttonT6.whileTrue(new IntelligentIntake(intakeSubsystem, -.50)); // Smart Intake
          //buttonT7.whileTrue(new SpinIntake(intakeSubsystem, -.50));
-        //  buttonT8.whileTrue(new SpinIntake(intakeSubsystem, -.50));
+          buttonT8.whileTrue(new SpinIntakeRPM(intakeSubsystem, 3000));
         //  buttonT9.whileTrue(new SpinIntake(intakeSubsystem, -.40));
         //  buttonT10.whileTrue(new SpinIntake(intakeSubsystem, .50));
 

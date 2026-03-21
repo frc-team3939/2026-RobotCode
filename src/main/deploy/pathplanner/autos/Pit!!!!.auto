@@ -7,13 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Out to intake Block"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "To shoot Block"
+            "pathName": "Out to The Pit"
           }
         },
         {
@@ -23,7 +17,7 @@
               {
                 "type": "wait",
                 "data": {
-                  "waitTime": 7.0
+                  "waitTime": 4.0
                 }
               },
               {
@@ -51,19 +45,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "2nd Intake Block"
+            "pathName": "Shoot to Pit"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "2nd Scoop block"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "2nd Shoot Block"
+            "pathName": "Pit to Shooty Shoot"
           }
         },
         {

@@ -3,48 +3,39 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.319746987951808,
+        "x": 2.434602409638554,
         "y": 4.035
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.117240963855423,
-        "y": 3.7727349397590366
+        "x": 1.8007951807228917,
+        "y": 5.400963855421687
       },
       "isLocked": false,
-      "linkedName": "Start Left"
+      "linkedName": "shOOT FOR PIT"
     },
     {
       "anchor": {
-        "x": 7.7345421686746985,
-        "y": 5.018493975903613
+        "x": 0.8282289156626503,
+        "y": 5.914566265060241
       },
       "prevControl": {
-        "x": 7.625265060240963,
-        "y": 7.247746987951807
+        "x": 1.6040963855421686,
+        "y": 5.958277108433736
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "Left out bLUE"
+      "linkedName": "pIT TO sHOOT"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.3726141078838194,
-      "rotationDegrees": 180.0
-    },
-    {
-      "waypointRelativePos": 0.5650319829424298,
-      "rotationDegrees": -71.75324527677965
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [
     {
       "name": "Constraints Zone",
-      "minWaypointRelativePos": 0.37816377171215904,
+      "minWaypointRelativePos": 0.6163771712158811,
       "maxWaypointRelativePos": 1.0,
       "constraints": {
-        "maxVelocity": 1.0,
+        "maxVelocity": 0.5,
         "maxAcceleration": 3.0,
         "maxAngularVelocity": 540.0,
         "maxAngularAcceleration": 720.0,
@@ -57,7 +48,7 @@
   "eventMarkers": [
     {
       "name": "SpinIntake",
-      "waypointRelativePos": 0.45359801488832874,
+      "waypointRelativePos": 0.6501240694789047,
       "endWaypointRelativePos": 1.0,
       "command": {
         "type": "named",
@@ -68,7 +59,7 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 2.0,
+    "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
@@ -76,14 +67,14 @@
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 0.0,
-    "rotation": -90.0
+    "velocity": 0,
+    "rotation": 179.18661665695745
   },
   "reversed": false,
-  "folder": "Left Curve....",
+  "folder": "The Pit",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 180.0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

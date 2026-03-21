@@ -3,42 +3,40 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 4.106542168674698,
-        "y": 7.597433734939759
+        "x": 3.319746987951808,
+        "y": 4.035
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.0302771084337357,
-        "y": 6.876204819277109
+        "x": 3.069746987951808,
+        "y": 4.035
       },
       "isLocked": false,
       "linkedName": "Start Left"
     },
     {
       "anchor": {
-        "x": 0.7845180722891567,
-        "y": 5.980132530120482
+        "x": 2.434602409638554,
+        "y": 4.035
       },
       "prevControl": {
-        "x": 2.2864547785421423,
-        "y": 6.751449500126689
+        "x": 2.684115554259276,
+        "y": 4.050594571538795
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "The Pit Intake"
+      "linkedName": "shOOT FOR PIT"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.3925311203319567,
+      "rotationDegrees": 0.0
+    }
+  ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "SpinIntake",
-      "waypointRelativePos": 0.8406947890818717,
-      "endWaypointRelativePos": 1.0,
-      "command": null
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -55,7 +53,7 @@
   "folder": "The Pit",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 179.0589852087806
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }
