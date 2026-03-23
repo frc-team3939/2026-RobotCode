@@ -88,11 +88,13 @@ public class ShooterSubsystem extends SubsystemBase {
     // A digital input is the slots 0-9 on the RoboRIO in the "DIO" area. You plug
     // in limit switches into here normally. Essentially, this declaration points to
     // the number 9 slot on the DIO.
-
-    RPMmap.put(1.4002, -3083.0);
-    RPMmap.put(2.3654, -3477.0);
-    RPMmap.put(3.6099, -4477.0);
-    RPMmap.put(3.78, -4700.00);
+    RPMmap.put(2.071, -2800.0);
+    RPMmap.put(2.081, -2900.0);
+    RPMmap.put(2.790, -2950.0);
+    RPMmap.put(3.299, -3300.0);
+    RPMmap.put(3.830, -3550.0);
+    RPMmap.put(5.122, -5250.0);
+   
     Preferences.initDouble("Shooter RPM", 0.000);
     //Preferences.getDouble("Shooter RPM", 0.0);
   }

@@ -25,6 +25,8 @@ import frc.robot.commands.Intake.SpinIntakeRPM;
 import frc.robot.commands.Shooter.ShooterRPM;
 import frc.robot.commands.Shooter.ShooterRPMDistance;
 
+import static edu.wpi.first.units.Units.Radian;
+
 import java.io.File;
 import java.util.function.Supplier;
 
@@ -155,6 +157,7 @@ public class RobotContainer {
                                                                     .allianceRelativeControl(false);
         Supplier<Pose2d> hubSupplier = () -> { return (DriverStation.getAlliance().orElse(Alliance.Red)==Alliance.Blue)?blueHubLocation:redHubLocation;};
         SwerveInputStream hubAim = driveAngularVelocity.copy().aim(hubSupplier).aimWhile(true);
+        hubAim = hubAim.copy().translationHeadingOffset(true).translationHeadingOffset(new Rotation2d(Math.toRadians(180)));
         Command driveFieldOrientedDirectAngle      = swerveSubsystem.driveFieldOriented(driveDirectAngle);
         Command driveFieldOrientedAngularVelocity = swerveSubsystem.driveFieldOriented(driveAngularVelocity);
         Command driveRobotOrientedAngularVelocity  = swerveSubsystem.driveFieldOriented(driveRobotOriented);
@@ -203,9 +206,9 @@ public class RobotContainer {
         Square3.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2000)));
         Triangle4.whileTrue(new DistanceTest(swerveSubsystem, shooterSubsystem));
         leftShoulder5.whileTrue(driveAim);
-        rightShoulder6.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2500)));
+        rightShoulder6.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0));//.alongWith(new OscillateIntakeRPM(intakeSubsystem, 2500)));
         leftTrigger7.whileTrue(new SpinIntakeRPM(intakeSubsystem, -1000));
-        rightTrigger8.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -2800, 2000));
+        rightTrigger8.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -2700, 5000));
         leftStickPress9.whileTrue(new SpinBelt(feederSubsystem));
         // rightStickPress10.onTrue(new);
         //dPadNorth.onTrue(new);

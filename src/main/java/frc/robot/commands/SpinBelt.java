@@ -19,13 +19,13 @@ public class SpinBelt extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    feederSubsystem.spinBeltSpeed(2000);
+    feederSubsystem.spinBeltSpeed(4000);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    feederSubsystem.spinBeltSpeed(2000);
+    feederSubsystem.spinBeltSpeed(4000);
   }
 
   // Called once the command ends or is interrupted.

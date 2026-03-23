@@ -344,19 +344,19 @@ public class VisionSubsystem
      * Left Camera
      */
     LEFT_CAM("LeftCamera",
-             new Rotation3d(0, Math.toRadians(-15), Math.toRadians(15)),
-             new Translation3d(Units.inchesToMeters(2.28515766),
-                               Units.inchesToMeters(10.375),
-                               Units.inchesToMeters(19.03114713)),
+             new Rotation3d(0, Math.toRadians(-14), Math.toRadians(180-15)),
+             new Translation3d(Units.inchesToMeters(-3.89228324),
+                               Units.inchesToMeters(10.64326857),
+                               Units.inchesToMeters(18.09899535)),
              VecBuilder.fill(4, 4, 8), VecBuilder.fill(0.5, 0.5, 1)),
     /**
      * Right Camera
      */
     RIGHT_CAM("RightCamera",
-              new Rotation3d(0, Math.toRadians(-15), Math.toRadians(-15)),
-              new Translation3d(Units.inchesToMeters(2.28515766),
-                                Units.inchesToMeters(-10.375),
-                                Units.inchesToMeters(19.03114713)),
+              new Rotation3d(0, Math.toRadians(-14), Math.toRadians(180+15)),
+              new Translation3d(Units.inchesToMeters(-3.89228324),
+                                Units.inchesToMeters(-10.64326857),
+                                Units.inchesToMeters(18.09899535)),
               VecBuilder.fill(4, 4, 8), VecBuilder.fill(0.5, 0.5, 1));
     /**
      * Latency alert to use when high latency is detected.
@@ -436,7 +436,7 @@ public class VisionSubsystem
       {
         SimCameraProperties cameraProp = new SimCameraProperties();
         // A 640 x 480 camera with a 100 degree diagonal FOV.
-        cameraProp.setCalibration(960, 720, Rotation2d.fromDegrees(100));
+        cameraProp.setCalibration(960, 720, Rotation2d.fromDegrees(180));
         // Approximate detection noise with average and standard deviation error in pixels.
         cameraProp.setCalibError(0.25, 0.08);
         // Set the camera image capture framerate (Note: this is limited by robot loop rate).
