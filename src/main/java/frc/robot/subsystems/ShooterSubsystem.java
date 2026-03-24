@@ -138,7 +138,9 @@ public class ShooterSubsystem extends SubsystemBase {
     return this.distance;
   }
   // ynmtocc4 MOrE BUNNY CODE!!!!!
-
+  public boolean isAtSetpoint () {
+    return flywheelController.isAtSetpoint();
+  }
   @Override
   public void periodic() {
     SmartDashboard.putNumber("ShooterRPM", getShooterSpeed());

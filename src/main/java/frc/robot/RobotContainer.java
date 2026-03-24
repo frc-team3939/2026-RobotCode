@@ -135,19 +135,10 @@ public class RobotContainer {
         SwerveInputStream driveDirectAngle = driveAngularVelocity.copy().withControllerHeadingAxis(driverJoystick::getX,
                                                                                                     driverJoystick::getY)
                                                                 .headingWhile(true);
-        Pose2d hubLocation;
 
         Pose2d redHubLocation = new Pose2d(11.920,4.021,Rotation2d.kZero);
         Pose2d blueHubLocation = new Pose2d(4.612,4.021,Rotation2d.kZero);
     
-
-    //     if (DriverStation.getAlliance().orElse(Alliance.Red)==Alliance.Blue){
-    //         hubLocation = new Pose2d(4.612,4.021,Rotation2d.kZero);
-            
-    //     }
-    //     else {
-    //       hubLocation = new Pose2d(11.920,4.021,Rotation2d.kZero);
-    //     }
 
         /**
          * Clone's the angular velocity input stream and converts it to a robotRelative input stream.
@@ -155,9 +146,12 @@ public class RobotContainer {
         
         SwerveInputStream driveRobotOriented = driveAngularVelocity.copy().robotRelative(true)
                                                                     .allianceRelativeControl(false);
-        Supplier<Pose2d> hubSupplier = () -> { return (DriverStation.getAlliance().orElse(Alliance.Red)==Alliance.Blue)?blueHubLocation:redHubLocation;};
-        SwerveInputStream hubAim = driveAngularVelocity.copy().aim(hubSupplier).aimWhile(true);
-        hubAim = hubAim.copy().translationHeadingOffset(true).translationHeadingOffset(new Rotation2d(Math.toRadians(180)));
+        Supplier<Pose2d> hubSupplier = () -> {
+            Pose2d hubLocation =(DriverStation.getAlliance().orElse(Alliance.Red)==Alliance.Blue)?blueHubLocation:redHubLocation;
+            Pose2d robotAim = new Pose2d(hubLocation.getX(), hubLocation.getY(), hubLocation.getRotation().plus(Rotation2d.fromDegrees(90)));
+            return robotAim;
+        };
+        SwerveInputStream hubAim = driveAngularVelocity.copy().aim(hubSupplier).aimHeadingOffset(Rotation2d.fromDegrees(180)).aimHeadingOffset(true).aimWhile(true);
         Command driveFieldOrientedDirectAngle      = swerveSubsystem.driveFieldOriented(driveDirectAngle);
         Command driveFieldOrientedAngularVelocity = swerveSubsystem.driveFieldOriented(driveAngularVelocity);
         Command driveRobotOrientedAngularVelocity  = swerveSubsystem.driveFieldOriented(driveRobotOriented);
@@ -205,7 +199,7 @@ public class RobotContainer {
         O2.toggleOnTrue(new SpinIntakeRPM(intakeSubsystem, -2000));
         Square3.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2000)));
         Triangle4.whileTrue(new DistanceTest(swerveSubsystem, shooterSubsystem));
-        leftShoulder5.whileTrue(driveAim);
+        leftShoulder5.toggleOnTrue(driveAim);
         rightShoulder6.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0));//.alongWith(new OscillateIntakeRPM(intakeSubsystem, 2500)));
         leftTrigger7.whileTrue(new SpinIntakeRPM(intakeSubsystem, -1000));
         rightTrigger8.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -2700, 5000));
