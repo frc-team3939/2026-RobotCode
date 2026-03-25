@@ -196,11 +196,11 @@ public class RobotContainer {
         */
 
         X1.onTrue(new ResetHeading(swerveSubsystem));
-        O2.toggleOnTrue(new SpinIntakeRPM(intakeSubsystem, -2000));
+        O2.toggleOnTrue(new SpinIntakeRPM(intakeSubsystem, -3500));
         Square3.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2000)));
         Triangle4.whileTrue(new DistanceTest(swerveSubsystem, shooterSubsystem));
         leftShoulder5.toggleOnTrue(driveAim);
-        rightShoulder6.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0));//.alongWith(new OscillateIntakeRPM(intakeSubsystem, 2500)));
+        rightShoulder6.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, -2500)));
         leftTrigger7.whileTrue(new SpinIntakeRPM(intakeSubsystem, -1000));
         rightTrigger8.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -2700, 5000));
         leftStickPress9.whileTrue(new SpinBelt(feederSubsystem));
