@@ -59,6 +59,16 @@ public class IntakeSubsystem extends SubsystemBase {
       intakeMotor.configure(intakeConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
   }
   
+  public void lowAmps() {
+    intakeConfig.smartCurrentLimit(20);
+    intakeMotor.configure(intakeConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
+  }
+
+  public void highAmps() {
+    intakeConfig.smartCurrentLimit(80);
+    intakeMotor.configure(intakeConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
+  }
+
   /**
    * Simple function to spin the intake motor at the parameter speed. 
    * @param speed Speed between -1.0 and 1.0.

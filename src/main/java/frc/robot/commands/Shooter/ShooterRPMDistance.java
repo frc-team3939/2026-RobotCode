@@ -7,6 +7,7 @@ import com.pathplanner.lib.path.PathPlannerPath;
 import com.pathplanner.lib.trajectory.PathPlannerTrajectory;
 import com.pathplanner.lib.trajectory.PathPlannerTrajectoryState;
 
+import edu.wpi.first.math.filter.LinearFilter;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Transform2d;
@@ -36,6 +37,9 @@ public class ShooterRPMDistance extends Command{
     private int counter;
     private State state;
 
+    private LinearFilter distanceLowPass;
+    private double oldDistance;
+
     public ShooterRPMDistance(ShooterSubsystem shooterSubsystem, FeederSubsystem feederSubsystem, SwerveSubsystem swerveSubsystem, double speed_feeder){
         this.shooterSubsystem = shooterSubsystem;
         this.feederSubsystem = feederSubsystem;
@@ -43,6 +47,7 @@ public class ShooterRPMDistance extends Command{
         this.state = State.START;
        
         this.speed_feeder = speed_feeder;
+        this.distanceLowPass = new LinearFilter(new double[] {1240, 3742, -4349, 2291, -459},new double[] {1, 4, 6, 4, 1});
     }
 
     // Called when the command is initially scheduled.
@@ -64,8 +69,11 @@ public class ShooterRPMDistance extends Command{
         }
         Transform2d offset = this.swerveSubsystem.getPose().minus(hubLocation);
         Rotation2d facing_angle = new Rotation2d(offset.getX(),offset.getY());
-        double distance = Math.sqrt(offset.getX()*offset.getX()+offset.getY()*offset.getY());
-        this.shooterSubsystem.logDistance(distance);
+        double rawDistance = Math.sqrt(offset.getX()*offset.getX()+offset.getY()*offset.getY());
+        //double distance = distanceLowPass.calculate(rawDistance);
+        double distance = rawDistance;
+        // this.shooterSubsystem.logDistance(rawDistance, distance);
+        distance = rawDistance;
         switch (this.state){
             case START:
             this.state = State.ROTATE;
@@ -79,9 +87,13 @@ public class ShooterRPMDistance extends Command{
                  counter = 0;
             // }
             this.state = State.SPIN_SHOOTER;
+            oldDistance = rawDistance;
             break;
             case SPIN_SHOOTER:
             counter = counter + 1;
+            oldDistance = oldDistance * 0.99 + distance * 0.01;
+            distance = oldDistance;
+            this.shooterSubsystem.logDistance(rawDistance, distance);
            // Transform2d offset = this.swerveSubsystem.getPose().minus(new Pose2d(4.612,4.021,Rotation2d.kZero));
            //double distance = Math.sqrt(offset.getX()*offset.getX()+offset.getY()*offset.getY());
             //if (Math.abs(shooterSubsystem.getShooterSpeed()-shooterSubsystem.getRPMFromDistance(distance))<= 100){
@@ -90,6 +102,9 @@ public class ShooterRPMDistance extends Command{
             }
             break;
             case SHOOT:
+            oldDistance = oldDistance * 0.99 + distance * 0.01;
+            distance = oldDistance;
+            this.shooterSubsystem.logDistance(rawDistance, distance);
             break;
 
         }

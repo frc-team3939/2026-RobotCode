@@ -13,9 +13,9 @@ public class OscillateIntakeRPM extends Command {
   private int counter;
   private boolean flip;
     
-    private double speed;
-    public OscillateIntakeRPM(IntakeSubsystem isubsystem, double speed) {
-      intakeSubsystem = isubsystem;
+  private double speed;
+  public OscillateIntakeRPM(IntakeSubsystem isubsystem, double speed) {
+    intakeSubsystem = isubsystem;
     this.speed = speed;
     addRequirements(intakeSubsystem);
 
@@ -27,7 +27,7 @@ public class OscillateIntakeRPM extends Command {
     counter = 0;
     flip = true;
     intakeSubsystem.spinIntakeRPM(speed);
-
+    intakeSubsystem.lowAmps();
   }
 
   // Called every time the scheduler runs while the command is scheduled every 20ms.
@@ -37,7 +37,8 @@ public class OscillateIntakeRPM extends Command {
       intakeSubsystem.spinIntakeRPM(-speed);
     }
     else if (counter <= 54) {
-      intakeSubsystem.spinIntake(speed/16);
+     intakeSubsystem.spinIntake(speed/16);
+    //  intakeSubsystem.stopIntake();
     }
     else {
       counter = 0;
@@ -49,7 +50,7 @@ public class OscillateIntakeRPM extends Command {
   @Override
   public void end(boolean interrupted) {
     intakeSubsystem.stopIntake();
-
+    intakeSubsystem.highAmps();
     
   }
 

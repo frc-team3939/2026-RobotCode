@@ -116,7 +116,7 @@ public class RobotContainer {
 
     public RobotContainer() {
 
-        NamedCommands.registerCommand("SpinIntake", new SpinIntakeRPM(intakeSubsystem, 4000));
+        NamedCommands.registerCommand("SpinIntake", new SpinIntakeRPM(intakeSubsystem, -4000));
         NamedCommands.registerCommand("Shoot", new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0));
         NamedCommands.registerCommand("OscillateIntake", new OscillateIntakeRPM(intakeSubsystem, 2500));
         /**
@@ -196,13 +196,13 @@ public class RobotContainer {
         */
 
         X1.onTrue(new ResetHeading(swerveSubsystem));
-        O2.toggleOnTrue(new SpinIntakeRPM(intakeSubsystem, -3500));
+        O2.toggleOnTrue(new SpinIntakeRPM(intakeSubsystem, -4000));
         Square3.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2000)));
         Triangle4.whileTrue(new DistanceTest(swerveSubsystem, shooterSubsystem));
         leftShoulder5.toggleOnTrue(driveAim);
-        rightShoulder6.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, -2500)));
+        rightShoulder6.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2500)));
         leftTrigger7.whileTrue(new SpinIntakeRPM(intakeSubsystem, -1000));
-        rightTrigger8.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -2700, 5000));
+        rightTrigger8.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -2700, 5000).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2500)));
         leftStickPress9.whileTrue(new SpinBelt(feederSubsystem));
         // rightStickPress10.onTrue(new);
         //dPadNorth.onTrue(new);
@@ -215,10 +215,10 @@ public class RobotContainer {
         //  buttonT3.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 6)); // L2
         //  buttonT4.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 13.5)); // L3
         //  buttonT5.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 25)); // L4
-        //  buttonT6.whileTrue(new IntelligentIntake(intakeSubsystem, -.50)); // Smart Intake
-         //buttonT7.whileTrue(new SpinIntake(intakeSubsystem, -.50));
-          buttonT8.whileTrue(new SpinIntakeRPM(intakeSubsystem, 3000));
-        //  buttonT9.whileTrue(new SpinIntake(intakeSubsystem, -.40));
+        buttonT6.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -2700, -5000)); // Smart Intake
+        buttonT7.whileTrue(new SpinIntake(intakeSubsystem, 4000));
+        //buttonT8.whileTrue(new SpinIntakeRPM(intakeSubsystem, 3000));
+        buttonT9.whileTrue(new SpinIntake(intakeSubsystem, -4000));
         //  buttonT10.whileTrue(new SpinIntake(intakeSubsystem, .50));
 
         //  buttonB1.whileTrue(new SpinIntake(intakeSubsystem, -.40));

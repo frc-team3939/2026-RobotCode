@@ -26,7 +26,7 @@ public class DistanceTest extends Command {
   public void initialize() {
     Transform2d offset = this.swerveSubsystem.getPose().minus(new Pose2d(4.612,4.021,Rotation2d.kZero));
     double distance = Math.sqrt(offset.getX()*offset.getX()+offset.getY()*offset.getY());
-    shooterSubsystem.logDistance(distance);
+    shooterSubsystem.logDistance(distance,distance);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

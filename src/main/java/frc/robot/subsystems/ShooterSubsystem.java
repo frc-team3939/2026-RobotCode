@@ -39,6 +39,7 @@ public class ShooterSubsystem extends SubsystemBase {
   private final DigitalInput shooterBeamBreak;
   private final InterpolatingTreeMap<Double, Double> RPMmap;
 
+  private double rawDistance;
   private double distance;
 
   public ShooterSubsystem() {
@@ -96,6 +97,7 @@ public class ShooterSubsystem extends SubsystemBase {
     RPMmap.put(5.122, -5250.0);
    
     Preferences.initDouble("Shooter RPM", 0.000);
+    Preferences.initDouble("ShooterMultiply", 1.0);
     //Preferences.getDouble("Shooter RPM", 0.0);
   }
 
@@ -104,7 +106,7 @@ public class ShooterSubsystem extends SubsystemBase {
   }
 
   public double getRPMFromDistance(double distance){
-    return RPMmap.get(distance);
+    return RPMmap.get(distance) * Preferences.getDouble("ShooterMultiply", 1.0);
   }
 
 
@@ -130,7 +132,8 @@ public class ShooterSubsystem extends SubsystemBase {
     leftFlywheelMotor.set(0);
 
   }
-  public void logDistance(double distance) {
+  public void logDistance(double rawDistance, double distance) {
+    this.rawDistance = rawDistance;
     this.distance = distance;
   }
 
@@ -144,6 +147,7 @@ public class ShooterSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     SmartDashboard.putNumber("ShooterRPM", getShooterSpeed());
+    SmartDashboard.putNumber("Recent Calculated Distance (raw)", this.rawDistance*39.3);
     SmartDashboard.putNumber("Recent Calculated Distance", getRecentDistance()*39.3);
   }
 }
