@@ -40,7 +40,7 @@
     {
       "name": "SpinIntake",
       "waypointRelativePos": 0.0,
-      "endWaypointRelativePos": 1.0,
+      "endWaypointRelativePos": 0.6223325062034738,
       "command": null
     }
   ],
