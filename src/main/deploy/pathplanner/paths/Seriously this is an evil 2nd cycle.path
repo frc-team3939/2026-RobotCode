@@ -1,0 +1,106 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 1.942855421686747,
+        "y": 2.0789397590361443
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.7243012048192772,
+        "y": 0.5599879518072293
+      },
+      "isLocked": false,
+      "linkedName": "Left shoot blue"
+    },
+    {
+      "anchor": {
+        "x": 4.6419999999999995,
+        "y": 0.6364819277108438
+      },
+      "prevControl": {
+        "x": 3.3525301204819264,
+        "y": 0.6474096385542178
+      },
+      "nextControl": {
+        "x": 7.330528969738115,
+        "y": 0.6136977838995026
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 7.297433734939758,
+        "y": 1.4560602409638557
+      },
+      "prevControl": {
+        "x": 7.24495818582262,
+        "y": 1.167444720819615
+      },
+      "nextControl": {
+        "x": 7.342155094489756,
+        "y": 1.7020277184888322
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 7.58155421686747,
+        "y": 6.297036144578313
+      },
+      "prevControl": {
+        "x": 7.594693925148159,
+        "y": 6.047381687245186
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "Left 2nd back blue"
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.6547717842323761,
+      "rotationDegrees": 0.0
+    },
+    {
+      "waypointRelativePos": 1.2,
+      "rotationDegrees": 0.6544589553966828
+    },
+    {
+      "waypointRelativePos": 2.2979253112033198,
+      "rotationDegrees": 83.12611916066996
+    }
+  ],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [
+    {
+      "name": "SpinIntake",
+      "waypointRelativePos": 0.9796526054590564,
+      "endWaypointRelativePos": 3.0,
+      "command": null
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 4.0,
+    "maxAcceleration": 5.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 4.0,
+    "rotation": 93.27048792318374
+  },
+  "reversed": false,
+  "folder": "Evil Auto.....",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -143.47114463301483
+  },
+  "useDefaultConstraints": false
+}

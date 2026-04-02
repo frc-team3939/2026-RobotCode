@@ -1,0 +1,107 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 3.5862054208273886,
+        "y": 7.4702139800285305
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 4.815378031383736,
+        "y": 7.496091298145506
+      },
+      "isLocked": false,
+      "linkedName": "Start Left"
+    },
+    {
+      "anchor": {
+        "x": 6.859686162624821,
+        "y": 7.263195435092724
+      },
+      "prevControl": {
+        "x": 6.251702985435191,
+        "y": 7.353867680906049
+      },
+      "nextControl": {
+        "x": 8.062373493975903,
+        "y": 7.0838313253012055
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.27,
+        "y": 4.024072289156626
+      },
+      "prevControl": {
+        "x": 8.249965210714764,
+        "y": 5.1059509105593355
+      },
+      "nextControl": {
+        "x": 8.313710843373492,
+        "y": 1.6636867469879513
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 5.767554216867469,
+        "y": 0.5927710843373495
+      },
+      "prevControl": {
+        "x": 8.291855421686748,
+        "y": 0.6364819277108438
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "Left out bLUE"
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.749377593361013,
+      "rotationDegrees": 179.06495396146582
+    },
+    {
+      "waypointRelativePos": 1.4464730290456322,
+      "rotationDegrees": -65.04560245695602
+    }
+  ],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [
+    {
+      "name": "SpinIntake",
+      "waypointRelativePos": 0.9,
+      "endWaypointRelativePos": 3.0,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "SpinIntake"
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 4.0,
+    "maxAcceleration": 5.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 4.0,
+    "rotation": -178.63607246839686
+  },
+  "reversed": false,
+  "folder": "Evil Auto.....",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -179.5686031682823
+  },
+  "useDefaultConstraints": false
+}

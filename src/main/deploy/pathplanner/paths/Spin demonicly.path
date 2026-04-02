@@ -1,0 +1,119 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 3.5862054208273886,
+        "y": 7.4702139800285305
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 4.815378031383736,
+        "y": 7.496091298145506
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 6.859686162624821,
+        "y": 7.263195435092724
+      },
+      "prevControl": {
+        "x": 6.251702985435191,
+        "y": 7.353867680906049
+      },
+      "nextControl": {
+        "x": 8.062373493975903,
+        "y": 7.0838313253012055
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 7.854746987951808,
+        "y": 3.9912891566265065
+      },
+      "prevControl": {
+        "x": 7.834712198666573,
+        "y": 5.073167778029216
+      },
+      "nextControl": {
+        "x": 7.898457831325301,
+        "y": 1.6309036144578317
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 5.767554216867469,
+        "y": 0.5927710843373495
+      },
+      "prevControl": {
+        "x": 8.291855421686748,
+        "y": 0.6364819277108438
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.7095435684647302,
+      "rotationDegrees": 179.06495396146582
+    },
+    {
+      "waypointRelativePos": 1.1775933609958695,
+      "rotationDegrees": -90.49027339752959
+    },
+    {
+      "waypointRelativePos": 1.5858921161825932,
+      "rotationDegrees": -0.4751282556825012
+    },
+    {
+      "waypointRelativePos": 1.9892116182572697,
+      "rotationDegrees": 92.00223223497913
+    },
+    {
+      "waypointRelativePos": 2.1834024896265625,
+      "rotationDegrees": -178.44024379034227
+    }
+  ],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [
+    {
+      "name": "SpinIntake",
+      "waypointRelativePos": 0.9,
+      "endWaypointRelativePos": 1.0,
+      "command": {
+        "type": "named",
+        "data": {
+          "name": "SpinIntake"
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 4.0,
+    "maxAcceleration": 5.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 4.0,
+    "rotation": -178.63607246839686
+  },
+  "reversed": false,
+  "folder": "Evil Auto.....",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -179.5686031682823
+  },
+  "useDefaultConstraints": false
+}

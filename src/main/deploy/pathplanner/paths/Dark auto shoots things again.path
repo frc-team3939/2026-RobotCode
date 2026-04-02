@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 6.554349397590361,
-        "y": 4.570457831325301
+        "x": 7.58155421686747,
+        "y": 6.297036144578313
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.52156626506024,
-        "y": 6.952698795180723
+        "x": 7.428566265054565,
+        "y": 7.367951807228076
       },
       "isLocked": false,
       "linkedName": "Left 2nd back blue"
@@ -32,12 +32,12 @@
     },
     {
       "anchor": {
-        "x": 2.685939759036144,
-        "y": 6.242397590361446
+        "x": 1.6368795180666127,
+        "y": 6.297036144578313
       },
       "prevControl": {
-        "x": 2.8389277108433726,
-        "y": 6.985481927710844
+        "x": 2.1941927710843374,
+        "y": 6.963626506024096
       },
       "nextControl": null,
       "isLocked": false,
@@ -58,8 +58,8 @@
   "pointTowardsZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 2.0,
-    "maxAcceleration": 3.0,
+    "maxVelocity": 4.0,
+    "maxAcceleration": 5.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
@@ -67,13 +67,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -51.3401917459099
+    "rotation": 138.57633437456306
   },
   "reversed": false,
-  "folder": "Left Curve",
+  "folder": "Evil Auto.....",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 134.29268063145577
+    "rotation": 93.27048792318374
   },
   "useDefaultConstraints": false
 }

@@ -8,20 +8,20 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.4729638554216864,
-        "y": 1.4014216867469884
+        "x": 0.7829054426858376,
+        "y": 0.8560796985813599
       },
       "isLocked": false,
       "linkedName": "Out to H.P"
     },
     {
       "anchor": {
-        "x": 2.685939759036144,
-        "y": 2.756457831325301
+        "x": 1.839486447931526,
+        "y": 3.045192582025678
       },
       "prevControl": {
-        "x": 1.7898674698795183,
-        "y": 1.7511084337349392
+        "x": 1.6794403480154068,
+        "y": 2.8531372621263333
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 35.83765295427826
+    "rotation": -162.12130340415862
   },
   "reversed": false,
   "folder": "H.P and The Pit",

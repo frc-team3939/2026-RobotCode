@@ -3,38 +3,47 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.685939759036144,
-        "y": 2.756457831325301
+        "x": 1.839486447931526,
+        "y": 3.045192582025678
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.532951807228916,
-        "y": 4.395614457831325
+        "x": 2.150014265335235,
+        "y": 4.921298145506419
       },
       "isLocked": false,
       "linkedName": "Shoot H.P and The Pit."
     },
     {
       "anchor": {
-        "x": 2.4673855421686746,
-        "y": 4.035
+        "x": 0.7397004279600568,
+        "y": 5.839942938659058
       },
       "prevControl": {
-        "x": 4.3469518072289155,
-        "y": 4.155204819277109
+        "x": 1.7230385164051354,
+        "y": 5.594108416547789
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "The Pit Intake"
     }
   ],
-  "rotationTargets": [
+  "rotationTargets": [],
+  "constraintZones": [
     {
-      "waypointRelativePos": 0.8738589211618203,
-      "rotationDegrees": 179.01239252270716
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0.7564102564102528,
+      "maxWaypointRelativePos": 1.0,
+      "constraints": {
+        "maxVelocity": 1.0,
+        "maxAcceleration": 3.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
     }
   ],
-  "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
     {
@@ -45,7 +54,7 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 3.0,
+    "maxVelocity": 2.0,
     "maxAcceleration": 3.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
@@ -54,13 +63,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 162.07208023799262
   },
   "reversed": false,
   "folder": "H.P and The Pit",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 35.83765295427826
+    "rotation": -162.12130340415862
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

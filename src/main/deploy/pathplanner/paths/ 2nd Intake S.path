@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.809885877318117,
-        "y": 5.71055634807418
+        "x": 3.2756776034236803,
+        "y": 5.400028530670471
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.7201258786930897,
-        "y": 7.452146623584209
+        "x": 2.7969472182596284,
+        "y": 6.875035663338089
       },
       "isLocked": false,
       "linkedName": "To shoot S"
@@ -32,12 +32,12 @@
     },
     {
       "anchor": {
-        "x": 7.756397590361445,
-        "y": 4.952927710843373
+        "x": 7.739514978601996,
+        "y": 5.801126961483595
       },
       "prevControl": {
-        "x": 6.980530120481928,
-        "y": 6.908987951807229
+        "x": 6.794992867332382,
+        "y": 6.758587731811698
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,8 +46,8 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.5626556016597485,
-      "rotationDegrees": 20.639754241256107
+      "waypointRelativePos": 0.9316273490603758,
+      "rotationDegrees": 2.7413078706068403
     },
     {
       "waypointRelativePos": 1.3095435684647359,
@@ -73,7 +73,7 @@
   "eventMarkers": [
     {
       "name": "SpinIntake",
-      "waypointRelativePos": 1.2478055367994632,
+      "waypointRelativePos": 0.9924026590693257,
       "endWaypointRelativePos": 2.0,
       "command": {
         "type": "named",
@@ -85,21 +85,21 @@
   ],
   "globalConstraints": {
     "maxVelocity": 2.0,
-    "maxAcceleration": 3.0,
+    "maxAcceleration": 4.0,
     "maxAngularVelocity": 540.0,
     "maxAngularAcceleration": 720.0,
     "nominalVoltage": 12.0,
     "unlimited": false
   },
   "goalEndState": {
-    "velocity": 0.0,
+    "velocity": 2.0,
     "rotation": -88.4518423010217
   },
   "reversed": false,
   "folder": "Left S Shoot...",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 132.79740183823432
+    "rotation": 137.20259816176593
   },
   "useDefaultConstraints": false
 }

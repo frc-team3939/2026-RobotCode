@@ -7,13 +7,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Out to intake S"
+            "pathName": "Deploy the Evil auto"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "To shoot S"
+            "pathName": "Twisted auto shoots things"
           }
         },
         {
@@ -51,13 +51,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": " 2nd Intake S"
+            "pathName": "Seriously this is an evil 2nd cycle"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": " 2nd Shoot S"
+            "pathName": "Dark auto shoots things again"
           }
         },
         {
@@ -90,12 +90,6 @@
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "3rd out S"
           }
         }
       ]

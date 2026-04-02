@@ -7,13 +7,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Left out Curve"
+            "pathName": "Out to H.P"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 2.0
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Left shoot Curve"
+            "pathName": "H.P. to shoot"
           }
         },
         {
@@ -51,13 +57,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Left 2nd back Curve"
+            "pathName": "Back to The Pit."
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Left 2nd shoot Blue"
+            "pathName": "The Pit to SHoot"
           }
         },
         {

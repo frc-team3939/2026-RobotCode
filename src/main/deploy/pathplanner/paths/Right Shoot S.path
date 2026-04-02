@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.636192771084337,
-        "y": 2.166361445783133
+        "x": 7.532496433666189,
+        "y": 2.5794008559201154
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.237445783132531,
-        "y": 2.811096385542169
+        "x": 3.397052065754541,
+        "y": 2.655413516977552
       },
       "isLocked": false,
       "linkedName": "Right out S"
@@ -20,8 +20,8 @@
         "y": 2.647180722891566
       },
       "prevControl": {
-        "x": 4.095614457831325,
-        "y": 2.6034698795180726
+        "x": 3.7191608941958707,
+        "y": 2.63184125967598
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,13 +30,20 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.40082987551866484,
+      "waypointRelativePos": 0.19872051179528183,
       "rotationDegrees": -134.7978738250102
     }
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "SpinIntake",
+      "waypointRelativePos": 0,
+      "endWaypointRelativePos": 0.3176638176638175,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 2.0,
     "maxAcceleration": 3.0,
@@ -53,7 +60,7 @@
   "folder": "Right S Shoot....",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 75.96375653207346
+    "rotation": 86.42366562500288
   },
   "useDefaultConstraints": false
 }
