@@ -1,6 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Command.InterruptionBehavior;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -197,12 +198,12 @@ public class RobotContainer {
 
         X1.onTrue(new ResetHeading(swerveSubsystem));
         O2.toggleOnTrue(new SpinIntakeRPM(intakeSubsystem, -4000));
-        Square3.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2000)));
+        Square3.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2000)).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
         Triangle4.whileTrue(new DistanceTest(swerveSubsystem, shooterSubsystem));
         leftShoulder5.toggleOnTrue(driveAim);
-        rightShoulder6.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2500)));
+        rightShoulder6.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2500)).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
         leftTrigger7.whileTrue(new SpinIntakeRPM(intakeSubsystem, -1000));
-        rightTrigger8.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -2700, 5000).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2500)));
+        rightTrigger8.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -2700, 5000).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2500)).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
         leftStickPress9.whileTrue(new SpinBelt(feederSubsystem));
         // rightStickPress10.onTrue(new);
         //dPadNorth.onTrue(new);
@@ -216,9 +217,9 @@ public class RobotContainer {
         //  buttonT4.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 13.5)); // L3
         //  buttonT5.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 25)); // L4
         buttonT6.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -2700, -5000)); // Smart Intake
-        buttonT7.whileTrue(new SpinIntake(intakeSubsystem, 4000));
+        buttonT7.whileTrue(new SpinIntake(intakeSubsystem, 4000).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
         //buttonT8.whileTrue(new SpinIntakeRPM(intakeSubsystem, 3000));
-        buttonT9.whileTrue(new SpinIntake(intakeSubsystem, -4000));
+        buttonT9.whileTrue(new SpinIntake(intakeSubsystem, -4000).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
         //  buttonT10.whileTrue(new SpinIntake(intakeSubsystem, .50));
 
         //  buttonB1.whileTrue(new SpinIntake(intakeSubsystem, -.40));
