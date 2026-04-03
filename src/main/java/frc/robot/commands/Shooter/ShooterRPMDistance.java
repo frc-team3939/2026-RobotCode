@@ -97,8 +97,8 @@ public class ShooterRPMDistance extends Command{
            // Transform2d offset = this.swerveSubsystem.getPose().minus(new Pose2d(4.612,4.021,Rotation2d.kZero));
            //double distance = Math.sqrt(offset.getX()*offset.getX()+offset.getY()*offset.getY());
             //if (Math.abs(shooterSubsystem.getShooterSpeed()-shooterSubsystem.getRPMFromDistance(distance))<= 100){
-            // if (Math.abs(this.shooterSubsystem.getRPMFromDistance(distance) - shooterSubsystem.getShooterSpeed()) < 300){
-            if (counter >= 100) {
+            if (Math.abs(this.shooterSubsystem.getRPMFromDistance(distance) - shooterSubsystem.getShooterSpeed()) < 300){
+            //if (counter >= 100) {
                 this.state = State.SHOOT;
             }
             break;
@@ -116,7 +116,7 @@ public class ShooterRPMDistance extends Command{
             case ROTATE:
             break;
             case SPIN_SHOOTER:
-            this.shooterSubsystem.spinShooterSpeed(this.shooterSubsystem.getRPMFromDistance(distance));
+            this.shooterSubsystem.spinShooter(-1);
             break;
             case SHOOT:
             this.shooterSubsystem.spinShooterSpeed(this.shooterSubsystem.getRPMFromDistance(distance));

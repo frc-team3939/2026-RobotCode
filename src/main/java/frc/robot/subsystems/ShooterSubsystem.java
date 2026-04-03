@@ -144,6 +144,11 @@ public class ShooterSubsystem extends SubsystemBase {
   public boolean isAtSetpoint () {
     return flywheelController.isAtSetpoint();
   }
+
+  public void spinShooter(double power) {
+    leftFlywheelMotor.set(power);
+  }
+
   @Override
   public void periodic() {
     SmartDashboard.putNumber("ShooterRPM", getShooterSpeed());

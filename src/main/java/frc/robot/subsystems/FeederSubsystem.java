@@ -35,7 +35,7 @@ public class FeederSubsystem extends SubsystemBase {
   private final RelativeEncoder beltCoder;
   private final RelativeEncoder feederCoder;
   
-  
+
   public FeederSubsystem() {
 
 
