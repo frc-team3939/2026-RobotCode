@@ -30,7 +30,7 @@ public class SimpleShooter extends Command{
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        this.shooterSubsystem.spinShooterSpeed(5767*speed);
+        this.shooterSubsystem.spinShooterSpeed(5767 *speed);//5767
         // double speedRatio = this.shooterSubsystem.getShooterSpeed() / speed;
         counter = counter + 1;
         if (counter > 80){

@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -29,6 +30,7 @@ import frc.robot.commands.Shooter.ShooterRPMDistance;
 import static edu.wpi.first.units.Units.Radian;
 
 import java.io.File;
+import java.util.function.DoubleSupplier;
 import java.util.function.Supplier;
 
 import org.photonvision.PhotonCamera;
@@ -57,7 +59,7 @@ public class RobotContainer {
     // private final LEDSubsystem ledSubsystem = new LEDSubsystem(elevatorSubsystem);
 
     // Sets the Joystick/Physical Driver Station ports, change port order in Driver Station to the numbers below.
-    private final Joystick driverJoystick = new Joystick(OIConstants.kDriverControllerPort); // 0
+    private final CommandXboxController driverJoystick = new CommandXboxController(OIConstants.kDriverControllerPort); // 0
     private final Joystick driverstationTop = new Joystick(OIConstants.kTopHalfButtonBoardPort); // 1
     private final Joystick driverstationBottom = new Joystick(OIConstants.kBottomHalfButtonBoardPort); // 2
     // private final Joystick debug_secondary = new Joystick(4);
@@ -73,21 +75,21 @@ public class RobotContainer {
     Feel free to change the names if you decide to change the controller to a non-PS4 controller for clarity sake.
     Check Driver Station for buttonNumbers, they'll be in the USB order tab.
     */
-    Trigger X1 = new JoystickButton(driverJoystick, 1);
-    Trigger O2 = new JoystickButton(driverJoystick, 2);
-    Trigger Square3 = new JoystickButton(driverJoystick, 3);
-    Trigger Triangle4 = new JoystickButton(driverJoystick, 4);
-    Trigger leftShoulder5 = new JoystickButton(driverJoystick, 5);
-    Trigger rightShoulder6 = new JoystickButton(driverJoystick, 6);
-    Trigger leftTrigger7 = new JoystickButton(driverJoystick, 7);
-    Trigger rightTrigger8 = new JoystickButton(driverJoystick, 8);
-    Trigger leftStickPress9 = new JoystickButton(driverJoystick, 9);
-    Trigger rightStickPress10 = new JoystickButton(driverJoystick, 10);
+    // Trigger X1 = new JoystickButton(driverJoystick, 1);
+    // Trigger O2 = new JoystickButton(driverJoystick, 2);
+    // Trigger Square3 = new JoystickButton(driverJoystick, 3);
+    // Trigger Triangle4 = new JoystickButton(driverJoystick, 4);
+    // Trigger leftShoulder5 = new JoystickButton(driverJoystick, 5);
+    // Trigger rightShoulder6 = new JoystickButton(driverJoystick, 6);
+    // Trigger leftTrigger7 = new JoystickButton(driverJoystick, 7);
+    // Trigger rightTrigger8 = new JoystickButton(driverJoystick, 8);
+    // Trigger leftStickPress9 = new JoystickButton(driverJoystick, 9);
+    // Trigger rightStickPress10 = new JoystickButton(driverJoystick, 10);
     
-    Trigger dPadNorth = new POVButton(driverJoystick, 0);
-    Trigger dPadSouth = new POVButton(driverJoystick, 180);
-    Trigger dPadWest = new POVButton(driverJoystick, 270);
-    Trigger dPadEast = new POVButton(driverJoystick, 90);
+    // Trigger dPadNorth = new POVButton(driverJoystick, 0);
+    //Trigger dPadSouth = new POVButton(driverJoystick, 180);
+    //Trigger dPadWest = new POVButton(driverJoystick, 270);
+    //Trigger dPadEast = new POVButton(driverJoystick, 90);
 
     Trigger buttonT1 = new JoystickButton(driverstationTop, 1);
     Trigger buttonT2 = new JoystickButton(driverstationTop, 2);
@@ -124,17 +126,17 @@ public class RobotContainer {
          * Converts driver input into a field-relative ChassisSpeeds that is controlled by angular velocity.
          */
         SwerveInputStream driveAngularVelocity = SwerveInputStream.of(swerveSubsystem.getSwerveDrive(),
-                                                                        () -> driverJoystick.getY() * -1,
-                                                                        () -> driverJoystick.getX() * -1)
-                                                                    .withControllerRotationAxis(() -> driverJoystick.getRawAxis(2))
+                                                                        () -> driverJoystick.getLeftY() * -1,
+                                                                        () -> driverJoystick.getLeftX() * -1)
+                                                                    .withControllerRotationAxis(() -> driverJoystick.getRightX())
                                                                     .deadband(0.05D)
                                                                     .scaleTranslation(0.8)
                                                                     .allianceRelativeControl(true);
         /**
          * Clone's the angular velocity input stream and converts it to a fieldRelative input stream.
          */
-        SwerveInputStream driveDirectAngle = driveAngularVelocity.copy().withControllerHeadingAxis(driverJoystick::getX,
-                                                                                                    driverJoystick::getY)
+        SwerveInputStream driveDirectAngle = driveAngularVelocity.copy().withControllerHeadingAxis(() -> driverJoystick.getLeftX(),
+                                                                                                   () ->  driverJoystick.getLeftY())
                                                                 .headingWhile(true);
 
         Pose2d redHubLocation = new Pose2d(11.920,4.021,Rotation2d.kZero);
@@ -195,16 +197,17 @@ public class RobotContainer {
         Used to set all Button Bindings as the name suggests, excluding moving the robot with the joystick,
         which is set with the Command Scheduler.
         */
+        
+        driverJoystick.a().onTrue(new ResetHeading(swerveSubsystem));
+        driverJoystick.x().toggleOnTrue(new SpinIntakeRPM(intakeSubsystem, -4000));
+        //driverJoystick.rightBumper().whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2000)).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        //driverJoystick.y().whileTrue(new DistanceTest(swerveSubsystem, shooterSubsystem));
+        driverJoystick.leftTrigger().toggleOnTrue(driveAim);
+        driverJoystick.rightTrigger().whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2500)).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        driverJoystick.leftBumper().whileTrue(new SpinIntakeRPM(intakeSubsystem, -1000));
+        driverJoystick.b().whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -2700, 5000).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2500)).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        //driverJoystick..whileTrue(new SpinBelt(feederSubsystem));
 
-        X1.onTrue(new ResetHeading(swerveSubsystem));
-        O2.toggleOnTrue(new SpinIntakeRPM(intakeSubsystem, -4000));
-        Square3.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2000)).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
-        Triangle4.whileTrue(new DistanceTest(swerveSubsystem, shooterSubsystem));
-        leftShoulder5.toggleOnTrue(driveAim);
-        rightShoulder6.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2500)).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
-        leftTrigger7.whileTrue(new SpinIntakeRPM(intakeSubsystem, -1000));
-        rightTrigger8.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -2700, 5000).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2500)).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
-        leftStickPress9.whileTrue(new SpinBelt(feederSubsystem));
         // rightStickPress10.onTrue(new);
         //dPadNorth.onTrue(new);
         // dPadEast.onrue(new);
@@ -213,13 +216,13 @@ public class RobotContainer {
 
         //  buttonT1.onTrue(new ElevatorZero(elevatorSubsystem, 0)); // Brings elevator to 0
         //  buttonT2.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 1)); // L1
-        //  buttonT3.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 6)); // L2
+          buttonT3.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 0));
         //  buttonT4.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 13.5)); // L3
         //  buttonT5.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 25)); // L4
         buttonT6.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -2700, -5000)); // Smart Intake
-        buttonT7.whileTrue(new SpinIntake(intakeSubsystem, 4000).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+        buttonT7.whileTrue(new SpinIntake(intakeSubsystem, 5000).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
         //buttonT8.whileTrue(new SpinIntakeRPM(intakeSubsystem, 3000));
-        buttonT9.whileTrue(new SpinIntake(intakeSubsystem, -4000).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+        buttonT9.whileTrue(new SpinIntake(intakeSubsystem, -5000).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
         //  buttonT10.whileTrue(new SpinIntake(intakeSubsystem, .50));
 
         //  buttonB1.whileTrue(new SpinIntake(intakeSubsystem, -.40));

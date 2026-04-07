@@ -89,13 +89,23 @@ public class ShooterSubsystem extends SubsystemBase {
     // A digital input is the slots 0-9 on the RoboRIO in the "DIO" area. You plug
     // in limit switches into here normally. Essentially, this declaration points to
     // the number 9 slot on the DIO.
-    RPMmap.put(2.071, -3000.0);
-    //RPMmap.put(2.081, -2900.0);
-    RPMmap.put(2.642, -3600.0); 
-    RPMmap.put(3.299, -3750.0);
-    RPMmap.put(4.013, -4575.0);
-    RPMmap.put(5.122, -5250.0);
-   
+    
+  //   This is the old shooter data table before vortexes**
+  //   RPMmap.put(2.071, -3000.0);
+  //   RPMmap.put(2.642, -3600.0); 
+  //   RPMmap.put(3.299, -3750.0);
+  //   RPMmap.put(4.013, -4575.0);
+  //   RPMmap.put(5.122, -5250.0);
+  //   RPMmap.put(6.122, -6250.0);
+  //   end of shooter vortex tree
+    RPMmap.put(1.651, -3400.0);
+    RPMmap.put(1.905, -3450.0); 
+    RPMmap.put(2.286, -3650.0);
+    RPMmap.put(3.2004, -4100.0);
+    RPMmap.put(3.683, -4575.0);
+    RPMmap.put(4.1402, -4850.0);
+    RPMmap.put(4.5466, -5100.0);
+
     Preferences.initDouble("Shooter RPM", 0.000);
     Preferences.initDouble("ShooterMultiply", 1.0);
     //Preferences.getDouble("Shooter RPM", 0.0);

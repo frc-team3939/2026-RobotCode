@@ -74,7 +74,7 @@ public final class Constants {
         public static final double kBackRightDriveAbsoluteEncoderOffsetRad = 0;
 
         //Check Andymark/Ryan's math for max speed in METERS PER SECOND
-        public static final double kPhysicalMaxSpeedMetersPerSecond = 5.121;
+        public static final double kPhysicalMaxSpeedMetersPerSecond = 4.2672;
         public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 2 * 2 * Math.PI;
 
 
@@ -82,7 +82,7 @@ public final class Constants {
         public static final double kTeleDriveMaxSpeedMetersPerSecond = kPhysicalMaxSpeedMetersPerSecond / 1;
         public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = //
                 kPhysicalMaxAngularSpeedRadiansPerSecond / 1;
-        public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 5;
+        public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 8.2296;
         public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = 5;
     }
 

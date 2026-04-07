@@ -8,7 +8,7 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.9092704536433239,
+        "x": 0.909270453643324,
         "y": 5.656242077502187
       },
       "isLocked": false,
@@ -55,7 +55,7 @@
   "folder": "H.P and The Pit",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 162.07208023799262
+    "rotation": 162.07208023799265
   },
   "useDefaultConstraints": true
 }
