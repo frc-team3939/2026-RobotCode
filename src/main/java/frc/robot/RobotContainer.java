@@ -119,7 +119,7 @@ public class RobotContainer {
 
     public RobotContainer() {
 
-        NamedCommands.registerCommand("SpinIntake", new SpinIntakeRPM(intakeSubsystem, -4000));
+        NamedCommands.registerCommand("SpinIntake", new SpinIntake(intakeSubsystem, -5000));
         NamedCommands.registerCommand("Shoot", new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0));
         NamedCommands.registerCommand("OscillateIntake", new OscillateIntakeRPM(intakeSubsystem, 2500));
         /**
@@ -198,14 +198,15 @@ public class RobotContainer {
         which is set with the Command Scheduler.
         */
         
-        driverJoystick.a().onTrue(new ResetHeading(swerveSubsystem));
-        driverJoystick.x().toggleOnTrue(new SpinIntakeRPM(intakeSubsystem, -4000));
+        driverJoystick.x().onTrue(new ResetHeading(swerveSubsystem));
+        driverJoystick.a().toggleOnTrue(new SpinIntakeRPM(intakeSubsystem, -5000));
         //driverJoystick.rightBumper().whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2000)).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
         //driverJoystick.y().whileTrue(new DistanceTest(swerveSubsystem, shooterSubsystem));
-        driverJoystick.leftTrigger().toggleOnTrue(driveAim);
-        driverJoystick.rightTrigger().whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2500)).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        //driverJoystick.leftTrigger().toggleOnTrue(driveAim);
+        driverJoystick.leftTrigger().whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 3000)).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        driverJoystick.rightTrigger().whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 3000)).alongWith((driveAim)).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
         driverJoystick.leftBumper().whileTrue(new SpinIntakeRPM(intakeSubsystem, -1000));
-        driverJoystick.b().whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -2700, 5000).alongWith(new OscillateIntakeRPM(intakeSubsystem, 2500)).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        driverJoystick.b().whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -2700, 5000).alongWith(new OscillateIntakeRPM(intakeSubsystem, 4000)).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
         //driverJoystick..whileTrue(new SpinBelt(feederSubsystem));
 
         // rightStickPress10.onTrue(new);

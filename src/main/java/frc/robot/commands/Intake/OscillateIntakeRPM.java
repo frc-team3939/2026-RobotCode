@@ -36,10 +36,10 @@ public class OscillateIntakeRPM extends Command {
     if (counter <= 50) {
       intakeSubsystem.spinIntakeRPM(-speed);
     }
-    else if (counter <= 54) {
-     intakeSubsystem.spinIntake(speed/16);
-    //  intakeSubsystem.stopIntake();
-    }
+    // else if (counter <= 58) {
+    //  intakeSubsystem.spinIntake(speed/16);
+    // //  intakeSubsystem.stopIntake();
+    // }
     else {
       counter = 0;
     }

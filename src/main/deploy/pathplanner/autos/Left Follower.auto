@@ -61,12 +61,6 @@
           }
         },
         {
-          "type": "path",
-          "data": {
-            "pathName": "2nd Shoot Block"
-          }
-        },
-        {
           "type": "deadline",
           "data": {
             "commands": [
