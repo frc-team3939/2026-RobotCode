@@ -122,6 +122,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("SpinIntake", new SpinIntake(intakeSubsystem, -5000));
         NamedCommands.registerCommand("Shoot", new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0));
         NamedCommands.registerCommand("OscillateIntake", new OscillateIntakeRPM(intakeSubsystem, 2500));
+        NamedCommands.registerCommand("Driveaim", driveAim);
         /**
          * Converts driver input into a field-relative ChassisSpeeds that is controlled by angular velocity.
          */
@@ -206,6 +207,7 @@ public class RobotContainer {
         driverJoystick.leftTrigger().whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 3000)).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
         driverJoystick.rightTrigger().whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 1.0).alongWith(new OscillateIntakeRPM(intakeSubsystem, 3000)).alongWith((driveAim)).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
         driverJoystick.leftBumper().whileTrue(new SpinIntakeRPM(intakeSubsystem, -1000));
+        //driverJoystick.rightBumper().whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -500, -500));
         driverJoystick.b().whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -2700, 5000).alongWith(new OscillateIntakeRPM(intakeSubsystem, 4000)).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
         //driverJoystick..whileTrue(new SpinBelt(feederSubsystem));
 
@@ -221,13 +223,16 @@ public class RobotContainer {
         //  buttonT4.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 13.5)); // L3
         //  buttonT5.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 25)); // L4
         buttonT6.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -2700, -5000)); // Smart Intake
+        //                                                                     REVERSE EVERTHING ELSE
         buttonT7.whileTrue(new SpinIntake(intakeSubsystem, 5000).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
+        //                                                                     REVERSE INTAKE
         //buttonT8.whileTrue(new SpinIntakeRPM(intakeSubsystem, 3000));
         buttonT9.whileTrue(new SpinIntake(intakeSubsystem, -5000).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
-        //  buttonT10.whileTrue(new SpinIntake(intakeSubsystem, .50));
+        //                                                                     INTAKE BUTTON
+        buttonT10.whileTrue(swerveSubsystem.lockPose());
 
-        //  buttonB1.whileTrue(new SpinIntake(intakeSubsystem, -.40));
-        // buttonB2.onTrue(new);
+        buttonB1.whileTrue(new SpinIntakeRPM(intakeSubsystem, -1000));
+        buttonB2.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -500, -500 ).alongWith(new SpinIntakeRPM(intakeSubsystem, -500)));
         // buttonB3.onTrue(new);
         // buttonB4.onTrue(new);
         // buttonB5.onTrue(new);
