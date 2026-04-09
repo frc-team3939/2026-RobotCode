@@ -214,16 +214,16 @@ public class RobotContainer {
         // rightStickPress10.onTrue(new);
         //dPadNorth.onTrue(new);
         // dPadEast.onrue(new);
-        // dPadSouth.onTrue(new);
+        // dPadSouth.onTrue(new);s
         // dPadWest.onTrue(new);
 
         //  buttonT1.onTrue(new ElevatorZero(elevatorSubsystem, 0)); // Brings elevator to 0
         //  buttonT2.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 1)); // L1
-          buttonT3.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 0));
+        buttonT3.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 0));
         //  buttonT4.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 13.5)); // L3
         //  buttonT5.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 25)); // L4
-        buttonT6.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -2700, -5000)); // Smart Intake
-        //                                                                     REVERSE EVERTHING ELSE
+        buttonT6.whileTrue(feederSubsystem, -5000); 
+        //                                                                     REVERSE FEEDER
         buttonT7.whileTrue(new SpinIntake(intakeSubsystem, 5000).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
         //                                                                     REVERSE INTAKE
         //buttonT8.whileTrue(new SpinIntakeRPM(intakeSubsystem, 3000));
@@ -232,7 +232,9 @@ public class RobotContainer {
         buttonT10.whileTrue(swerveSubsystem.lockPose());
 
         buttonB1.whileTrue(new SpinIntakeRPM(intakeSubsystem, -1000));
-        buttonB2.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -500, -500 ).alongWith(new SpinIntakeRPM(intakeSubsystem, -500)));
+        //                                                                     CLEANING BUTTON
+        buttonB2.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -500, 500 ).alongWith(new SpinIntakeRPM(intakeSubsystem,-500)));
+        //                                                                     TEST PATH BUTTON
         // buttonB3.onTrue(new);
         // buttonB4.onTrue(new);
         // buttonB5.onTrue(new);
