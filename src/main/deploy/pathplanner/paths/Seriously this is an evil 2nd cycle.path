@@ -21,7 +21,7 @@
       },
       "prevControl": {
         "x": 3.3525301204819264,
-        "y": 0.6474096385542178
+        "y": 0.6474096385542177
       },
       "nextControl": {
         "x": 7.330528969738115,
@@ -97,7 +97,7 @@
     "rotation": 93.27048792318374
   },
   "reversed": false,
-  "folder": "Evil Auto.....",
+  "folder": "Evil Auto!",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -143.47114463301483

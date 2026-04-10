@@ -21,7 +21,7 @@
       },
       "prevControl": {
         "x": 2.5985180722891568,
-        "y": 0.5053493975903622
+        "y": 0.5053493975903625
       },
       "nextControl": null,
       "isLocked": false,
@@ -31,7 +31,7 @@
   "rotationTargets": [
     {
       "waypointRelativePos": 0.26473029045644364,
-      "rotationDegrees": 178.79067177508847
+      "rotationDegrees": 178.7906717750885
     }
   ],
   "constraintZones": [],
@@ -50,10 +50,10 @@
     "rotation": -143.47114463301483
   },
   "reversed": false,
-  "folder": "Evil Auto.....",
+  "folder": "Evil Auto!",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -178.63607246839686
+    "rotation": -178.6360724683969
   },
   "useDefaultConstraints": false
 }

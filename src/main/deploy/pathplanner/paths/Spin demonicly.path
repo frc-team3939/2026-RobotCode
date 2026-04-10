@@ -79,7 +79,7 @@
     },
     {
       "waypointRelativePos": 2.1834024896265625,
-      "rotationDegrees": -178.44024379034227
+      "rotationDegrees": -178.4402437903423
     }
   ],
   "constraintZones": [],
@@ -107,10 +107,10 @@
   },
   "goalEndState": {
     "velocity": 4.0,
-    "rotation": -178.63607246839686
+    "rotation": -178.6360724683969
   },
   "reversed": false,
-  "folder": "Evil Auto.....",
+  "folder": "Evil Auto!",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -179.5686031682823

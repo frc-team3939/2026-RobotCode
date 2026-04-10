@@ -36,7 +36,7 @@
         "y": 7.22589156626506
       },
       "prevControl": {
-        "x": 6.14909718031187,
+        "x": 6.149097180311869,
         "y": 7.322905816279593
       },
       "nextControl": null,
@@ -73,7 +73,7 @@
     "rotation": -11.07020257793927
   },
   "reversed": false,
-  "folder": "Left S Shoot...",
+  "folder": "Left S Shoot!",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 135.00000000000006

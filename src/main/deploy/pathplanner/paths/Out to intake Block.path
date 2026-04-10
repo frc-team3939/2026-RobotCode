@@ -47,7 +47,7 @@
   "rotationTargets": [
     {
       "waypointRelativePos": 0.7547974413645976,
-      "rotationDegrees": 2.071010043778011
+      "rotationDegrees": 2.0710100437780112
     },
     {
       "waypointRelativePos": 1.7142857142857102,
@@ -109,7 +109,7 @@
     "rotation": -112.98871680208065
   },
   "reversed": false,
-  "folder": "Left Block!!!!!",
+  "folder": "Left Follower!",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 123.69006752597983

@@ -9,7 +9,7 @@
       "prevControl": null,
       "nextControl": {
         "x": 3.0465542168674697,
-        "y": 1.4014216867469889
+        "y": 1.401421686746989
       },
       "isLocked": false,
       "linkedName": "2nd out S"
@@ -47,7 +47,7 @@
   "rotationTargets": [
     {
       "waypointRelativePos": 0.4265560165975148,
-      "rotationDegrees": -44.606220284204625
+      "rotationDegrees": -44.60622028420463
     },
     {
       "waypointRelativePos": 0.9344398340249044,
@@ -86,7 +86,7 @@
     "rotation": 90.0
   },
   "reversed": false,
-  "folder": "Right S Shoot....",
+  "folder": "Right S Shoot!",
   "idealStartingState": {
     "velocity": 0,
     "rotation": -134.02897806892076
