@@ -11,21 +11,23 @@ import frc.robot.subsystems.FeederSubsystem;
 public class SpinBelt extends Command {
   /** Creates a new ZeroHeading. */
   private final FeederSubsystem feederSubsystem;
-  public SpinBelt(FeederSubsystem feederSubsystem) {
+  private final double speed;
+  public SpinBelt(FeederSubsystem feederSubsystem, double speed) {
     this.feederSubsystem = feederSubsystem;
+    this.speed = speed;
     addRequirements(feederSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    feederSubsystem.spinBeltSpeed(4000);
+    feederSubsystem.spinBeltSpeed(speed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    feederSubsystem.spinBeltSpeed(4000);
+    feederSubsystem.spinBeltSpeed(speed);
   }
 
   // Called once the command ends or is interrupted.

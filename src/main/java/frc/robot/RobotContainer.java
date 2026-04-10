@@ -222,14 +222,14 @@ public class RobotContainer {
         buttonT3.whileTrue(new ShooterRPMDistance(shooterSubsystem, feederSubsystem, swerveSubsystem, 0));
         //  buttonT4.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 13.5)); // L3
         //  buttonT5.onTrue(new ElevatorAbsolutePosition(elevatorSubsystem, 25)); // L4
-        buttonT6.whileTrue(feederSubsystem, -5000); 
+        buttonT6.whileTrue(new SpinBelt(feederSubsystem, -5000)); 
         //                                                                     REVERSE FEEDER
         buttonT7.whileTrue(new SpinIntake(intakeSubsystem, 5000).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
         //                                                                     REVERSE INTAKE
         //buttonT8.whileTrue(new SpinIntakeRPM(intakeSubsystem, 3000));
         buttonT9.whileTrue(new SpinIntake(intakeSubsystem, -5000).withInterruptBehavior(InterruptionBehavior.kCancelSelf));
         //                                                                     INTAKE BUTTON
-        buttonT10.whileTrue(swerveSubsystem.lockPose());
+        buttonT10.whileTrue(new LockPose(swerveSubsystem));
 
         buttonB1.whileTrue(new SpinIntakeRPM(intakeSubsystem, -1000));
         //                                                                     CLEANING BUTTON
