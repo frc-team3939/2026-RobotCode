@@ -226,7 +226,8 @@ public class RobotContainer {
         buttonT7.whileTrue(new SpinIntake(intakeSubsystem, 5000).withInterruptBehavior(InterruptionBehavior.kCancelSelf));//REVERSE INTAKE
         buttonT8.whileTrue(new LockPose(swerveSubsystem));
         buttonT9.whileTrue(new SpinIntake(intakeSubsystem, -5000).withInterruptBehavior(InterruptionBehavior.kCancelSelf));//INTAKE BUTTON
-        //buttonT10.whileTrue(new LockPose(swerveSubsystem));
+        buttonT10.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -5000, 5000).alongWith(new OscillateIntakeRPM(intakeSubsystem, 4000)).withInterruptBehavior(InterruptionBehavior.kCancelIncoming));
+        
 
         buttonB1.whileTrue(new SpinIntakeRPM(intakeSubsystem, -1000)); //CLEANING BUTTON
         buttonB2.whileTrue(new ShooterRPM(shooterSubsystem, feederSubsystem, -500, 500 ).alongWith(new SpinIntakeRPM(intakeSubsystem,-500)));//TEST PATH BUTTON

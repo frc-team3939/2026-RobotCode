@@ -32,11 +32,11 @@
     },
     {
       "anchor": {
-        "x": 2.9700602409638552,
+        "x": 2.9522111269614832,
         "y": 2.4888302425106996
       },
       "prevControl": {
-        "x": 3.2198760325658937,
+        "x": 3.2020269185635217,
         "y": 2.4792349172818735
       },
       "nextControl": null,
@@ -45,6 +45,10 @@
     }
   ],
   "rotationTargets": [
+    {
+      "waypointRelativePos": 0.5031982942430725,
+      "rotationDegrees": -139.96618742499004
+    },
     {
       "waypointRelativePos": 0.9045643153527273,
       "rotationDegrees": -179.72656465608532
@@ -88,7 +92,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -137.29061004263846
+    "rotation": -142.25319461272528
   },
   "reversed": false,
   "folder": "Right S Shoot!",

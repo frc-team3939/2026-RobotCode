@@ -9,7 +9,7 @@
       "prevControl": null,
       "nextControl": {
         "x": 8.32463855421687,
-        "y": -1.7785421686747007
+        "y": -1.7785421686747005
       },
       "isLocked": false,
       "linkedName": "2nd intake right blue"
@@ -77,7 +77,7 @@
     "rotation": 39.20720350496802
   },
   "reversed": false,
-  "folder": "Right Follower!",
+  "folder": "Right Follower B.T.!",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 90.0
