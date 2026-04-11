@@ -8,20 +8,20 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.7680120481927712,
-        "y": 4.799939759036144
+        "x": 1.5548359486447931,
+        "y": 5.0377460770328115
       },
       "isLocked": false,
       "linkedName": "shOOT FOR PIT"
     },
     {
       "anchor": {
-        "x": 0.7626626506024097,
-        "y": 5.652301204819277
+        "x": 0.7526390870185449,
+        "y": 5.943452211126962
       },
       "prevControl": {
-        "x": 0.9272888025695394,
-        "y": 5.464157031142557
+        "x": 1.4772039942938655,
+        "y": 6.046961483594864
       },
       "nextControl": null,
       "isLocked": false,
@@ -68,7 +68,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 143.61564818416406
+    "rotation": 180.0
   },
   "reversed": false,
   "folder": "The Pit!",

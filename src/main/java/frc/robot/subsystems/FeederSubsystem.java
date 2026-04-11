@@ -92,6 +92,9 @@ public class FeederSubsystem extends SubsystemBase {
     beltConfig.encoder.uvwAverageDepth(16);
     beltConfig.encoder.uvwMeasurementPeriod(20);
 
+    beltConfig.smartCurrentLimit(25);
+    feederConfig.smartCurrentLimit(25);
+
 
     beltMotor.configure(beltConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     feederMotor.configure(feederConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);

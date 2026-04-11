@@ -95,7 +95,7 @@
   "folder": "Left Follower!",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 146.30993247402014
+    "rotation": 146.82148834060706
   },
   "useDefaultConstraints": false
 }

@@ -8,20 +8,20 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.922610556348072,
-        "y": 7.392582025677603
+        "x": 2.7840085592011405,
+        "y": 7.250256776034237
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 6.937318116975749,
-        "y": 7.392582025677603
+        "x": 1.6583452211126959,
+        "y": 6.046961483594864
       },
       "prevControl": {
-        "x": 5.937318116975749,
-        "y": 7.392582025677603
+        "x": 1.9040632678462766,
+        "y": 6.093033617357411
       },
       "nextControl": null,
       "isLocked": false,
@@ -31,7 +31,14 @@
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "Driveaim",
+      "waypointRelativePos": 0,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -42,7 +49,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 90.0
+    "rotation": 120.37912601136831
   },
   "reversed": false,
   "folder": null,

@@ -8,24 +8,24 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.416048502139798,
-        "y": 7.314950071326676
+        "x": 5.52700427960057,
+        "y": 5.542353780313838
       },
       "isLocked": false,
       "linkedName": "Out to Intake Block"
     },
     {
       "anchor": {
-        "x": 4.621298145506419,
-        "y": 7.392582025677603
+        "x": 4.569543509272467,
+        "y": 5.425905848787448
       },
       "prevControl": {
-        "x": 5.008897960068191,
-        "y": 7.368050391844579
+        "x": 4.996715253507325,
+        "y": 5.425905848787448
       },
       "nextControl": {
-        "x": 0.5326818830242503,
-        "y": 7.651355206847362
+        "x": 4.233138373751783,
+        "y": 5.425905848787448
       },
       "isLocked": false,
       "linkedName": null
@@ -36,8 +36,8 @@
         "y": 5.723495007132667
       },
       "prevControl": {
-        "x": 1.4677259733515138,
-        "y": 5.970982380547959
+        "x": 1.7352004851321563,
+        "y": 5.630647338044142
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,11 +46,11 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.3,
+      "waypointRelativePos": 0.5031982942430725,
       "rotationDegrees": 0.0
     },
     {
-      "waypointRelativePos": 1.2,
+      "waypointRelativePos": 1.4029850746268628,
       "rotationDegrees": 0.0
     }
   ],
@@ -67,7 +67,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 146.30993247402014
+    "rotation": 146.82148834060706
   },
   "reversed": false,
   "folder": "Left Follower!",

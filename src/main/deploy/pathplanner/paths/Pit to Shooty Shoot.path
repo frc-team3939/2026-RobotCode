@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.7626626506024097,
-        "y": 5.652301204819277
+        "x": 0.7526390870185449,
+        "y": 5.943452211126962
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.8610120481927708,
-        "y": 5.41189156626506
+        "x": 1.8265477888730377,
+        "y": 5.943452211126962
       },
       "isLocked": false,
       "linkedName": "pIT TO sHOOT"
     },
     {
       "anchor": {
-        "x": 1.374614457831325,
-        "y": 4.799939759036144
+        "x": 1.9429957203994292,
+        "y": 4.015592011412268
       },
       "prevControl": {
-        "x": 1.183767886489047,
-        "y": 4.9614253194026885
+        "x": 1.9274011488606335,
+        "y": 4.26510515603299
       },
       "nextControl": null,
       "isLocked": false,
@@ -56,13 +56,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 160.6367310875795
+    "rotation": 180.0
   },
   "reversed": false,
   "folder": "The Pit!",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 143.61564818416406
+    "rotation": 180.0
   },
   "useDefaultConstraints": true
 }

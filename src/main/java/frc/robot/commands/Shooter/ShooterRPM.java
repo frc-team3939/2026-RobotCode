@@ -31,7 +31,7 @@ public class ShooterRPM extends Command{
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        this.shooterSubsystem.spinShooterSpeed();
+        this.shooterSubsystem.spinShooterSpeed(speed);
         // this.feederSubsystem.feederSpin(this.speed_feeder);
         // this.feederSubsystem.spinBelt(this.speed_feeder);
         // double shooter_speed_error = this.shooterSubsystem.getShooterSpeed() - Preferences.getDouble("Shooter RPM",0.0);
